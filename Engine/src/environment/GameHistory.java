@@ -10,6 +10,10 @@ public class GameHistory {
 		history = new Stack<boolean[]>();
 	}
 
+	public int getNumberOfMoves() {
+		return history.size();
+	}
+
 	public void newMove(boolean agent1, boolean agent2) {
 		boolean[] move = { agent1, agent2 };
 		history.add(move);

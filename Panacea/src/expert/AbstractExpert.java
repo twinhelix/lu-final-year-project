@@ -1,5 +1,6 @@
 package expert;
 
+import agent.IExpert;
 import environment.GameHistory;
 
 public abstract class AbstractExpert implements IExpert {

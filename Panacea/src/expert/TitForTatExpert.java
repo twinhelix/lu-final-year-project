@@ -11,11 +11,13 @@ public class TitForTatExpert extends AbstractExpert {
 
 	@Override
 	public boolean move(GameHistory history) {
-		boolean[] lastMove = history.getLastMove();
+
 		// Cooperate on first move
-		if (lastMove == null){
+		if (history.getNumberOfMoves() == 0) {
 			return true;
 		}
+
+		boolean[] lastMove = history.getLastMove();
 		// Copies the last move of the other player
 		return lastMove[playerNo % 2];
 	}
