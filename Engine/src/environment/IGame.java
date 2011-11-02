@@ -8,14 +8,14 @@ public interface IGame {
 	 * 
 	 * @return
 	 */
-	public IAgent getAgent1();
+	public IAgent<?> getAgent1();
 
 	/***
 	 * Return second agent.
 	 * 
 	 * @return
 	 */
-	public IAgent getAgent2();
+	public IAgent<?> getAgent2();
 
 	/***
 	 * Returns the number of games, if game is infinite game, returns 0
