@@ -16,7 +16,6 @@ public class BaseAgent implements IAgent {
 
 	@Override
 	public int playerNumber() {
-		// TODO Auto-generated method stub
 		return expert.playerNumber();
 	}
 

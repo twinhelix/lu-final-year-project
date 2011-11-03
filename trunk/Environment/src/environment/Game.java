@@ -24,6 +24,7 @@ public class Game implements IGame {
 	public double[] run() {
 		if (totalGames == 0) {
 			// RAISE WARNING FOR INFINITE GAME!
+			System.err.println("Infinite game!");
 		}
 		for (int i = 0; i < totalGames; i++) {
 			double[] result = playOneRound();
