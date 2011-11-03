@@ -3,13 +3,13 @@ package environment;
 import agent.IAgent;
 
 public class Game implements IGame {
-	private IAgent<?> agent1, agent2;
+	private IAgent agent1, agent2;
 	private double wins1, wins2;
 	private int totalGames;
 	private ScoringSystem scoringSystem;
 	private GameHistory history;
 
-	public Game(IAgent<?> agent1, IAgent<?> agent2, int totalGames,
+	public Game(IAgent agent1, IAgent agent2, int totalGames,
 			ScoringSystem scoringSystem) {
 		this.agent1 = agent1;
 		this.agent2 = agent2;
@@ -62,12 +62,12 @@ public class Game implements IGame {
 	}
 
 	@Override
-	public IAgent<?> getAgent1() {
+	public IAgent getAgent1() {
 		return agent1;
 	}
 
 	@Override
-	public IAgent<?> getAgent2() {
+	public IAgent getAgent2() {
 		return agent2;
 	}
 

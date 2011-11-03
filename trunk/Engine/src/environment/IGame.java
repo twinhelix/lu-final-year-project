@@ -8,14 +8,14 @@ public interface IGame {
 	 * 
 	 * @return
 	 */
-	public IAgent<?> getAgent1();
+	public IAgent getAgent1();
 
 	/***
 	 * Return second agent.
 	 * 
 	 * @return
 	 */
-	public IAgent<?> getAgent2();
+	public IAgent getAgent2();
 
 	/***
 	 * Returns the number of games, if game is infinite game, returns 0
@@ -44,9 +44,10 @@ public interface IGame {
 	 * @return
 	 */
 	public double getWins2();
-	
+
 	/***
 	 * Returns the history of all previous moves made by players
+	 * 
 	 * @return
 	 */
 	public GameHistory getHistory();
