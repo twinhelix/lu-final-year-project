@@ -26,14 +26,15 @@ public class TitForTwoTatExpert extends AbstractExpert {
 
 		Stack<boolean[]> moves = (Stack<boolean[]>) hist;
 
-		// Defect if the other player defected twice in a row
+		// Like Tit For Tat except that opponent must make the same choice twice
+		// in row before it is reciprocated.
 		boolean[] lastMove = moves.pop();
-		if (!lastMove[playerNo % 2]) {
-			lastMove = moves.pop();
-			if (!lastMove[playerNo % 2]) {
-				return false;
-			}
+		boolean[] last2Move = moves.pop();
+
+		if (lastMove[playerNo % 2] == last2Move[playerNo % 2]) {
+			return lastMove[playerNo % 2];
 		}
-		return true;
+
+		return lastMove[playerNo - 1];
 	}
 }

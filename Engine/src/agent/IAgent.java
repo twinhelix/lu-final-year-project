@@ -2,7 +2,8 @@ package agent;
 
 import environment.GameHistory;
 
-public interface IAgent<T extends IExpert> {
+public interface IAgent {
+
 	public boolean move(GameHistory history);
 
 	public int playerNumber();
