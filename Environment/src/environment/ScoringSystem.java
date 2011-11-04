@@ -34,5 +34,4 @@ public class ScoringSystem {
 	public double[] getdd() {
 		return dd;
 	}
-
 }

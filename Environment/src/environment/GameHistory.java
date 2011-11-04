@@ -19,6 +19,11 @@ public class GameHistory {
 		history.add(move);
 	}
 
+	/***
+	 * Returns last move made
+	 * 
+	 * @return
+	 */
 	public boolean[] getLastMove() {
 		if (history.isEmpty()) {
 			return null;
@@ -26,6 +31,11 @@ public class GameHistory {
 		return ((Stack<boolean[]>) history).peek();
 	}
 
+	/***
+	 * Returns complete history
+	 * 
+	 * @return
+	 */
 	public Collection<boolean[]> getHistory() {
 		return history;
 	}
