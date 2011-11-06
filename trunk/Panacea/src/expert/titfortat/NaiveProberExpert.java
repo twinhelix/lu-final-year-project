@@ -1,4 +1,4 @@
-package expert;
+package expert.titfortat;
 
 import environment.GameHistory;
 
