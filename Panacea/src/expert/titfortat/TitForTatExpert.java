@@ -1,6 +1,7 @@
-package expert;
+package expert.titfortat;
 
 import environment.GameHistory;
+import expert.AbstractExpert;
 
 public class TitForTatExpert extends AbstractExpert {
 

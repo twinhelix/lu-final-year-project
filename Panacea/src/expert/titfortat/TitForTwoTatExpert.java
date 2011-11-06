@@ -1,9 +1,10 @@
-package expert;
+package expert.titfortat;
 
 import java.util.Collection;
 import java.util.Stack;
 
 import environment.GameHistory;
+import expert.AbstractExpert;
 
 public class TitForTwoTatExpert extends AbstractExpert {
 
