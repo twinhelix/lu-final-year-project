@@ -6,6 +6,11 @@ import environment.GameHistory;
 public abstract class AbstractExpert implements IExpert {
 	protected int playerNo;
 
+	/***
+	 * Expert base class
+	 * 
+	 * @param playerNo
+	 */
 	public AbstractExpert(int playerNo) {
 		this.playerNo = playerNo;
 	}

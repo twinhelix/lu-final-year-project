@@ -3,12 +3,18 @@ package expert.titfortat;
 import environment.GameHistory;
 
 public class RemorsefulProberExpert extends TitForTatExpert {
-	// Repeat opponent's last choice (ie Tit For Tat), but sometimes probe by
-	// defecting in lieu of co-operating. If the opponent defects in response to
-	// probing, show remorse by co-operating once.
+
 	private double prob;
 	private boolean remorse;
 
+	/***
+	 * Repeat opponent's last choice (ie Tit For Tat), but sometimes probe by
+	 * defecting in lieu of cooperating. If the opponent defects in response to
+	 * probing, show remorse by cooperating once.
+	 * 
+	 * @param playerNo
+	 * @param prob
+	 */
 	public RemorsefulProberExpert(int playerNo, double prob) {
 		super(playerNo);
 		this.prob = prob;
