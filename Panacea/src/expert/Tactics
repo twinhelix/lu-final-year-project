@@ -1,0 +1,22 @@
+Home
+Tit For Tat - Repeat opponent's last choice.
+Tit For Tat and Random - Repeat opponent's last choice skewed by random setting.*
+Tit For Two Tats and Random - Like Tit For Tat except that opponent must make the same choice twice in a row before it is reciprocated. Choice is skewed by random setting.*
+Tit For Two Tats - Like Tit For Tat except that opponent must make the same choice twice in row before it is reciprocated.
+Naive Prober (Tit For Tat with Random Defection) - Repeat opponent's last choice (ie Tit For Tat), but sometimes probe by defecting in lieu of co-operating.*
+Remorseful Prober (Tit For Tat with Random Defection) - Repeat opponent's last choice (ie Tit For Tat), but sometimes probe by defecting in lieu of co-operating. If the opponent defects in response to probing, show remorse by co-operating once.*
+Naive Peace Maker (Tit For Tat with Random Co-operation) - Repeat opponent's last choice (ie Tit For Tat), but sometimes make peace by co-operating in lieu of defecting.*
+True Peace Maker (hybrid of Tit For Tat and Tit For Two Tats with Random Co-operation) - Co-operate unless opponent defects twice in a row, then defect once, but sometimes make peace by co-operating in lieu of defecting.*
+Random - always set at 50% probability.
+Always Defect
+Always Co-operate
+Grudger (Co-operate, but only be a sucker once) - Co-operate until the opponent defects. Then always defect unforgivingly.
+Pavlov (repeat last choice if good outcome) - If 5 or 3 points scored in the last round then repeat last choice.
+Pavlov / Random (repeat last choice if good outcome and Random) - If 5 or 3 points scored in the last round then repeat last choice, but sometimes make random choices.*
+Adaptive - Starts with c,c,c,c,c,c,d,d,d,d,d and then takes choices which have given the best average score re-calculated after every move.
+Gradual - Co-operates until the opponent defects, in such case defects the total number of times the opponent has defected during the game. Followed up by two co-operations.
+Suspicious Tit For Tat - As for Tit For Tat except begins by defecting.
+Soft Grudger - Co-operates until the opponent defects, in such case opponent is punished with d,d,d,d,c,c.
+Customised strategy 1 - default setting is T=1, P=1, R=1, S=0, B=1, always co-operate unless sucker (ie 0 points scored).
+Customised strategy 2 - default setting is T=1, P=1, R=0, S=0, B=0, always play alternating defect/co-operate.
+* Strategies with random intervention.
