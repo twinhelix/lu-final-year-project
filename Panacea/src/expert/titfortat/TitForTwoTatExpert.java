@@ -11,6 +11,8 @@ public class TitForTwoTatExpert extends AbstractExpert {
 	/***
 	 * Like Tit For Tat except that opponent must make the same choice twice in
 	 * row before it is reciprocated.
+	 * 
+	 * @param playerNo
 	 */
 	public TitForTwoTatExpert(int playerNo) {
 		super(playerNo);
