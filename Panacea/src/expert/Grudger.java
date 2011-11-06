@@ -5,6 +5,11 @@ import environment.GameHistory;
 public class Grudger extends AbstractExpert {
 	boolean grudge;
 
+	/***
+	 * Cooperate until the opponent defects. Then always defect unforgivingly.
+	 * 
+	 * @param playerNo
+	 */
 	public Grudger(int playerNo) {
 		super(playerNo);
 		grudge = false;
@@ -13,7 +18,6 @@ public class Grudger extends AbstractExpert {
 	@Override
 	public boolean move(GameHistory history) {
 
-		// Co-operate until the opponent defects. Then always defect forever
 		if (grudge)
 			return false;
 

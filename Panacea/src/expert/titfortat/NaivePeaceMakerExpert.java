@@ -3,10 +3,16 @@ package expert.titfortat;
 import environment.GameHistory;
 
 public class NaivePeaceMakerExpert extends TitForTatExpert {
-	// Repeat opponent's last choice (ie Tit For Tat), but sometimes make peace
-	// by co-operating in lieu of defecting.*
+
 	private double prob;
 
+	/***
+	 * Repeat opponent's last choice (ie Tit For Tat), but sometimes make peace
+	 * by co-operating in lieu of defecting.
+	 * 
+	 * @param playerNo
+	 * @param prob
+	 */
 	public NaivePeaceMakerExpert(int playerNo, double prob) {
 		super(playerNo);
 		this.prob = prob;
