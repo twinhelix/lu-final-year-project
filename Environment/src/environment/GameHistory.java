@@ -39,4 +39,12 @@ public class GameHistory {
 	public Collection<boolean[]> getHistory() {
 		return history;
 	}
+
+	public boolean getPlayerLastMove(int playerNo) {
+		return ((Stack<boolean[]>) history).peek()[playerNo - 1];
+	}
+
+	public boolean getOtherPlayerLastMove(int playerNo) {
+		return ((Stack<boolean[]>) history).peek()[playerNo % 2];
+	}
 }
