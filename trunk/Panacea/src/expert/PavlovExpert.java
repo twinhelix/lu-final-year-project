@@ -15,7 +15,20 @@ public class PavlovExpert extends AbstractExpert {
 
 	@Override
 	public boolean move(GameHistory history) {
-
+		if (history.getNumberOfMoves()<1){
+			return true;
+		}
+		
+		boolean[] lastMove = history.getLastMove();
+		
+		if (lastMove[0] && lastMove[1]){
+			return true;
+		}
+		
+		else if (lastMove[playerNo%2] && !lastMove[playerNo-1]){
+			return false;
+		}
+		
 		return false;
 	}
 
