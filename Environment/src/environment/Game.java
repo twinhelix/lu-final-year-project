@@ -15,13 +15,13 @@ public class Game implements IGame {
 		this.agent2 = agent2;
 		this.scoringSystem = scoringSystem;
 		this.totalGames = totalGames;
-		wins1 = 0;
-		wins2 = 0;
 		history = new GameHistory();
 	}
 
 	@Override
 	public double[] run() {
+		wins1 = 0;
+		wins2 = 0;
 		if (totalGames == 0) {
 			// RAISE WARNING FOR INFINITE GAME!
 			System.err.println("Infinite game!");
@@ -30,7 +30,6 @@ public class Game implements IGame {
 			double[] result = playOneRound();
 			wins1 += result[0];
 			wins2 += result[1];
-
 		}
 
 		double[] results = { getWins1(), getWins2() };
@@ -44,22 +43,26 @@ public class Game implements IGame {
 		// Add in the new move to update the historical data
 		history.newMove(player1, player2);
 
+		double[] result;
 		if (player1 && player2) {
-			return scoringSystem.getcc();
+			result = scoringSystem.getcc();
 		}
 
 		else if (player1 && !player2) {
-			return scoringSystem.getcd();
+			result = scoringSystem.getcd();
 		}
 
 		else if (!player1 && player2) {
-			return scoringSystem.getdc();
+			result = scoringSystem.getdc();
 		}
 
 		else {
-			return scoringSystem.getdd();
+			result = scoringSystem.getdd();
 		}
 
+		System.out.println("Player 1: " + player1 + " " + result[0]
+				+ "\t\t\tPlayer2: " + player2 + " " + result[1]);
+		return result;
 	}
 
 	@Override

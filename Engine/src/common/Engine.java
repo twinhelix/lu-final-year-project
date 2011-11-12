@@ -17,6 +17,6 @@ public class Engine {
 		Game g = new Game(new BaseAgent(new RandomExpert(1)), new BaseAgent(
 				new RandomExpert(2)), 200, scoringSystem);
 		double[] x = g.run();
-		System.out.println(cc[0] + " " + cc[1]);
+		System.out.println(x[0] + " " + x[1]);
 	}
 }
