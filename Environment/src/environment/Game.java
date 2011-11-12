@@ -1,5 +1,7 @@
 package environment;
 
+import org.apache.log4j.Logger;
+
 import agent.IAgent;
 
 public class Game implements IGame {
@@ -8,6 +10,7 @@ public class Game implements IGame {
 	private int totalGames;
 	private ScoringSystem scoringSystem;
 	private GameHistory history;
+	private Logger logger = Logger.getLogger(this.getClass());
 
 	public Game(IAgent agent1, IAgent agent2, int totalGames,
 			ScoringSystem scoringSystem) {
@@ -20,11 +23,12 @@ public class Game implements IGame {
 
 	@Override
 	public double[] run() {
+		logger.info("Running game for " + totalGames + " rounds...");
 		wins1 = 0;
 		wins2 = 0;
 		if (totalGames == 0) {
-			// RAISE WARNING FOR INFINITE GAME!
-			System.err.println("Infinite game!");
+			// Infinite game...
+			logger.info("WARNING!!! Infinite game!");
 		}
 		for (int i = 0; i < totalGames; i++) {
 			double[] result = playOneRound();
@@ -33,6 +37,9 @@ public class Game implements IGame {
 		}
 
 		double[] results = { getWins1(), getWins2() };
+
+		logger.info("Scoring - Player 1: " + results[0] + "\t\t\tPlayer2: "
+				+ results[1]);
 		return results;
 	}
 
