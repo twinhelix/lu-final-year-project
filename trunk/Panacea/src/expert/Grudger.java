@@ -15,6 +15,10 @@ public class Grudger extends AbstractExpert {
 		grudge = false;
 	}
 
+	public String getName() {
+		return ("Grudger Expert");
+	}
+	
 	@Override
 	public boolean move(GameHistory history) {
 
@@ -30,9 +34,8 @@ public class Grudger extends AbstractExpert {
 		if (!lastMove[playerNo % 2]) {
 			grudge = true;
 			return false;
-		} else
+		} else {
 			return true;
-
+		}
 	}
-
 }

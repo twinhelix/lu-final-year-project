@@ -17,6 +17,10 @@ public class TitForTwoTatExpert extends AbstractExpert {
 	public TitForTwoTatExpert(int playerNo) {
 		super(playerNo);
 	}
+	
+	public String getName() {
+		return ("Tit-for-2-Tat Expert");
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

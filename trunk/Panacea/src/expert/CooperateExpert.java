@@ -12,7 +12,12 @@ public class CooperateExpert extends AbstractExpert {
 		super(playerNo);
 	}
 
+	public String getName() {
+		return ("Always Cooperate Expert");
+	}
+
 	public boolean move(GameHistory history) {
 		return true;
 	}
+
 }

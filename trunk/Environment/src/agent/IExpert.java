@@ -15,4 +15,11 @@ public interface IExpert {
 	 * @return
 	 */
 	public int playerNumber();
+	
+	/***
+	 * Returns name of Expert
+	 * @return
+	 */
+	public String getName();
+	
 }

@@ -21,6 +21,11 @@ public class RemorsefulProberExpert extends TitForTatExpert {
 		remorse = false;
 	}
 
+	@Override
+	public String getName() {
+		return ("Remorseful Prober Expert: " + prob + "%");
+	}
+
 	public boolean move(GameHistory history) {
 		boolean[] lastMove = history.getLastMove();
 

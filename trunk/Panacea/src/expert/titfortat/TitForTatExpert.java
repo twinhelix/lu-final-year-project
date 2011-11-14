@@ -25,4 +25,8 @@ public class TitForTatExpert extends AbstractExpert {
 		return lastMove[playerNo % 2];
 	}
 
+	public String getName() {
+		return ("Tit-for-Tat Expert");
+	}
+
 }

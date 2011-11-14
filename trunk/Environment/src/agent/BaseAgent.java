@@ -20,24 +20,3 @@ public class BaseAgent implements IAgent {
 	}
 
 }
-/*
-Tit For Tat		
-Tit For Tat / Random	
-Tit For Two Tats / Random		
-Tit For Two Tats	
-Naive Prober		
-Remorseful Prober	
-Naive Peace Maker		
-True Peace Maker	
-Random		
-lways Defect	
-Always Co-operate		
-Grudger	
-Pavlov		
-Pavlov / Random	
-Adaptive		
-Gradual	
-Suspicious Tit For Tat		
-Soft Grudger	
-	
-*/
