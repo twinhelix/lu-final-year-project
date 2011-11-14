@@ -21,6 +21,10 @@ public class TruePeaceMakerExpert extends AbstractExpert {
 		this.prob = prob;
 	}
 
+	public String getName() {
+		return ("True Peace Maker Expert");
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean move(GameHistory history) {

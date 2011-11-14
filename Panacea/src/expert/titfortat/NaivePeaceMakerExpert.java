@@ -18,6 +18,11 @@ public class NaivePeaceMakerExpert extends TitForTatExpert {
 		this.prob = prob;
 	}
 
+	@Override
+	public String getName() {
+		return ("Naive Peace Maker Expert: " + prob + "%");
+	}
+
 	public boolean move(GameHistory history) {
 
 		// Repeat opponent's last choice (ie Tit For Tat), but sometimes probe

@@ -13,6 +13,10 @@ public class RandomExpert extends AbstractExpert {
 		super(playerNo);
 	}
 
+	public String getName() {
+		return ("Random Expert");
+	}
+
 	public boolean move(GameHistory history) {
 		double choice = Math.random();
 		if (choice < 0.5)
@@ -20,4 +24,5 @@ public class RandomExpert extends AbstractExpert {
 		else
 			return false;
 	}
+
 }

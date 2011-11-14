@@ -17,6 +17,11 @@ public class NaiveProberExpert extends TitForTatExpert {
 		this.prob = prob;
 	}
 
+	@Override
+	public String getName() {
+		return ("Naive Prober Expert: " + prob + "%");
+	}
+
 	public boolean move(GameHistory history) {
 
 		boolean result = super.move(history);

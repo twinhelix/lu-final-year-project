@@ -13,7 +13,12 @@ public class DefectExpert extends AbstractExpert {
 		super(playerNo);
 	}
 
+	public String getName() {
+		return ("Always Defect Expert");
+	}
+
 	public boolean move(GameHistory history) {
 		return false;
 	}
+
 }

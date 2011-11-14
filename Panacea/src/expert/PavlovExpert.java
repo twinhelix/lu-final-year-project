@@ -13,22 +13,26 @@ public class PavlovExpert extends AbstractExpert {
 		super(playerNo);
 	}
 
+	public String getName() {
+		return ("Pavlov Expert");
+	}
+
 	@Override
 	public boolean move(GameHistory history) {
-		if (history.getNumberOfMoves()<1){
+		if (history.getNumberOfMoves() < 1) {
 			return true;
 		}
-		
+
 		boolean[] lastMove = history.getLastMove();
-		
-		if (lastMove[0] && lastMove[1]){
+
+		if (lastMove[0] && lastMove[1]) {
 			return true;
 		}
-		
-		else if (lastMove[playerNo%2] && !lastMove[playerNo-1]){
+
+		else if (lastMove[playerNo % 2] && !lastMove[playerNo - 1]) {
 			return false;
 		}
-		
+
 		return false;
 	}
 
