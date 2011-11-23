@@ -4,9 +4,15 @@ import java.util.Collection;
 import java.util.Stack;
 
 public class GameHistory {
-	Collection<boolean[]> history;
+	private Collection<boolean[]> history;
+	private ScoringSystem scoringSystem;
 
-	public GameHistory() {
+	public ScoringSystem getScoringSystem() {
+		return scoringSystem;
+	}
+
+	public GameHistory(ScoringSystem scoringSystem) {
+		this.scoringSystem = scoringSystem;
 		history = new Stack<boolean[]>();
 	}
 
@@ -47,4 +53,6 @@ public class GameHistory {
 	public boolean getOtherPlayerLastMove(int playerNo) {
 		return ((Stack<boolean[]>) history).peek()[playerNo % 2];
 	}
+	
+	
 }
