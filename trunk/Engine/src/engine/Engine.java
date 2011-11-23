@@ -1,8 +1,13 @@
 package engine;
 
 import agent.BaseAgent;
+import agent.IExpert;
 import environment.Game;
 import environment.ScoringSystem;
+import expert.CooperateExpert;
+import expert.DefectExpert;
+import expert.GrudgerExpert;
+import expert.PavlovExpert;
 import expert.RandomExpert;
 
 public class Engine {
@@ -14,9 +19,15 @@ public class Engine {
 		double[] dd = { 1, 1 };
 		ScoringSystem scoringSystem = new ScoringSystem(cc, cd, dc, dd);
 
-		Game g = new Game(new BaseAgent(new RandomExpert(1)), new BaseAgent(
-				new RandomExpert(2)), 200, scoringSystem);
-		double[] x = g.run();
-		System.out.println(x[0] + " " + x[1]);
+		IExpert[] experts = { new RandomExpert(0), new GrudgerExpert(0),
+				new CooperateExpert(0), new DefectExpert(0),
+				new PavlovExpert(0) };
+		RoundRobinEngine engine = new RoundRobinEngine(experts);
+		engine.run();
+
+		// Game g = new Game(new BaseAgent(new RandomExpert(1)), new BaseAgent(
+		// new RandomExpert(2)), 200, scoringSystem);
+		// double[] x = g.run();
+		// System.out.println(x[0] + " " + x[1]);
 	}
 }

@@ -3,9 +3,10 @@ package agent;
 import environment.GameHistory;
 
 public interface IAgent {
-	
+
 	/***
 	 * Agent makes move with history
+	 * 
 	 * @param history
 	 * @return
 	 */
@@ -13,7 +14,15 @@ public interface IAgent {
 
 	/***
 	 * Returns player number
+	 * 
 	 * @return
 	 */
-	public int playerNumber();
+	public int getPlayerNumber();
+
+	/***
+	 * Sets player number
+	 * 
+	 * @return
+	 */
+	public void setPlayerNumber(int playerNo);
 }
