@@ -2,10 +2,10 @@ package environment;
 
 //import org.apache.log4j.Logger;
 
-import agent.IAgent;
+import agent.IExpert;
 
 public class Game implements IGame {
-	private IAgent agent1, agent2;
+	private IExpert expert1, expert2;
 	private double wins1, wins2;
 	private int totalGames;
 	private ScoringSystem scoringSystem;
@@ -13,10 +13,10 @@ public class Game implements IGame {
 
 	// private Logger logger = Logger.getLogger(this.getClass());
 
-	public Game(IAgent agent1, IAgent agent2, int totalGames,
+	public Game(IExpert expert1, IExpert expert2, int totalGames,
 			ScoringSystem scoringSystem) {
-		this.agent1 = agent1;
-		this.agent2 = agent2;
+		this.expert1 = expert1;
+		this.expert2 = expert2;
 		this.scoringSystem = scoringSystem;
 		this.totalGames = totalGames;
 		history = new GameHistory(scoringSystem);
@@ -45,27 +45,27 @@ public class Game implements IGame {
 	}
 
 	public double[] playOneRound() {
-		boolean player1 = agent1.move(history);
-		boolean player2 = agent2.move(history);
+		boolean player1 = expert1.move(history);
+		boolean player2 = expert2.move(history);
 		boolean move[] = { player1, player2 };
 		// Add in the new move to update the historical data
 		history.newMove(player1, player2);
 
 		double[] result = scoringSystem.getPoints(move);
-
-		System.out.println("Player 1: " + player1 + " " + result[0]
-				+ "\t\t\tPlayer2: " + player2 + " " + result[1]);
+		
+//		System.out.println("Player 1: " + player1 + " " + result[0]
+//				+ "\t\t\tPlayer2: " + player2 + " " + result[1]);
 		return result;
 	}
 
 	@Override
-	public IAgent getAgent1() {
-		return agent1;
+	public IExpert getExpert1() {
+		return expert1;
 	}
 
 	@Override
-	public IAgent getAgent2() {
-		return agent2;
+	public IExpert getExpert2() {
+		return expert2;
 	}
 
 	@Override
