@@ -34,4 +34,22 @@ public class ScoringSystem {
 	public double[] getdd() {
 		return dd;
 	}
+
+	/***
+	 * Returns the points scored for given move
+	 * 
+	 * @param move
+	 * @return
+	 */
+	public double[] getPoints(boolean[] move) {
+		if (move[0] && move[1])
+			return cc;
+		if (move[0] && !move[1])
+			return cd;
+		if (!move[0] && move[1])
+			return dc;
+		else
+			return dd;
+	}
+
 }
