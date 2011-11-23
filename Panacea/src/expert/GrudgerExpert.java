@@ -2,7 +2,7 @@ package expert;
 
 import environment.GameHistory;
 
-public class Grudger extends AbstractExpert {
+public class GrudgerExpert extends AbstractExpert {
 	boolean grudge;
 
 	/***
@@ -10,7 +10,7 @@ public class Grudger extends AbstractExpert {
 	 * 
 	 * @param playerNo
 	 */
-	public Grudger(int playerNo) {
+	public GrudgerExpert(int playerNo) {
 		super(playerNo);
 		grudge = false;
 	}

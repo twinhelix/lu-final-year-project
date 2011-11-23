@@ -15,8 +15,14 @@ public class BaseAgent implements IAgent {
 	}
 
 	@Override
-	public int playerNumber() {
-		return expert.playerNumber();
+	public int getPlayerNumber() {
+		return expert.getPlayerNumber();
+	}
+
+	@Override
+	public void setPlayerNumber(int playerNo) {
+		expert.setPlayerNumber(playerNo);
+
 	}
 
 }

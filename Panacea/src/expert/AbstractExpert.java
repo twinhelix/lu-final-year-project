@@ -17,7 +17,11 @@ public abstract class AbstractExpert implements IExpert {
 
 	public abstract boolean move(GameHistory history);
 
-	public int playerNumber() {
+	public int getPlayerNumber() {
 		return playerNo;
+	}
+
+	public void setPlayerNumber(int playerNo) {
+		this.playerNo = playerNo;
 	}
 }
