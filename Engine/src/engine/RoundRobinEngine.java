@@ -1,8 +1,9 @@
 package engine;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+import java.util.TreeMap;
 
 import agent.IExpert;
 import environment.Game;
@@ -58,13 +59,37 @@ public class RoundRobinEngine {
 	}
 
 	public void showTally() {
-		
-		
-		
-		
-		Set<String> keys = totals.keySet();
-		for (String key : keys) {
-			System.out.println(key + ": " + totals.get(key).doubleValue());
+		TreeMap<String, Double> sorted_map = new TreeMap<String, Double>(
+				new ValueComparator(totals));
+		sorted_map.putAll(totals);
+
+		System.out.println("--- RESULTS ---");
+		int i = 0;
+		for (String key : sorted_map.keySet()) {
+			i++;
+			System.out.println(i + ". " + key + ": "
+					+ sorted_map.get(key).doubleValue());
 		}
 	}
+
+	class ValueComparator implements Comparator<Object> {
+
+		Map<String, Double> base;
+
+		public ValueComparator(Map<String, Double> base) {
+			this.base = base;
+		}
+
+		public int compare(Object a, Object b) {
+
+			if ((Double) base.get(a) < (Double) base.get(b)) {
+				return 1;
+			} else if ((Double) base.get(a) == (Double) base.get(b)) {
+				return 0;
+			} else {
+				return -1;
+			}
+		}
+	}
+
 }
