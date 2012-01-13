@@ -30,19 +30,20 @@ public class TitForTwoTatExpert extends AbstractExpert {
 		if (history.getNumberOfMoves() < 2) {
 			return true;
 		}
-
+		
+		// If opponent defects twice in a row, retaliate
 		Collection<boolean[]> hist = (Collection<boolean[]>) ((Stack<boolean[]>) history
 				.getHistory()).clone();
 
 		Stack<boolean[]> moves = (Stack<boolean[]>) hist;
-
+		
 		boolean[] lastMove = moves.pop();
 		boolean[] last2Move = moves.pop();
 
-		if (lastMove[playerNo % 2] == last2Move[playerNo % 2]) {
-			return lastMove[playerNo % 2];
+		if (!lastMove[playerNo % 2] && !last2Move[playerNo % 2]) {
+			return false;
 		}
 
-		return lastMove[playerNo - 1];
+		return true;
 	}
 }
