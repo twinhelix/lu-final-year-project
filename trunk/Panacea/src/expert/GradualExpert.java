@@ -34,26 +34,22 @@ public class GradualExpert extends AbstractExpert {
 
 		// in punishment phase:
 		if (grudge) {
-			if (phase > 2) {
-				phase--;
+			if (phase == 0) {
+				grudge = false;
+				return true;
+			}
+			else {
+				phase --;
 				return false;
 			}
-			if (phase == 2) {
-				phase--;
-				return true;
-			}
-			if (phase == 1) {
-				phase = 6;
-				return true;
-			}
 		}
-
+		
 		// Checks if opponent defected
 		boolean[] lastMove = history.getLastMove();
 
 		if (!lastMove[playerNo % 2]) {
 			phase = getDefected(history);
-			phase--;
+			grudge = true;
 			return false;
 		}
 

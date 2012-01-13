@@ -28,7 +28,7 @@ public class SoftGrudgerExpert extends AbstractExpert {
 		}
 
 		// in punishment phase:
-		if (phase > 2) {
+		if (phase > 2 && phase < 6) {
 			phase--;
 			return false;
 		}
@@ -45,10 +45,10 @@ public class SoftGrudgerExpert extends AbstractExpert {
 		boolean[] lastMove = history.getLastMove();
 
 		if (!lastMove[playerNo % 2]) {
+			phase = 6;
 			phase--;
 			return false;
 		}
-
 		return true;
 	}
 

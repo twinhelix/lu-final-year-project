@@ -6,7 +6,7 @@ import java.util.Stack;
 import environment.GameHistory;
 import expert.AbstractExpert;
 
-public class TruePeaceMakerExpert extends AbstractExpert {
+public class TruePeaceMakerExpert extends TitForTwoTatExpert {
 
 	private double prob;
 
@@ -25,31 +25,17 @@ public class TruePeaceMakerExpert extends AbstractExpert {
 		return ("True Peace Maker Expert");
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public boolean move(GameHistory history) {
-		if (history.getNumberOfMoves() < 2)
-			return true;
 
-		// Cooperate on first 2 moves
-		if (history.getNumberOfMoves() < 2) {
-			return true;
-		}
+		// Uses Tit For Two Tat, but sometimes probe
+		// by cooperate in lieu of defecting.
+		boolean result = super.move(history);
 
-		Collection<boolean[]> hist = (Collection<boolean[]>) ((Stack<boolean[]>) history
-				.getHistory()).clone();
-
-		Stack<boolean[]> moves = (Stack<boolean[]>) hist;
-
-		boolean[] lastMove = moves.pop();
-		boolean[] last2Move = moves.pop();
-
-		if (!lastMove[playerNo % 2] && !last2Move[playerNo % 2]) {
-			// defect, but with a chance of making peace
+		if (!result) {
 			if (Math.random() < prob)
 				return true;
-			return false;
 		}
-		return true;
+		return result;
 	}
 }
