@@ -29,7 +29,7 @@ public class Game implements IGame {
 		wins2 = 0;
 		if (totalGames == 0) {
 			// Infinite game...
-			// logger.info("WARNING!!! Infinite game!");
+			// logger.info("WARNING!!! Infinite game! :| ");
 		}
 		for (int i = 0; i < totalGames; i++) {
 			double[] result = playOneRound();
