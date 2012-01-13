@@ -24,7 +24,7 @@ public class Engine {
 				new CooperateExpert(0), new DefectExpert(0),
 				new PavlovExpert(0), new TitForTatExpert(0),
 				new TitForTwoTatExpert(0) };
-		RoundRobinEngine engine = new RoundRobinEngine(experts, 500,
+		RoundRobinEngine engine = new RoundRobinEngine(experts, 10000,
 				scoringSystem);
 		engine.run();
 		System.out.println();
