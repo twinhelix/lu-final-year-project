@@ -24,4 +24,9 @@ public abstract class AbstractExpert implements IExpert {
 	public void setPlayerNumber(int playerNo) {
 		this.playerNo = playerNo;
 	}
+
+	@Override
+	public int compareTo(IExpert e) {
+		return this.getName().compareTo(e.getName());
+	}
 }
