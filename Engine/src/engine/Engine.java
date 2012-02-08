@@ -26,6 +26,9 @@ public class Engine {
 		double[] dd = { 1, 1 };
 		ScoringSystem scoringSystem = new ScoringSystem(cc, cd, dc, dd);
 
+		//ApplicationContext context = new ClassPathXmlApplicationContext("Configs.xml");
+		
+		
 		IExpert[] experts = { new RandomExpert(0), new GrudgerExpert(0),
 				new CooperateExpert(0), new DefectExpert(0),
 				new PavlovExpert(0), new TitForTatExpert(0),
