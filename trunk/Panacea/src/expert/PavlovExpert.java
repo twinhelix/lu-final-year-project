@@ -6,6 +6,7 @@ public class PavlovExpert extends AbstractExpert {
 	protected boolean repeat;
 
 	/***
+	 * AKA Win Stay Lose Shift
 	 * Repeat last choice if good outcome - If 5 or 3 points scored in the last
 	 * round then repeat last choice.
 	 * 

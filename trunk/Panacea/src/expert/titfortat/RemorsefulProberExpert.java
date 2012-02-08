@@ -27,8 +27,11 @@ public class RemorsefulProberExpert extends TitForTatExpert {
 	}
 
 	public boolean move(GameHistory history) {
+		if (history.getNumberOfMoves() == 0){
+			return true;
+		}
 		boolean[] lastMove = history.getLastMove();
-
+		
 		// Remorse set to true if last round defected
 		if (remorse) {
 			remorse = false;

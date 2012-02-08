@@ -1,10 +1,6 @@
 package expert.titfortat;
 
-import java.util.Collection;
-import java.util.Stack;
-
 import environment.GameHistory;
-import expert.AbstractExpert;
 
 public class TruePeaceMakerExpert extends TitForTwoTatExpert {
 
