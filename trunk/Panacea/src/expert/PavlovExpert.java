@@ -28,12 +28,12 @@ public class PavlovExpert extends AbstractExpert {
 		}
 
 		boolean[] lastMove = history.getLastMove();
-
+		// Both Coop
 		if (lastMove[0] && lastMove[1]) {
 			repeat = true;
 			return true;
 		}
-
+		// Agent defects, opponent coops
 		else if (lastMove[playerNo % 2] && !lastMove[playerNo - 1]) {
 			repeat = true;
 			return false;
