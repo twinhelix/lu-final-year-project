@@ -38,6 +38,18 @@ public class GameHistory {
 	}
 
 	/***
+	 * Returns last move's scores
+	 * 
+	 * @return
+	 */
+	public double[] getLastMoveScores() {
+		if (history.isEmpty()) {
+			return null;
+		}
+		return scoringSystem.getPoints(getLastMove());
+	}
+
+	/***
 	 * Returns complete history
 	 * 
 	 * @return
@@ -50,9 +62,24 @@ public class GameHistory {
 		return ((Stack<boolean[]>) history).peek()[playerNo - 1];
 	}
 
+	public double getPlayerLastScore(int playerNo) {
+		double[] lastScore = getLastMoveScores();
+		if (lastScore != null) {
+			return lastScore[playerNo - 1];
+		} else
+			return 0;
+	}
+
 	public boolean getOtherPlayerLastMove(int playerNo) {
 		return ((Stack<boolean[]>) history).peek()[playerNo % 2];
 	}
-	
-	
+
+	public double getOtherPlayerLastScore(int playerNo) {
+		double[] lastScore = getLastMoveScores();
+		if (lastScore != null) {
+			return lastScore[playerNo % 2];
+		} else
+			return 0;
+	}
+
 }
