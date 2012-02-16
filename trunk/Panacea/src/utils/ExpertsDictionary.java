@@ -22,37 +22,32 @@ import agent.IExpert;
 
 public class ExpertsDictionary {
 	private Map<String, IExpert> dictionary;
-	private static ExpertsDictionary instance;
-	private final double prob = 0.2;
+	private double prob = 0.2;
+	private int playerNo = 0;
 
-	public static ExpertsDictionary getInstance() {
-		if (instance == null) {
-			instance = new ExpertsDictionary();
-		}
-		return instance;
-	}
-
-	private ExpertsDictionary() {
+	public ExpertsDictionary(int playerNo, double prob) {
 		dictionary = new HashMap<String, IExpert>();
+		this.playerNo = playerNo;
+		this.prob = prob;
 		initialize();
 	}
 
 	private void initialize() {
-		IExpert random = new RandomExpert(0);
-		IExpert grudger = new GrudgerExpert(0);
-		IExpert coop = new CooperateExpert(0);
-		IExpert defect = new DefectExpert(0);
-		IExpert pavlov = new PavlovExpert(0);
-		IExpert titfortat = new TitForTatExpert(0);
-		IExpert titfor2tat = new TitForTwoTatExpert(0);
-		IExpert gradual = new GradualExpert(0);
-		IExpert adaptive = new AdaptiveExpert(0);
-		IExpert naivepeace = new NaivePeaceMakerExpert(0, prob);
-		IExpert naiveprob = new NaiveProberExpert(0, prob);
-		IExpert remprob = new RemorsefulProberExpert(0, prob);
-		IExpert susptitfortat = new SuspiciousTitForTat(0);
-		IExpert truepeace = new TruePeaceMakerExpert(0, prob);
-		
+		IExpert random = new RandomExpert(playerNo);
+		IExpert grudger = new GrudgerExpert(playerNo);
+		IExpert coop = new CooperateExpert(playerNo);
+		IExpert defect = new DefectExpert(playerNo);
+		IExpert pavlov = new PavlovExpert(playerNo);
+		IExpert titfortat = new TitForTatExpert(playerNo);
+		IExpert titfor2tat = new TitForTwoTatExpert(playerNo);
+		IExpert gradual = new GradualExpert(playerNo);
+		IExpert adaptive = new AdaptiveExpert(playerNo);
+		IExpert naivepeace = new NaivePeaceMakerExpert(playerNo, prob);
+		IExpert naiveprob = new NaiveProberExpert(playerNo, prob);
+		IExpert remprob = new RemorsefulProberExpert(playerNo, prob);
+		IExpert susptitfortat = new SuspiciousTitForTat(playerNo);
+		IExpert truepeace = new TruePeaceMakerExpert(playerNo, prob);
+
 		dictionary.put(random.getName(), random);
 		dictionary.put(grudger.getName(), grudger);
 		dictionary.put(coop.getName(), coop);
