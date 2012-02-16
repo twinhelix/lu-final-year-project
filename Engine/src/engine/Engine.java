@@ -1,6 +1,7 @@
 package engine;
 
 import agent.IExpert;
+import eee.ExploreExploitExpert;
 import environment.ScoringSystem;
 import expert.AdaptiveExpert;
 import expert.CooperateExpert;
@@ -29,14 +30,18 @@ public class Engine {
 		//ApplicationContext context = new ClassPathXmlApplicationContext("Configs.xml");
 		
 		
-		IExpert[] experts = { new RandomExpert(0), new GrudgerExpert(0),
+//		IExpert[] experts = { new RandomExpert(0), new GrudgerExpert(0),
+//				new CooperateExpert(0), new DefectExpert(0),
+//				new PavlovExpert(0), new TitForTatExpert(0),
+//				new TitForTwoTatExpert(0), new GradualExpert(0),
+//				new AdaptiveExpert(0), new NaivePeaceMakerExpert(0, 0.2),
+//				new NaiveProberExpert(0, 0.2),
+//				new RemorsefulProberExpert(0, 0.2), new SuspiciousTitForTat(0),
+//				new TruePeaceMakerExpert(0, 0.2) };
+		String[] strats = {new CooperateExpert(0).getName(), new TitForTatExpert(0).getName(), new AdaptiveExpert(0).getName(), new PavlovExpert(0).getName()};
+		IExpert[] experts = { new TitForTatExpert(0), new ExploreExploitExpert(1, strats),new RandomExpert(0), new GrudgerExpert(0),
 				new CooperateExpert(0), new DefectExpert(0),
-				new PavlovExpert(0), new TitForTatExpert(0),
-				new TitForTwoTatExpert(0), new GradualExpert(0),
-				new AdaptiveExpert(0), new NaivePeaceMakerExpert(0, 0.2),
-				new NaiveProberExpert(0, 0.2),
-				new RemorsefulProberExpert(0, 0.2), new SuspiciousTitForTat(0),
-				new TruePeaceMakerExpert(0, 0.2) };
+				new PavlovExpert(0) };
 		RoundRobinEngine engine = new RoundRobinEngine(experts, 10000,
 				scoringSystem);
 		engine.run();
