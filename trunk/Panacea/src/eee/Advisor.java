@@ -20,14 +20,14 @@ import agent.IExpert;
 public class Advisor {
 	
 	IExpert expert;
-	double me;
-	int ne, se;
+	double aveReward;
+	int phase, stage;
 
 	protected Advisor(IExpert e) {
 		
 		expert = e;
-		me = 0;
-		ne = 0;
-		se = 0;
+		aveReward = 0;
+		phase = 0;
+		stage = 0;
 	}
 }
