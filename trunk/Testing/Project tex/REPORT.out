@@ -1,0 +1,35 @@
+\BOOKMARK [0][-]{chapter.1}{1 Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{2 Background}{}% 2
+\BOOKMARK [1][-]{section.2.1}{2.1 The Prisoner's Dilemma Game}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{2.2 Payoffs and Equilibrium}{chapter.2}% 4
+\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Outcomes}{section.2.2}% 5
+\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Payoffs Table}{section.2.2}% 6
+\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Nash Equilibrium}{section.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.4}{2.2.4 Pareto Optimality}{section.2.2}% 8
+\BOOKMARK [1][-]{section.2.3}{2.3 Achieving Collusion}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.4}{2.4 Repeated Prisoner's Dilemma}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.4.1}{2.4.1 Repeated Prisoner's Dilemma and Number of Rounds}{section.2.4}% 11
+\BOOKMARK [2][-]{subsection.2.4.2}{2.4.2 Properties of Iterated Prisoner's Dilemma}{section.2.4}% 12
+\BOOKMARK [1][-]{section.2.5}{2.5 Existing Na\357ve Repeated Prisoner's Dilemma Strategies}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.5.1}{2.5.1 Axelrod's Tournaments}{section.2.5}% 14
+\BOOKMARK [2][-]{subsection.2.5.2}{2.5.2 Existing Strategies}{section.2.5}% 15
+\BOOKMARK [2][-]{subsection.2.5.3}{2.5.3 Strong Strategies Analysis}{section.2.5}% 16
+\BOOKMARK [1][-]{section.2.6}{2.6 Relevance to Genetic Algorithms}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.6.1}{2.6.1 Example 1: Worker Bees}{section.2.6}% 18
+\BOOKMARK [2][-]{subsection.2.6.2}{2.6.2 Example 2: Birds and Parasites}{section.2.6}% 19
+\BOOKMARK [1][-]{section.2.7}{2.7 Current State of the Art and Employing Genetic Algorithms}{chapter.2}% 20
+\BOOKMARK [2][-]{subsection.2.7.1}{2.7.1 Evolutionary Algorithm}{section.2.7}% 21
+\BOOKMARK [2][-]{subsection.2.7.2}{2.7.2 Genetic Algorithms to Combine Experts Advice}{section.2.7}% 22
+\BOOKMARK [0][-]{chapter.3}{3 Project Plan}{}% 23
+\BOOKMARK [1][-]{section.3.1}{3.1 Objectives}{chapter.3}% 24
+\BOOKMARK [2][-]{subsection.3.1.1}{3.1.1 Coding the Environment}{section.3.1}% 25
+\BOOKMARK [2][-]{subsection.3.1.2}{3.1.2 Coding Na\357ve and Existing Strategies}{section.3.1}% 26
+\BOOKMARK [2][-]{subsection.3.1.3}{3.1.3 Using Genetic Algorithms}{section.3.1}% 27
+\BOOKMARK [2][-]{subsection.3.1.4}{3.1.4 Conclusion}{section.3.1}% 28
+\BOOKMARK [1][-]{section.3.2}{3.2 Timetable}{chapter.3}% 29
+\BOOKMARK [1][-]{section.3.3}{3.3 Extensions and Fallback}{chapter.3}% 30
+\BOOKMARK [0][-]{chapter.4}{4 Evaluation Plan}{}% 31
+\BOOKMARK [1][-]{section.4.1}{4.1 Environment}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.2}{4.2 Genetic Algorithms}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.3}{4.3 Benchmark}{chapter.4}% 34
+\BOOKMARK [0][-]{chapter*.7}{Bibliography}{}% 35
