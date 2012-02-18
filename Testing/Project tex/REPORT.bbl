@@ -1,0 +1,84 @@
+\begin{thebibliography}{APCBNS95}
+
+\bibitem[APCBNS95]{mr1}
+Freund~Y. Auer P. Cesa-Bianchi~N and Schapire.
+\newblock Gambling in a rigged casino. the adversarial multi-armed bandit
+  problem.
+\newblock {\em In Proc. 36th Annual IEEE Symp. on Foundations of Computer
+  Science, CA IEEE Computer Society Press}, pages 322--331, 1995.
+
+\bibitem[Axe87]{axelrod1987}
+R.~Axelrod.
+\newblock {\em The evolution of strategies in the iterated prisoner's dilemma}.
+\newblock CA-Morgan Kaufmann, 1987.
+
+\bibitem[BW06]{begg2006economics}
+D.~Begg and D.~Ward.
+\newblock {\em Economics for business}.
+\newblock McGraw-Hill Education, 2006.
+
+\bibitem[Daw76]{dawkins1976}
+Richard Dawkins.
+\newblock {\em The Selfish Gene}.
+\newblock Oxford University Press, New York, 1976.
+
+\bibitem[Daw86]{niceguys}
+Richard Dawkins.
+\newblock Nice guys finish first (bbc horizon documentary), 1986.
+
+\bibitem[DPAM00]{nsgaii}
+Kalyanmoy Deb, Amrit Pratap, Sameer Agarwal, and T.~Meyarivan.
+\newblock {A Fast Elitist Multi-Objective Genetic Algorithm: NSGA-II}.
+\newblock {\em IEEE Transactions on Evolutionary Computation}, 6:182--197,
+  2000.
+
+\bibitem[FS99]{mr2}
+Y.~Freund and Schapire.
+\newblock {\em Adaptive game playing using multiplicative weights. Games and
+  Economic Behavior}.
+\newblock 1999.
+
+\bibitem[FT93]{fudenberg1993game}
+D.~Fudenberg and J.~Tirole.
+\newblock {\em Game theory}.
+\newblock MIT Press, 1993.
+
+\bibitem[LS05]{agent2005}
+McBurney Luck and Willmott Shehory.
+\newblock {\em Agent Technology. Computing as Interaction. A Roadmap for Agent
+  Based Computing}.
+\newblock 2005.
+
+\bibitem[MC05]{experts}
+Daniela Pucci De~Farias (MIT) and Nimrod Megiddo (IBM Almaden~Research Center).
+\newblock How to combine expert (or novice) advice when actions impact the
+  environment.
+\newblock {\em ACM}, 2005.
+
+\bibitem[MC06]{experts06}
+Daniela Pucci De~Farias (MIT) and Nimrod Megiddo (IBM Almaden~Research Center).
+\newblock Combining expert advice in reactive environments.
+\newblock {\em ACM}, pages 762--799, 2006.
+
+\bibitem[MD05]{shashi}
+Shashi Mittal and Kalyanmoy Deb.
+\newblock Optimal strategies of the iterated prisoner's dilemma problem for
+  multiple conflicting objectives.
+\newblock {\em MIT Press}, 2005.
+
+\bibitem[OR94]{Osborne1994}
+Martin~J. Osborne and Ariel Rubinstein.
+\newblock {\em A Course in Game Theory}.
+\newblock MIT Press, Cambridge, MA, 1994.
+
+\bibitem[RO94]{nash94}
+M.~Rubenstein and M.~Osborne.
+\newblock {\em A Course in Game Theory}.
+\newblock MIT Press, 1994.
+
+\bibitem[Sul03]{sullivan2003economics}
+Arthur Sullivan.
+\newblock {\em Economics : principles in action}.
+\newblock Prentice Hall, 2003.
+
+\end{thebibliography}

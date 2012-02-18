@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2011)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: REPORT.aux
+A level-1 auxiliary file: titlepage.aux
+A level-1 auxiliary file: acknowledgement.aux
+The style file: alpha.bst
+Database file #1: FYP.bib
+Warning--empty publisher in mr2
+Warning--empty publisher in agent2005
+You've used 15 entries,
+            2543 wiz_defined-function locations,
+            630 strings with 6113 characters,
+and the built_in function-call counts, 5189 in all, are:
+= -- 486
+> -- 253
+< -- 6
++ -- 84
+- -- 80
+* -- 309
+:= -- 882
+add.period$ -- 44
+call.type$ -- 15
+change.case$ -- 79
+chr.to.int$ -- 15
+cite$ -- 17
+duplicate$ -- 235
+empty$ -- 390
+format.name$ -- 99
+if$ -- 1061
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 23
+newline$ -- 77
+num.names$ -- 45
+pop$ -- 116
+preamble$ -- 1
+purify$ -- 103
+quote$ -- 0
+skip$ -- 199
+stack$ -- 0
+substring$ -- 190
+swap$ -- 33
+text.length$ -- 6
+text.prefix$ -- 4
+top$ -- 0
+type$ -- 84
+warning$ -- 2
+while$ -- 47
+width$ -- 20
+write$ -- 183
+(There were 2 warnings)
