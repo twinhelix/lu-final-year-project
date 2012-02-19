@@ -47,6 +47,8 @@ public class Game implements IGame {
 	public double[] playOneRound() {
 		boolean player1 = expert1.move(history);
 		boolean player2 = expert2.move(history);
+//		System.out.println("Expert: " + expert1.getName() + " played " + player1);
+//		System.out.println("Expert: " + expert2.getName() + " played " + player2);
 		boolean move[] = { player1, player2 };
 		// Add in the new move to update the historical data
 		history.newMove(player1, player2);
