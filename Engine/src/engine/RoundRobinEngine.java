@@ -40,7 +40,10 @@ public class RoundRobinEngine {
 			for (int j = 0; j < experts.length; j++) {
 				experts[i].setPlayerNumber(1);
 				experts[j].setPlayerNumber(2);
-
+				
+				experts[i].initialize();
+				experts[j].initialize();
+				
 				Game game = new Game(experts[i], experts[j], totalGames,
 						scoringSystem);
 				double[] result = game.run();

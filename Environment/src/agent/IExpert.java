@@ -2,7 +2,7 @@ package agent;
 
 import environment.GameHistory;
 
-public interface IExpert extends Comparable<IExpert>{
+public interface IExpert extends Comparable<IExpert> {
 	/***
 	 * Use expert strategy to make move
 	 * 
@@ -31,5 +31,10 @@ public interface IExpert extends Comparable<IExpert>{
 	 * @return
 	 */
 	public String getName();
+
+	/***
+	 * Initializes and resets any values agents may have at the moment
+	 */
+	public void initialize();
 
 }

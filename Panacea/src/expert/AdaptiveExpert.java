@@ -17,6 +17,11 @@ public class AdaptiveExpert extends AbstractExpert {
 	 */
 	public AdaptiveExpert(int playerNo) {
 		super(playerNo);
+		initialize();
+	}
+	
+	@Override
+	public void initialize(){
 		cscore = 0;
 		dscore = 0;
 		cmoves = 0;

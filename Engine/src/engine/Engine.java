@@ -39,7 +39,7 @@ public class Engine {
 //				new RemorsefulProberExpert(0, 0.2), new SuspiciousTitForTat(0),
 //				new TruePeaceMakerExpert(0, 0.2) };
 		String[] strats = {new CooperateExpert(0).getName(), new TitForTatExpert(0).getName(), new AdaptiveExpert(0).getName(), new PavlovExpert(0).getName()};
-		IExpert[] experts = { new TitForTatExpert(0), new ExploreExploitExpert(1, strats),new RandomExpert(0), new GrudgerExpert(0),
+		IExpert[] experts = { new TitForTatExpert(0), new ExploreExploitExpert(0, strats),new RandomExpert(0), new GrudgerExpert(0),
 				new CooperateExpert(0), new DefectExpert(0),
 				new PavlovExpert(0) };
 		RoundRobinEngine engine = new RoundRobinEngine(experts, 10000,
