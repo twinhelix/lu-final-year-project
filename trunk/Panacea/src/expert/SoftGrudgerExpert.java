@@ -13,6 +13,11 @@ public class SoftGrudgerExpert extends AbstractExpert {
 	 */
 	public SoftGrudgerExpert(int playerNo) {
 		super(playerNo);
+		initialize();
+	}
+
+	@Override
+	public void initialize() {
 		phase = 6;
 	}
 

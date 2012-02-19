@@ -12,6 +12,11 @@ public class GrudgerExpert extends AbstractExpert {
 	 */
 	public GrudgerExpert(int playerNo) {
 		super(playerNo);
+		initialize();
+	}
+	
+	@Override
+	public void initialize() {
 		grudge = false;
 	}
 

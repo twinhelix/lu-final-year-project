@@ -13,6 +13,11 @@ public class AlternateExpert extends AbstractExpert {
 	 */
 	public AlternateExpert(int playerNo) {
 		super(playerNo);
+		initialize();
+	}
+
+	@Override
+	public void initialize() {
 		current = false;
 	}
 

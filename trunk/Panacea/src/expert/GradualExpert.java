@@ -17,6 +17,11 @@ public class GradualExpert extends AbstractExpert {
 	 */
 	public GradualExpert(int playerNo) {
 		super(playerNo);
+		initialize();
+	}
+
+	@Override
+	public void initialize() {
 		grudge = false;
 		phase = 0;
 	}
@@ -37,13 +42,12 @@ public class GradualExpert extends AbstractExpert {
 			if (phase == 0) {
 				grudge = false;
 				return true;
-			}
-			else {
-				phase --;
+			} else {
+				phase--;
 				return false;
 			}
 		}
-		
+
 		// Checks if opponent defected
 		boolean[] lastMove = history.getLastMove();
 

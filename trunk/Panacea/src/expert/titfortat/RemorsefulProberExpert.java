@@ -18,6 +18,11 @@ public class RemorsefulProberExpert extends TitForTatExpert {
 	public RemorsefulProberExpert(int playerNo, double prob) {
 		super(playerNo);
 		this.prob = prob;
+		initialize();
+	}
+	
+	@Override
+	public void initialize() {
 		remorse = false;
 	}
 
