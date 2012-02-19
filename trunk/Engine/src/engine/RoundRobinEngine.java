@@ -37,23 +37,23 @@ public class RoundRobinEngine {
 	public void run() {
 
 		for (int i = 0; i < experts.length; i++) {
-			for (int j = 0; j < experts.length; j++) {
+			for (int j = i + 1; j < experts.length; j++) {
 				experts[i].setPlayerNumber(1);
 				experts[j].setPlayerNumber(2);
-				
+
 				experts[i].initialize();
 				experts[j].initialize();
-				
+
 				Game game = new Game(experts[i], experts[j], totalGames,
 						scoringSystem);
 				double[] result = game.run();
 
-				totals.put(experts[i].getName(), new Double(totals.get(
-						experts[i].getName()).doubleValue()
-						+ result[0]));
-				totals.put(experts[j].getName(), new Double(totals.get(
-						experts[j].getName()).doubleValue()
-						+ result[1]));
+				totals.put(experts[i].getName(),
+						new Double(totals.get(experts[i].getName())
+								.doubleValue() + result[0]));
+				totals.put(experts[j].getName(),
+						new Double(totals.get(experts[j].getName())
+								.doubleValue() + result[1]));
 
 				System.out.println(experts[i].getName() + ": " + result[0]
 						+ "\t\t" + experts[j].getName() + ": " + result[1]);
