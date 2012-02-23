@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import agent.IExpert;
+
+import common.Settings;
+
 import environment.Game;
 import environment.ScoringSystem;
 
@@ -38,9 +41,10 @@ public class RoundRobinEngine {
 
 		for (int i = 0; i < experts.length; i++) {
 			for (int j = i + 1; j < experts.length; j++) {
+				//IExpert e = (IExpert) ((Object) experts[i]).clone();
 				experts[i].setPlayerNumber(1);
 				experts[j].setPlayerNumber(2);
-
+				
 				experts[i].initialize();
 				experts[j].initialize();
 
@@ -65,6 +69,7 @@ public class RoundRobinEngine {
 		TreeMap<String, Double> sorted_map = new TreeMap<String, Double>(
 				new ValueComparator(totals));
 		sorted_map.putAll(totals);
+		double benchmark = Settings.getBenchMark(sorted_map.size());
 
 		System.out.println("--- RESULTS ---");
 		int i = 0;

@@ -1,32 +1,22 @@
 package engine;
 
+import static common.Settings.SCORING_SYSTEM;
+import static common.Settings.NO_OF_ROUNDS;
 import agent.IExpert;
 import eee.ExploreExploitExpert;
-import environment.ScoringSystem;
-import expert.AdaptiveExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
-import expert.GradualExpert;
 import expert.GrudgerExpert;
 import expert.PavlovExpert;
 import expert.RandomExpert;
-import expert.titfortat.NaivePeaceMakerExpert;
-import expert.titfortat.NaiveProberExpert;
 import expert.titfortat.RemorsefulProberExpert;
-import expert.titfortat.SuspiciousTitForTat;
 import expert.titfortat.TitForTatExpert;
 import expert.titfortat.TitForTwoTatExpert;
-import expert.titfortat.TruePeaceMakerExpert;
 
 public class Engine {
 
 	public static void main(String[] args) {
-		double[] cc = { 3.0, 3.0 };
-		double[] cd = { 0, 5 };
-		double[] dc = { 5, 0 };
-		double[] dd = { 1, 1 };
-		ScoringSystem scoringSystem = new ScoringSystem(cc, cd, dc, dd);
-
+		// 
 		// ApplicationContext context = new
 		// ClassPathXmlApplicationContext("Configs.xml");
 
@@ -38,19 +28,17 @@ public class Engine {
 		// new NaiveProberExpert(0, 0.2),
 		// new RemorsefulProberExpert(0, 0.2), new SuspiciousTitForTat(0),
 		// new TruePeaceMakerExpert(0, 0.2) };
-		String[] strats = { new DefectExpert(0).getName(),
-				new CooperateExpert(0).getName(),
+		String[] strats = {
 				new GrudgerExpert(0).getName(),
-				new TitForTwoTatExpert(0).getName(),
-				new RemorsefulProberExpert(0, 0.2).getName(),
 				new TitForTatExpert(0).getName(), new PavlovExpert(0).getName() };
 		IExpert[] experts = { new TitForTatExpert(0),
 				new ExploreExploitExpert(0, strats), new RandomExpert(0),
 				new GrudgerExpert(0), new DefectExpert(0), new PavlovExpert(0) };
 		IExpert[] experts1 = { new ExploreExploitExpert(0, strats),
 				new PavlovExpert(0) };
-		RoundRobinEngine engine = new RoundRobinEngine(experts, 500,
-				scoringSystem);
+
+		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
+				SCORING_SYSTEM);
 		engine.run();
 		System.out.println();
 		engine.showTally();

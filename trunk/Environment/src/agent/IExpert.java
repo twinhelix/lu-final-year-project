@@ -2,7 +2,7 @@ package agent;
 
 import environment.GameHistory;
 
-public interface IExpert extends Comparable<IExpert> {
+public interface IExpert extends Comparable<IExpert>, Cloneable{
 	/***
 	 * Use expert strategy to make move
 	 * 
