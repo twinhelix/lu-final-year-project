@@ -2,7 +2,8 @@ package expert;
 
 import environment.GameHistory;
 
-public class AlternateExpert extends AbstractExpert {
+public class AlternateExpert extends AbstractExpert
+{
 
 	private boolean current;
 
@@ -11,23 +12,27 @@ public class AlternateExpert extends AbstractExpert {
 	 * 
 	 * @param playerNo
 	 */
-	public AlternateExpert(int playerNo) {
+	public AlternateExpert(int playerNo)
+	{
 		super(playerNo);
 		initialize();
 	}
 
 	@Override
-	public void initialize() {
+	public void initialize()
+	{
 		current = false;
 	}
 
 	@Override
-	public String getName() {
+	public String getName()
+	{
 		return "Alternate Expert";
 	}
 
 	@Override
-	public boolean move(GameHistory history) {
+	public boolean move(GameHistory history)
+	{
 		current = !current;
 		return current;
 	}

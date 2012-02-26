@@ -2,7 +2,8 @@ package expert.titfortat;
 
 import environment.GameHistory;
 
-public class TruePeaceMakerExpert extends TitForTwoTatExpert {
+public class TruePeaceMakerExpert extends TitForTwoTatExpert
+{
 
 	private double prob;
 
@@ -12,23 +13,27 @@ public class TruePeaceMakerExpert extends TitForTwoTatExpert {
 	 * 
 	 * @param playerNo
 	 */
-	public TruePeaceMakerExpert(int playerNo, double prob) {
+	public TruePeaceMakerExpert(int playerNo, double prob)
+	{
 		super(playerNo);
 		this.prob = prob;
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return ("True Peace Maker Expert");
 	}
 
 	@Override
-	public boolean move(GameHistory history) {
+	public boolean move(GameHistory history)
+	{
 
 		// Uses Tit For Two Tat, but sometimes probe
 		// by cooperate in lieu of defecting.
 		boolean result = super.move(history);
 
-		if (!result) {
+		if (!result)
+		{
 			if (Math.random() < prob)
 				return true;
 		}

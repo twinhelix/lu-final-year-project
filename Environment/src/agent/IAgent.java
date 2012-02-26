@@ -2,8 +2,8 @@ package agent;
 
 import environment.GameHistory;
 
-public interface IAgent {
-
+public interface IAgent
+{
 	/***
 	 * Agent makes move with history
 	 * 

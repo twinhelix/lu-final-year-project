@@ -2,7 +2,8 @@ package expert;
 
 import environment.GameHistory;
 
-public class GrudgerExpert extends AbstractExpert {
+public class GrudgerExpert extends AbstractExpert
+{
 	boolean grudge;
 
 	/***
@@ -10,36 +11,44 @@ public class GrudgerExpert extends AbstractExpert {
 	 * 
 	 * @param playerNo
 	 */
-	public GrudgerExpert(int playerNo) {
+	public GrudgerExpert(int playerNo)
+	{
 		super(playerNo);
 		initialize();
 	}
-	
+
 	@Override
-	public void initialize() {
+	public void initialize()
+	{
 		grudge = false;
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return ("Grudger Expert");
 	}
-	
+
 	@Override
-	public boolean move(GameHistory history) {
+	public boolean move(GameHistory history)
+	{
 
 		if (grudge)
 			return false;
 
-		if (history.getNumberOfMoves() == 0) {
+		if (history.getNumberOfMoves() == 0)
+		{
 			return true;
 		}
 
 		boolean[] lastMove = history.getLastMove();
 
-		if (!lastMove[playerNo % 2]) {
+		if (!lastMove[playerNo % 2])
+		{
 			grudge = true;
 			return false;
-		} else {
+		}
+		else
+		{
 			return true;
 		}
 	}

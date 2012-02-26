@@ -3,7 +3,8 @@ package expert;
 import environment.GameHistory;
 import environment.ScoringSystem;
 
-public class AdaptiveExpert extends AbstractExpert {
+public class AdaptiveExpert extends AbstractExpert
+{
 	private double cscore;
 	private double dscore;
 	private int cmoves;
@@ -15,13 +16,15 @@ public class AdaptiveExpert extends AbstractExpert {
 	 * 
 	 * @param playerNo
 	 */
-	public AdaptiveExpert(int playerNo) {
+	public AdaptiveExpert(int playerNo)
+	{
 		super(playerNo);
 		initialize();
 	}
-	
+
 	@Override
-	public void initialize(){
+	public void initialize()
+	{
 		cscore = 0;
 		dscore = 0;
 		cmoves = 0;
@@ -29,24 +32,34 @@ public class AdaptiveExpert extends AbstractExpert {
 	}
 
 	@Override
-	public String getName() {
+	public String getName()
+	{
 		return "Adaptive Expert";
 	}
 
 	@Override
-	public boolean move(GameHistory history) {
+	public boolean move(GameHistory history)
+	{
 
-		if (history.getNumberOfMoves() == 0) {
+		if (history.getNumberOfMoves() == 0)
+		{
 			return true;
-		} else {
+		}
+		else
+		{
 			// Update history with last move;
 			updateStats(history);
 
-			if (history.getNumberOfMoves() < 5) {
+			if (history.getNumberOfMoves() < 5)
+			{
 				return true;
-			} else if (history.getNumberOfMoves() < 10) {
+			}
+			else if (history.getNumberOfMoves() < 10)
+			{
 				return false;
-			} else {
+			}
+			else
+			{
 				// Checks which choice had the better outcome previously, and
 				// make that pick
 				if ((cscore / cmoves) >= (dscore / dmoves))
@@ -62,16 +75,20 @@ public class AdaptiveExpert extends AbstractExpert {
 	 * 
 	 * @param history
 	 */
-	private void updateStats(GameHistory history) {
+	private void updateStats(GameHistory history)
+	{
 		boolean[] move = history.getLastMove();
 		ScoringSystem scoringSystem = history.getScoringSystem();
 
 		double[] results = scoringSystem.getPoints(move);
 
-		if (move[playerNo - 1]) {
+		if (move[playerNo - 1])
+		{
 			cscore += results[playerNo - 1];
 			cmoves++;
-		} else {
+		}
+		else
+		{
 			dscore += results[playerNo - 1];
 			dmoves++;
 		}

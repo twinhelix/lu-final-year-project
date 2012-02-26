@@ -2,7 +2,8 @@ package environment;
 
 import agent.IExpert;
 
-public interface IGame {
+public interface IGame
+{
 	/***
 	 * Return first expert.
 	 * 

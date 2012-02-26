@@ -2,7 +2,8 @@ package expert.titfortat;
 
 import environment.GameHistory;
 
-public class RemorsefulProberExpert extends TitForTatExpert {
+public class RemorsefulProberExpert extends TitForTatExpert
+{
 
 	private double prob;
 	private boolean remorse;
@@ -15,32 +16,39 @@ public class RemorsefulProberExpert extends TitForTatExpert {
 	 * @param playerNo
 	 * @param prob
 	 */
-	public RemorsefulProberExpert(int playerNo, double prob) {
+	public RemorsefulProberExpert(int playerNo, double prob)
+	{
 		super(playerNo);
 		this.prob = prob;
 		initialize();
 	}
-	
+
 	@Override
-	public void initialize() {
+	public void initialize()
+	{
 		remorse = false;
 	}
 
 	@Override
-	public String getName() {
+	public String getName()
+	{
 		return ("Remorseful Prober Expert: " + prob + "%");
 	}
 
-	public boolean move(GameHistory history) {
-		if (history.getNumberOfMoves() == 0){
+	public boolean move(GameHistory history)
+	{
+		if (history.getNumberOfMoves() == 0)
+		{
 			return true;
 		}
 		boolean[] lastMove = history.getLastMove();
-		
+
 		// Remorse set to true if last round defected
-		if (remorse) {
+		if (remorse)
+		{
 			remorse = false;
-			if (!lastMove[playerNo % 2]) {
+			if (!lastMove[playerNo % 2])
+			{
 				return true;
 			}
 		}
@@ -48,8 +56,10 @@ public class RemorsefulProberExpert extends TitForTatExpert {
 		// Checks the move of what normal tit for tat would do
 		boolean result = super.move(history);
 
-		if (result) {
-			if (Math.random() < prob) {
+		if (result)
+		{
+			if (Math.random() < prob)
+			{
 				remorse = true;
 				return false;
 			}

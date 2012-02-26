@@ -2,7 +2,8 @@ package expert;
 
 import environment.GameHistory;
 
-public class PavlovRandomExpert extends PavlovExpert {
+public class PavlovRandomExpert extends PavlovExpert
+{
 	private double prob;
 
 	/**
@@ -13,17 +14,21 @@ public class PavlovRandomExpert extends PavlovExpert {
 	 * @param playerNo
 	 * @param prob
 	 */
-	public PavlovRandomExpert(int playerNo, double prob) {
+	public PavlovRandomExpert(int playerNo, double prob)
+	{
 		super(playerNo);
 		this.prob = prob;
 	}
 
 	@Override
-	public boolean move(GameHistory history) {
+	public boolean move(GameHistory history)
+	{
 		boolean move = super.move(history);
 
-		if (super.repeat) {
-			if (Math.random() < prob) {
+		if (super.repeat)
+		{
+			if (Math.random() < prob)
+			{
 				return !move;
 			}
 		}

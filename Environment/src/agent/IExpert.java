@@ -2,7 +2,8 @@ package agent;
 
 import environment.GameHistory;
 
-public interface IExpert extends Comparable<IExpert>, Cloneable{
+public interface IExpert extends Comparable<IExpert>, Cloneable
+{
 	/***
 	 * Use expert strategy to make move
 	 * 
@@ -36,7 +37,11 @@ public interface IExpert extends Comparable<IExpert>, Cloneable{
 	 * Initializes and resets any values agents may have at the moment
 	 */
 	public void initialize();
-	
-	public Object clone();
 
+	/***
+	 * Clone method used to clone agents for round robin tournament
+	 * 
+	 * @return
+	 */
+	public Object clone();
 }

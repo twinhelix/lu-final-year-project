@@ -4,7 +4,8 @@ import java.util.Collection;
 
 import environment.GameHistory;
 
-public class GradualExpert extends AbstractExpert {
+public class GradualExpert extends AbstractExpert
+{
 	boolean grudge;
 	int phase;
 
@@ -15,34 +16,43 @@ public class GradualExpert extends AbstractExpert {
 	 * 
 	 * @param playerNo
 	 */
-	public GradualExpert(int playerNo) {
+	public GradualExpert(int playerNo)
+	{
 		super(playerNo);
 		initialize();
 	}
 
 	@Override
-	public void initialize() {
+	public void initialize()
+	{
 		grudge = false;
 		phase = 0;
 	}
 
 	@Override
-	public String getName() {
+	public String getName()
+	{
 		return "Gradual Expert";
 	}
 
 	@Override
-	public boolean move(GameHistory history) {
-		if (history.getNumberOfMoves() == 0) {
+	public boolean move(GameHistory history)
+	{
+		if (history.getNumberOfMoves() == 0)
+		{
 			return true;
 		}
 
 		// in punishment phase:
-		if (grudge) {
-			if (phase == 0) {
+		if (grudge)
+		{
+			if (phase == 0)
+			{
 				grudge = false;
 				return true;
-			} else {
+			}
+			else
+			{
 				phase--;
 				return false;
 			}
@@ -51,7 +61,8 @@ public class GradualExpert extends AbstractExpert {
 		// Checks if opponent defected
 		boolean[] lastMove = history.getLastMove();
 
-		if (!lastMove[playerNo % 2]) {
+		if (!lastMove[playerNo % 2])
+		{
 			phase = getDefected(history);
 			grudge = true;
 			return false;
@@ -66,12 +77,15 @@ public class GradualExpert extends AbstractExpert {
 	 * @param history
 	 * @return
 	 */
-	private int getDefected(GameHistory history) {
+	private int getDefected(GameHistory history)
+	{
 		int totalDefects = 0;
 		Collection<boolean[]> moves = history.getHistory();
 
-		for (boolean[] move : moves) {
-			if (!move[playerNo % 2]) {
+		for (boolean[] move : moves)
+		{
+			if (!move[playerNo % 2])
+			{
 				totalDefects++;
 			}
 		}

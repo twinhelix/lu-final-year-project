@@ -1,5 +1,6 @@
 package engine;
 
-public class GameFactory {
+public class GameFactory
+{
 
 }

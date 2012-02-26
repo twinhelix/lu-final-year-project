@@ -1,5 +1,6 @@
 package expert.eee;
 
-public enum Phase {
+public enum Phase
+{
 	EXPLORE, EXPLOIT, IDLE;
 }
