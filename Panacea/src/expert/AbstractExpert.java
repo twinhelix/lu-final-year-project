@@ -29,9 +29,15 @@ public abstract class AbstractExpert implements IExpert {
 	public int compareTo(IExpert e) {
 		return this.getName().compareTo(e.getName());
 	}
-	
+
 	@Override
-	public void initialize(){
+	public void initialize() {
 		// Do nothing by default since agents generally don't store any values
+	}
+
+	@Override
+	public Object clone() {
+
+		return null;
 	}
 }

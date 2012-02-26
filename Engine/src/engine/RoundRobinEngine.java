@@ -41,7 +41,7 @@ public class RoundRobinEngine {
 
 		for (int i = 0; i < experts.length; i++) {
 			for (int j = i + 1; j < experts.length; j++) {
-				//IExpert e = (IExpert) ((Object) experts[i]).clone();
+				IExpert e = (IExpert) experts[i].clone();
 				experts[i].setPlayerNumber(1);
 				experts[j].setPlayerNumber(2);
 				

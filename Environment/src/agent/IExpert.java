@@ -36,5 +36,7 @@ public interface IExpert extends Comparable<IExpert>, Cloneable{
 	 * Initializes and resets any values agents may have at the moment
 	 */
 	public void initialize();
+	
+	public Object clone();
 
 }
