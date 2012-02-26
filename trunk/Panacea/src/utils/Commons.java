@@ -1,18 +1,22 @@
 package utils;
 
-public class Commons {
+public class Commons
+{
 
 	private double prob;
 
-	public Commons() {
-		
+	public Commons()
+	{
+
 	}
 
-	public double getProb() {
+	public double getProb()
+	{
 		return prob;
 	}
 
-	public void setProb(double prob) {
+	public void setProb(double prob)
+	{
 		this.prob = prob;
 	}
 

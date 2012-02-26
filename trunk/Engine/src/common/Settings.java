@@ -2,7 +2,8 @@ package common;
 
 import environment.ScoringSystem;
 
-public class Settings {
+public class Settings
+{
 	private static double[] cc = { 3, 3 };
 	private static double[] cd = { 0, 5 };
 	private static double[] dc = { 5, 0 };
@@ -27,7 +28,8 @@ public class Settings {
 	 * For Example : If a player scores 7500, then he has scored (500/600), i.e.
 	 * 83% of the Benchmark Score in this case.
 	 */
-	public static double getBenchMark(int noOfPlayers) {
+	public static double getBenchMark(int noOfPlayers)
+	{
 		double benchmark = cc[0] * NO_OF_ROUNDS * noOfPlayers;
 		return benchmark;
 	}

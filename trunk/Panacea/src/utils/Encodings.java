@@ -1,6 +1,7 @@
 package utils;
 
-public enum Encodings {
+public enum Encodings
+{
 	/***
 	 * R = Reward - CC S = Sucker - CD T = Temptation - DC P = Penalty - DD
 	 */

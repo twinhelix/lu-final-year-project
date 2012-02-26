@@ -1,5 +1,6 @@
 package expert.ga;
 
-public class GeneticExpert {
-	
+public class GeneticExpert
+{
+
 }

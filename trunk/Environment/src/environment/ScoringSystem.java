@@ -1,6 +1,7 @@
 package environment;
 
-public class ScoringSystem {
+public class ScoringSystem
+{
 	public double[] cc, cd, dc, dd;
 
 	/***
@@ -12,26 +13,31 @@ public class ScoringSystem {
 	 * @param dc
 	 * @param dd
 	 */
-	public ScoringSystem(double[] cc, double[] cd, double[] dc, double[] dd) {
+	public ScoringSystem(double[] cc, double[] cd, double[] dc, double[] dd)
+	{
 		this.cc = cc;
 		this.cd = cd;
 		this.dc = dc;
 		this.dd = dd;
 	}
 
-	public double[] getcc() {
+	public double[] getcc()
+	{
 		return cc;
 	}
 
-	public double[] getcd() {
+	public double[] getcd()
+	{
 		return cd;
 	}
 
-	public double[] getdc() {
+	public double[] getdc()
+	{
 		return dc;
 	}
 
-	public double[] getdd() {
+	public double[] getdd()
+	{
 		return dd;
 	}
 
@@ -41,7 +47,8 @@ public class ScoringSystem {
 	 * @param move
 	 * @return
 	 */
-	public double[] getPoints(boolean[] move) {
+	public double[] getPoints(boolean[] move)
+	{
 		if (move[0] && move[1])
 			return cc;
 		if (move[0] && !move[1])

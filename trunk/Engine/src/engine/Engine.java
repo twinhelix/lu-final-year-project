@@ -3,20 +3,22 @@ package engine;
 import static common.Settings.SCORING_SYSTEM;
 import static common.Settings.NO_OF_ROUNDS;
 import agent.IExpert;
-import eee.ExploreExploitExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
 import expert.GrudgerExpert;
 import expert.PavlovExpert;
 import expert.RandomExpert;
+import expert.eee.ExploreExploitExpert;
 import expert.titfortat.RemorsefulProberExpert;
 import expert.titfortat.TitForTatExpert;
 import expert.titfortat.TitForTwoTatExpert;
 
-public class Engine {
+public class Engine
+{
 
-	public static void main(String[] args) {
-		// 
+	public static void main(String[] args)
+	{
+		//
 		// ApplicationContext context = new
 		// ClassPathXmlApplicationContext("Configs.xml");
 
@@ -28,8 +30,7 @@ public class Engine {
 		// new NaiveProberExpert(0, 0.2),
 		// new RemorsefulProberExpert(0, 0.2), new SuspiciousTitForTat(0),
 		// new TruePeaceMakerExpert(0, 0.2) };
-		String[] strats = {
-				new GrudgerExpert(0).getName(),
+		String[] strats = { new GrudgerExpert(0).getName(),
 				new TitForTatExpert(0).getName(), new PavlovExpert(0).getName() };
 		IExpert[] experts = { new TitForTatExpert(0),
 				new ExploreExploitExpert(0, strats), new RandomExpert(0),

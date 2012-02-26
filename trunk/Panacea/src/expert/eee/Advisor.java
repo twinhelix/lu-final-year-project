@@ -19,13 +19,15 @@ import agent.IExpert;
  * aveReward (m) = average reward from phases in which expert e has been
  * followed
  */
-public class Advisor {
+public class Advisor
+{
 
 	IExpert expert;
 	double aveReward;
 	int phase, stage;
 
-	protected Advisor(IExpert e) {
+	protected Advisor(IExpert e)
+	{
 
 		expert = e;
 		aveReward = 0;

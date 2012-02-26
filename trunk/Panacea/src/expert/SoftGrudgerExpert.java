@@ -2,7 +2,8 @@ package expert;
 
 import environment.GameHistory;
 
-public class SoftGrudgerExpert extends AbstractExpert {
+public class SoftGrudgerExpert extends AbstractExpert
+{
 	int phase;
 
 	/**
@@ -11,37 +12,45 @@ public class SoftGrudgerExpert extends AbstractExpert {
 	 * 
 	 * @param playerNo
 	 */
-	public SoftGrudgerExpert(int playerNo) {
+	public SoftGrudgerExpert(int playerNo)
+	{
 		super(playerNo);
 		initialize();
 	}
 
 	@Override
-	public void initialize() {
+	public void initialize()
+	{
 		phase = 6;
 	}
 
 	@Override
-	public String getName() {
+	public String getName()
+	{
 		return "Soft Grudger";
 	}
 
 	@Override
-	public boolean move(GameHistory history) {
-		if (history.getNumberOfMoves() == 0) {
+	public boolean move(GameHistory history)
+	{
+		if (history.getNumberOfMoves() == 0)
+		{
 			return true;
 		}
 
 		// in punishment phase:
-		if (phase > 2 && phase < 6) {
+		if (phase > 2 && phase < 6)
+		{
 			phase--;
 			return false;
 		}
-		if (phase == 2) {
+		if (phase == 2)
+		{
 			phase--;
 			return true;
 		}
-		if (phase == 1) {
+		if (phase == 1)
+		{
 			phase = 6;
 			return true;
 		}
@@ -49,7 +58,8 @@ public class SoftGrudgerExpert extends AbstractExpert {
 		// Checks if opponent defected
 		boolean[] lastMove = history.getLastMove();
 
-		if (!lastMove[playerNo % 2]) {
+		if (!lastMove[playerNo % 2])
+		{
 			phase = 6;
 			phase--;
 			return false;

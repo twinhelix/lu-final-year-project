@@ -3,25 +3,31 @@ package environment;
 import java.util.Collection;
 import java.util.Stack;
 
-public class GameHistory {
+public class GameHistory
+{
 	private Collection<boolean[]> history;
 	private ScoringSystem scoringSystem;
 
-	public ScoringSystem getScoringSystem() {
+	public ScoringSystem getScoringSystem()
+	{
 		return scoringSystem;
 	}
 
-	public GameHistory(ScoringSystem scoringSystem) {
+	public GameHistory(ScoringSystem scoringSystem)
+	{
 		this.scoringSystem = scoringSystem;
 		history = new Stack<boolean[]>();
 	}
 
-	public int getNumberOfMoves() {
+	public int getNumberOfMoves()
+	{
 		return history.size();
 	}
 
-	public void newMove(boolean agent1, boolean agent2) {
-		boolean[] move = { agent1, agent2 };
+	public void newMove(boolean agent1, boolean agent2)
+	{
+		boolean[] move =
+		{ agent1, agent2 };
 		history.add(move);
 	}
 
@@ -30,8 +36,10 @@ public class GameHistory {
 	 * 
 	 * @return
 	 */
-	public boolean[] getLastMove() {
-		if (history.isEmpty()) {
+	public boolean[] getLastMove()
+	{
+		if (history.isEmpty())
+		{
 			return null;
 		}
 		return ((Stack<boolean[]>) history).peek();
@@ -42,8 +50,10 @@ public class GameHistory {
 	 * 
 	 * @return
 	 */
-	public double[] getLastMoveScores() {
-		if (history.isEmpty()) {
+	public double[] getLastMoveScores()
+	{
+		if (history.isEmpty())
+		{
 			return null;
 		}
 		return scoringSystem.getPoints(getLastMove());
@@ -54,31 +64,40 @@ public class GameHistory {
 	 * 
 	 * @return
 	 */
-	public Collection<boolean[]> getHistory() {
+	public Collection<boolean[]> getHistory()
+	{
 		return history;
 	}
 
-	public boolean getPlayerLastMove(int playerNo) {
+	public boolean getPlayerLastMove(int playerNo)
+	{
 		return ((Stack<boolean[]>) history).peek()[playerNo - 1];
 	}
 
-	public double getPlayerLastScore(int playerNo) {
+	public double getPlayerLastScore(int playerNo)
+	{
 		double[] lastScore = getLastMoveScores();
-		if (lastScore != null) {
+		if (lastScore != null)
+		{
 			return lastScore[playerNo - 1];
-		} else
+		}
+		else
 			return 0;
 	}
 
-	public boolean getOtherPlayerLastMove(int playerNo) {
+	public boolean getOtherPlayerLastMove(int playerNo)
+	{
 		return ((Stack<boolean[]>) history).peek()[playerNo % 2];
 	}
 
-	public double getOtherPlayerLastScore(int playerNo) {
+	public double getOtherPlayerLastScore(int playerNo)
+	{
 		double[] lastScore = getLastMoveScores();
-		if (lastScore != null) {
+		if (lastScore != null)
+		{
 			return lastScore[playerNo % 2];
-		} else
+		}
+		else
 			return 0;
 	}
 

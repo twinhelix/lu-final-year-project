@@ -1,5 +1,6 @@
 package common;
 
-public class TournamentResults {
-	
+public class TournamentResults
+{
+
 }

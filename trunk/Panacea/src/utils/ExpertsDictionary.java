@@ -20,19 +20,22 @@ import expert.titfortat.TruePeaceMakerExpert;
 
 import agent.IExpert;
 
-public class ExpertsDictionary {
+public class ExpertsDictionary
+{
 	private Map<String, IExpert> dictionary;
 	private double prob = 0.2;
 	private int playerNo = 0;
 
-	public ExpertsDictionary(int playerNo, double prob) {
+	public ExpertsDictionary(int playerNo, double prob)
+	{
 		dictionary = new HashMap<String, IExpert>();
 		this.playerNo = playerNo;
 		this.prob = prob;
 		initialize();
 	}
 
-	private void initialize() {
+	private void initialize()
+	{
 		IExpert random = new RandomExpert(playerNo);
 		IExpert grudger = new GrudgerExpert(playerNo);
 		IExpert coop = new CooperateExpert(playerNo);
@@ -64,8 +67,10 @@ public class ExpertsDictionary {
 		dictionary.put(truepeace.getName(), truepeace);
 	}
 
-	public IExpert getExpert(String name) {
-		if (dictionary.keySet().contains(name)) {
+	public IExpert getExpert(String name)
+	{
+		if (dictionary.keySet().contains(name))
+		{
 			return dictionary.get(name);
 		}
 		return null;

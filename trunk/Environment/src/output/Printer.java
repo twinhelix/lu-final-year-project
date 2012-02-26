@@ -1,6 +1,7 @@
 package output;
 
-public interface Printer {
+public interface Printer
+{
 
 	void printHeading(String name, String phoneNumber, String pricePlan);
 
