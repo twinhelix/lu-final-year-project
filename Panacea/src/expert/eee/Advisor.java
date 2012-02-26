@@ -1,4 +1,4 @@
-package eee;
+package expert.eee;
 
 import agent.IExpert;
 
