@@ -10,6 +10,7 @@ import expert.GradualExpert;
 import expert.GrudgerExpert;
 import expert.PavlovExpert;
 import expert.RandomExpert;
+import expert.SoftGrudgerExpert;
 import expert.titfortat.NaivePeaceMakerExpert;
 import expert.titfortat.NaiveProberExpert;
 import expert.titfortat.RemorsefulProberExpert;
@@ -50,6 +51,7 @@ public class ExpertsDictionary
 		IExpert remprob = new RemorsefulProberExpert(playerNo, prob);
 		IExpert susptitfortat = new SuspiciousTitForTat(playerNo);
 		IExpert truepeace = new TruePeaceMakerExpert(playerNo, prob);
+		IExpert softgrudger = new SoftGrudgerExpert(playerNo);
 
 		dictionary.put(random.getName(), random);
 		dictionary.put(grudger.getName(), grudger);
@@ -65,6 +67,7 @@ public class ExpertsDictionary
 		dictionary.put(remprob.getName(), remprob);
 		dictionary.put(susptitfortat.getName(), susptitfortat);
 		dictionary.put(truepeace.getName(), truepeace);
+		dictionary.put(softgrudger.getName(), softgrudger);
 	}
 
 	public IExpert getExpert(String name)
