@@ -46,7 +46,7 @@ public class RoundRobinEngine
 
 		for (int i = 0; i < experts.length; i++)
 		{
-			for (int j = 0; j < experts.length; j++)
+			for (int j = i; j < experts.length; j++)
 			{
 
 				IExpert e1 = experts[i];
@@ -67,9 +67,11 @@ public class RoundRobinEngine
 				double[] result = game.run();
 
 				totals.put(e1.getName(), new Double(totals.get(e1.getName())
-						.doubleValue() + result[0]));
+						.doubleValue()
+						+ result[0]));
 				totals.put(e2.getName(), new Double(totals.get(e2.getName())
-						.doubleValue() + result[1]));
+						.doubleValue()
+						+ result[1]));
 
 				System.out.println(e1.getName() + ": " + result[0] + "\t\t"
 						+ e2.getName() + ": " + result[1]);
@@ -110,12 +112,10 @@ public class RoundRobinEngine
 			if ((Double) base.get(a) < (Double) base.get(b))
 			{
 				return 1;
-			}
-			else if ((Double) base.get(a) == (Double) base.get(b))
+			} else if ((Double) base.get(a) == (Double) base.get(b))
 			{
 				return 0;
-			}
-			else
+			} else
 			{
 				return -1;
 			}
