@@ -8,6 +8,7 @@ import expert.DefectExpert;
 import expert.GrudgerExpert;
 import expert.PavlovExpert;
 import expert.RandomExpert;
+import expert.SoftGrudgerExpert;
 import expert.eee.ExploreExploitExpert;
 import expert.titfortat.RemorsefulProberExpert;
 import expert.titfortat.TitForTatExpert;
@@ -30,7 +31,7 @@ public class Engine
 		// new NaiveProberExpert(0, 0.2),
 		// new RemorsefulProberExpert(0, 0.2), new SuspiciousTitForTat(0),
 		// new TruePeaceMakerExpert(0, 0.2) };
-		String[] strats = { new GrudgerExpert(0).getName(),
+		String[] strats = { new SoftGrudgerExpert(0).getName(),
 				new TitForTatExpert(0).getName(), new PavlovExpert(0).getName() };
 		IExpert[] experts = { new TitForTatExpert(0),
 				new ExploreExploitExpert(0, strats), new RandomExpert(0),

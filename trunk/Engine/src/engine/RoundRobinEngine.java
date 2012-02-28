@@ -46,28 +46,33 @@ public class RoundRobinEngine
 
 		for (int i = 0; i < experts.length; i++)
 		{
-			for (int j = i + 1; j < experts.length; j++)
+			for (int j = 0; j < experts.length; j++)
 			{
-				IExpert e = (IExpert) experts[i].clone();
-				experts[i].setPlayerNumber(1);
-				experts[j].setPlayerNumber(2);
 
-				experts[i].initialize();
-				experts[j].initialize();
+				IExpert e1 = experts[i];
+				IExpert e2 = experts[j];
 
-				Game game = new Game(experts[i], experts[j], totalGames,
-						scoringSystem);
+				if (i == j)
+				{
+					e2 = (IExpert) experts[j].clone();
+				}
+
+				e1.setPlayerNumber(1);
+				e2.setPlayerNumber(2);
+
+				e1.initialize();
+				e2.initialize();
+
+				Game game = new Game(e1, e2, totalGames, scoringSystem);
 				double[] result = game.run();
 
-				totals.put(experts[i].getName(),
-						new Double(totals.get(experts[i].getName())
-								.doubleValue() + result[0]));
-				totals.put(experts[j].getName(),
-						new Double(totals.get(experts[j].getName())
-								.doubleValue() + result[1]));
+				totals.put(e1.getName(), new Double(totals.get(e1.getName())
+						.doubleValue() + result[0]));
+				totals.put(e2.getName(), new Double(totals.get(e2.getName())
+						.doubleValue() + result[1]));
 
-				System.out.println(experts[i].getName() + ": " + result[0]
-						+ "\t\t" + experts[j].getName() + ": " + result[1]);
+				System.out.println(e1.getName() + ": " + result[0] + "\t\t"
+						+ e2.getName() + ": " + result[1]);
 			}
 		}
 	}
