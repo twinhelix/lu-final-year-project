@@ -9,7 +9,7 @@ public class MainClass {
 		f.setName("hey");
 		Iface ff = (Iface) f.clone();
 		f.setName("g-unit");
-		ff.setName("man");
+		//ff.setName("man");
 		System.out.println(f.getName() + ff.getName());
 			
 	}
