@@ -1,5 +1,6 @@
 package engine;
 
+import java.text.DecimalFormat;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -67,14 +68,11 @@ public class RoundRobinEngine
 				double[] result = game.run();
 
 				totals.put(e1.getName(), new Double(totals.get(e1.getName())
-						.doubleValue()
-						+ result[0]));
+						.doubleValue() + result[0]));
 				totals.put(e2.getName(), new Double(totals.get(e2.getName())
-						.doubleValue()
-						+ result[1]));
-
-				System.out.println(e1.getName() + ": " + result[0] + "\t\t"
-						+ e2.getName() + ": " + result[1]);
+						.doubleValue() + result[1]));
+				printTwoColumns(e1.getName() + ": " + result[0], e2.getName()
+						+ ": " + result[1]);
 			}
 		}
 	}
@@ -88,12 +86,28 @@ public class RoundRobinEngine
 
 		System.out.println("--- RESULTS ---");
 		int i = 0;
+		DecimalFormat df = new DecimalFormat("#.##");
+
 		for (String key : sorted_map.keySet())
 		{
 			i++;
-			System.out.println(i + ". " + key + ": "
-					+ sorted_map.get(key).doubleValue());
+			printTwoColumns(
+					(i + ". " + key + ": " + sorted_map.get(key).doubleValue()),
+					("Benchmark Score: "
+							+ df.format(sorted_map.get(key).doubleValue()
+									/ ((experts.length + 1) * benchmark) * 100) + "%"));
 		}
+	}
+
+	private void printTwoColumns(String first, String second)
+	{
+		System.out.print(first);
+		if (first.length() < 45)
+		{
+			for (int i = first.length(); i < 45; i++)
+				System.out.print(" ");
+		}
+		System.out.println(second);
 	}
 
 	class ValueComparator implements Comparator<Object>
@@ -112,10 +126,12 @@ public class RoundRobinEngine
 			if ((Double) base.get(a) < (Double) base.get(b))
 			{
 				return 1;
-			} else if ((Double) base.get(a) == (Double) base.get(b))
+			}
+			else if ((Double) base.get(a) == (Double) base.get(b))
 			{
 				return 0;
-			} else
+			}
+			else
 			{
 				return -1;
 			}

@@ -29,9 +29,8 @@ public class Settings
 	 * 83% of the Benchmark Score in this case.
 	 */
 	public static double getBenchMark(int noOfPlayers)
-	{
-		double benchmark = cc[0] * NO_OF_ROUNDS * noOfPlayers;
-		return benchmark;
+	{	
+		return (cc[0] * NO_OF_ROUNDS);
 	}
 
 }

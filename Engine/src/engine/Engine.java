@@ -39,7 +39,7 @@ public class Engine
 				new DefectExpert(0), new PavlovExpert(0),
 				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0) };
 
-		IExpert[] experts1 = { new ExploreExploitExpert(0, strats),
+		IExpert[] experts1 = { new TitForTatExpert(0),
 				new PavlovExpert(0) };
 
 		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
