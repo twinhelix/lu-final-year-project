@@ -3,13 +3,13 @@ package engine;
 import static common.Settings.NO_OF_ROUNDS;
 import static common.Settings.SCORING_SYSTEM;
 import agent.IExpert;
-import expert.AdaptiveExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
 import expert.PavlovExpert;
 import expert.RandomExpert;
 import expert.SoftGrudgerExpert;
-import expert.eee.ExploreExploitExpert;
+import expert.eee.EEEDecProb;
+import expert.eee.EEEFixedProb;
 import expert.titfortat.RemorsefulProberExpert;
 import expert.titfortat.TitForTatExpert;
 
@@ -35,12 +35,11 @@ public class Engine
 				new PavlovExpert(0).getName(), new CooperateExpert(0).getName() };
 
 		IExpert[] experts = { new TitForTatExpert(0),
-				new ExploreExploitExpert(0, strats), new RandomExpert(0),
-				new DefectExpert(0), new PavlovExpert(0),
+				new EEEDecProb(0, strats), new EEEFixedProb(0, strats, 0.3),
+				new RandomExpert(0), new DefectExpert(0), new PavlovExpert(0),
 				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0) };
 
-		IExpert[] experts1 = { new TitForTatExpert(0),
-				new PavlovExpert(0) };
+		IExpert[] experts1 = { new TitForTatExpert(0), new PavlovExpert(0) };
 
 		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
 				SCORING_SYSTEM);
