@@ -31,7 +31,7 @@ public class Advisor
 
 		expert = e;
 		aveReward = 0;
-		phase = 0;
+		phase = 1;
 		stage = 0;
 	}
 }
