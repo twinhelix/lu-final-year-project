@@ -1,6 +1,6 @@
 package expert.eee;
 
-public class EEEFixedProb extends ExploreExploitExpert
+public class EEEFixedProb extends EEEBase
 {
 
 	public EEEFixedProb(int playerNo, String[] strategies, double prob)
