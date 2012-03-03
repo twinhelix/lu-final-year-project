@@ -15,7 +15,7 @@ import expert.titfortat.TitForTatExpert;
  * @author HassassiN
  * 
  */
-public abstract class ExploreExploitExpert extends AbstractExpert
+public abstract class EEEBase extends AbstractExpert
 {
 
 	private final boolean DEBUG = true;
@@ -31,12 +31,12 @@ public abstract class ExploreExploitExpert extends AbstractExpert
 	private int agentChoice, maxStages, currentStage;
 	private String[] strategies;
 
-	public ExploreExploitExpert(int playerNo, String[] strategies)
+	public EEEBase(int playerNo, String[] strategies)
 	{
 		this(playerNo, strategies, 1);
 	}
 
-	public ExploreExploitExpert(int playerNo, String[] strategies, double prob)
+	public EEEBase(int playerNo, String[] strategies, double prob)
 	{
 		super(playerNo);
 		this.prob = prob;

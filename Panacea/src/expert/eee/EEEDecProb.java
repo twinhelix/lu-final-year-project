@@ -1,6 +1,6 @@
 package expert.eee;
 
-public class EEEDecProb extends ExploreExploitExpert
+public class EEEDecProb extends EEEBase
 {
 
 	public EEEDecProb(int playerNo, String[] strategies)
