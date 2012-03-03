@@ -22,9 +22,9 @@ import agent.IExpert;
 public class Advisor
 {
 
-	IExpert expert;
-	double aveReward;
-	int phase, stage;
+	protected IExpert expert;
+	protected double aveReward;
+	protected int phase, stage;
 
 	protected Advisor(IExpert e)
 	{
