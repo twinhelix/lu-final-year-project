@@ -3,10 +3,10 @@ package expert.ga;
 import de.uka.aifb.com.jnsga2.Individual;
 import de.uka.aifb.com.jnsga2.NSGA2;
 
-public class GEAgent extends Individual
+public class GAIndividual extends Individual
 {
 
-	public GEAgent(NSGA2 nsga2)
+	public GAIndividual(NSGA2 nsga2)
 	{
 		super(nsga2);
 		// TODO Auto-generated constructor stub
