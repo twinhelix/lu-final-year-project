@@ -33,18 +33,18 @@ public interface IGame
 	public ScoringSystem getScoring();
 
 	/***
-	 * Returns the number of wins for player 1
+	 * Returns the number of points for player 1
 	 * 
 	 * @return
 	 */
-	public double getWins1();
+	public double getResult1();
 
 	/***
-	 * Returns the number of wins for player 2
+	 * Returns the number of points for player 2
 	 * 
 	 * @return
 	 */
-	public double getWins2();
+	public double getResult2();
 
 	/***
 	 * Returns the history of all previous moves made by players

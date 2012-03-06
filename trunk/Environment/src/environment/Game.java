@@ -8,6 +8,7 @@ public class Game implements IGame
 {
 	private IExpert expert1, expert2;
 	private double wins1, wins2;
+	private double[] results;
 	private int totalGames;
 	private ScoringSystem scoringSystem;
 	private GameHistory history;
@@ -21,6 +22,7 @@ public class Game implements IGame
 		this.expert2 = expert2;
 		this.scoringSystem = scoringSystem;
 		this.totalGames = totalGames;
+		results = new double[2];
 		history = new GameHistory(scoringSystem);
 	}
 
@@ -38,14 +40,10 @@ public class Game implements IGame
 		}
 		for (int i = 0; i < totalGames; i++)
 		{
-			double[] result = playOneRound();
-			wins1 += result[0];
-			wins2 += result[1];
+			playOneRound();
 		}
 
-		double[] results =
-		{ getWins1(), getWins2() };
-
+		results = history.getCurrentResult();
 		// logger.info("Scoring - Player 1: " + results[0] + "\t\t\tPlayer2: " +
 		// results[1]);
 		return results;
@@ -59,16 +57,13 @@ public class Game implements IGame
 		// player1);
 		// System.out.println("Expert: " + expert2.getName() + " played " +
 		// player2);
-		boolean move[] =
-		{ player1, player2 };
+		boolean move[] = { player1, player2 };
 		// Add in the new move to update the historical data
 		history.newMove(player1, player2);
 
-		double[] result = scoringSystem.getPoints(move);
-
 		// System.out.println("Player 1: " + player1 + " " + result[0]
 		// + "\t\t\tPlayer2: " + player2 + " " + result[1]);
-		return result;
+		return scoringSystem.getPoints(move);
 	}
 
 	@Override
@@ -96,15 +91,15 @@ public class Game implements IGame
 	}
 
 	@Override
-	public double getWins1()
+	public double getResult1()
 	{
-		return wins1;
+		return results[0];
 	}
 
 	@Override
-	public double getWins2()
+	public double getResult2()
 	{
-		return wins2;
+		return results[1];
 	}
 
 	@Override
