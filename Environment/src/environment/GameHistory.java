@@ -7,16 +7,18 @@ public class GameHistory
 {
 	private Collection<boolean[]> history;
 	private ScoringSystem scoringSystem;
-
-	public ScoringSystem getScoringSystem()
-	{
-		return scoringSystem;
-	}
+	private double[] result;
 
 	public GameHistory(ScoringSystem scoringSystem)
 	{
 		this.scoringSystem = scoringSystem;
 		history = new Stack<boolean[]>();
+		result = new double[2];
+	}
+
+	public ScoringSystem getScoringSystem()
+	{
+		return scoringSystem;
 	}
 
 	public int getNumberOfMoves()
@@ -26,9 +28,11 @@ public class GameHistory
 
 	public void newMove(boolean agent1, boolean agent2)
 	{
-		boolean[] move =
-		{ agent1, agent2 };
+		boolean[] move = { agent1, agent2 };
 		history.add(move);
+		double[] res = scoringSystem.getPoints(move);
+		result[0] += res[0];
+		result[1] += res[1];
 	}
 
 	/***
@@ -80,8 +84,7 @@ public class GameHistory
 		if (lastScore != null)
 		{
 			return lastScore[playerNo - 1];
-		}
-		else
+		} else
 			return 0;
 	}
 
@@ -96,9 +99,13 @@ public class GameHistory
 		if (lastScore != null)
 		{
 			return lastScore[playerNo % 2];
-		}
-		else
+		} else
 			return 0;
+	}
+
+	public double[] getCurrentResult()
+	{
+		return result;
 	}
 
 }
