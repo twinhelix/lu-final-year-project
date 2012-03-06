@@ -3,7 +3,7 @@ package expert.ga;
 import de.uka.aifb.com.jnsga2.FitnessFunction;
 import de.uka.aifb.com.jnsga2.Individual;
 
-public class GEFitness implements FitnessFunction
+public class GAFitness implements FitnessFunction
 {
 
 	@Override
