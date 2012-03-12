@@ -1,9 +1,13 @@
 package expert.ga;
 
-import static utils.Encodings.*;
+import static utils.Encodings.R;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
+import utils.Encodings;
 import environment.GameHistory;
 import expert.AbstractExpert;
-import utils.Encodings;
 
 public class GeneticExpert extends AbstractExpert
 {
@@ -56,4 +60,25 @@ public class GeneticExpert extends AbstractExpert
 
 		return strat;
 	}
+
+	private void writeToFile(String code)
+	{
+		{
+			try
+			{
+				// Create file
+				FileWriter fstream = new FileWriter("out.txt");
+				BufferedWriter out = new BufferedWriter(fstream);
+				out.write(code);
+				// Close the output stream
+				out.close();
+			}
+			catch (Exception e)
+			{// Catch exception if any
+				System.err.println("Error: " + e.getMessage());
+			}
+		}
+	}
+	
+	
 }
