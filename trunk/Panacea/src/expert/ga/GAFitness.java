@@ -5,12 +5,13 @@ import de.uka.aifb.com.jnsga2.Individual;
 
 public class GAFitness implements FitnessFunction
 {
-
 	@Override
 	public double evaluate(Individual paramIndividual)
 	{
-		
-		return 0;
+		GAIndividual individual = (GAIndividual) paramIndividual;
+
+		return individual.getHistory().getPlayerLastScore(
+				individual.getPlayerNumber());
 	}
 
 }

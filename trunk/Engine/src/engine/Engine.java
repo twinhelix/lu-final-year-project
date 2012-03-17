@@ -10,7 +10,7 @@ import expert.RandomExpert;
 import expert.SoftGrudgerExpert;
 import expert.eee.EEEDecProb;
 import expert.eee.EEEFixedProb;
-import expert.ga.GeneticExpert;
+import expert.ga.GAExpert;
 import expert.titfortat.RemorsefulProberExpert;
 import expert.titfortat.TitForTatExpert;
 
@@ -49,7 +49,7 @@ public class Engine
 		engine.showTally();
 		
 		
-		GeneticExpert ge = new GeneticExpert(0);
+		GAExpert ge = new GAExpert(0);
 		
 		// Game g = new Game(new DefectExpert(1), new RandomExpert(2), 200,
 		// scoringSystem);
