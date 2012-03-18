@@ -1,14 +1,13 @@
 package expert.ga;
 
+import static utils.Encoding.P;
+import static utils.Encoding.R;
+import static utils.Encoding.S;
+import static utils.Encoding.T;
+
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Stack;
 
 import utils.Encoding;
-import static utils.Encoding.R;
-import static utils.Encoding.T;
-import static utils.Encoding.S;
-import static utils.Encoding.P;
 import environment.GameHistory;
 import expert.AbstractExpert;
 
