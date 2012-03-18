@@ -7,7 +7,6 @@ import agent.IExpert;
 public class Game implements IGame
 {
 	private IExpert expert1, expert2;
-	private double wins1, wins2;
 	private double[] results;
 	private int totalGames;
 	private ScoringSystem scoringSystem;
@@ -30,8 +29,6 @@ public class Game implements IGame
 	public double[] run()
 	{
 		// logger.info("Running game for " + totalGames + " rounds...");
-		wins1 = 0;
-		wins2 = 0;
 		if (totalGames == 0)
 		{
 			// Infinite game...

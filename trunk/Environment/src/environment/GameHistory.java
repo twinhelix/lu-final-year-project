@@ -1,5 +1,6 @@
 package environment;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Stack;
 
@@ -12,7 +13,7 @@ public class GameHistory
 	public GameHistory(ScoringSystem scoringSystem)
 	{
 		this.scoringSystem = scoringSystem;
-		history = new Stack<boolean[]>();
+		history = new ArrayList<boolean[]>();
 		result = new double[2];
 	}
 
@@ -46,7 +47,7 @@ public class GameHistory
 		{
 			return null;
 		}
-		return ((Stack<boolean[]>) history).peek();
+		return ((ArrayList<boolean[]>) history).get(history.size() - 1);
 	}
 
 	/***
@@ -75,7 +76,7 @@ public class GameHistory
 
 	public boolean getPlayerLastMove(int playerNo)
 	{
-		return ((Stack<boolean[]>) history).peek()[playerNo - 1];
+		return ((ArrayList<boolean[]>) history).get(history.size() - 1)[playerNo - 1];
 	}
 
 	public double getPlayerLastScore(int playerNo)
@@ -90,7 +91,7 @@ public class GameHistory
 
 	public boolean getOtherPlayerLastMove(int playerNo)
 	{
-		return ((Stack<boolean[]>) history).peek()[playerNo % 2];
+		return ((ArrayList<boolean[]>) history).get(history.size() - 1)[playerNo % 2];
 	}
 
 	public double getOtherPlayerLastScore(int playerNo)
