@@ -113,14 +113,6 @@ public class GAExpert extends AbstractExpert
 		return pad(Integer.toBinaryString(seq), 64);
 	}
 
-	private Encoding[] decode(int seq)
-	{
-		// TODO:
-		Encoding[] strat = new Encoding[3];
-
-		return strat;
-	}
-
 	@Override
 	public boolean move(GameHistory history)
 	{
