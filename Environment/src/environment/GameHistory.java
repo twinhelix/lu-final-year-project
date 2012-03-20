@@ -2,7 +2,6 @@ package environment;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Stack;
 
 public class GameHistory
 {
