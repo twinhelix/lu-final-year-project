@@ -34,13 +34,13 @@ public class GAExpert extends AbstractExpert
 	 */
 
 	private GameHistory history = null;
-	private String codebit;
-	private String premises;
+	private int code_length = 64, premises_length = 6;
+	private String codebit, premises;
 
 	public GAExpert(int playerNo)
 	{
 		super(playerNo);
-		assignPremises();
+		generateRandomStrategy();
 	}
 
 	public String getCodebit()
@@ -71,9 +71,36 @@ public class GAExpert extends AbstractExpert
 	 */
 	private void assignPremises()
 	{
-		int prem = (int) (Math.random() * 64);
-		premises = Integer.toBinaryString(prem);
-		premises = pad(premises, 6);
+		premises = generateRandomBitString(premises_length);
+	}
+
+	private void generateRandomStrategy()
+	{
+		assignPremises();
+		codebit = generateRandomBitString(code_length) + premises;
+	}
+
+	private String generateRandomBitString(int length)
+	{
+		String code = "";
+		for (int i = length; i > 0; i -= 8)
+		{
+			int current_len = 8;
+			if (i < 8)
+			{
+				current_len = i;
+			}
+
+			int bit_length = (int) Math.pow(2, current_len);
+
+			int bit_in_int = (int) (Math.random() * bit_length);
+
+			String current_code = Integer.toBinaryString(bit_in_int);
+			current_code = pad(current_code, current_len);
+
+			code = code + current_code;
+		}
+		return code;
 	}
 
 	private String pad(String binaryString, int length)
