@@ -22,11 +22,6 @@ public class RandomExpert extends AbstractExpert
 
 	public boolean move(GameHistory history)
 	{
-		double choice = Math.random();
-		if (choice < 0.5)
-			return true;
-		else
-			return false;
+		return (Math.random() < 0.5);
 	}
-
 }
