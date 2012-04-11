@@ -15,7 +15,8 @@ import expert.titfortat.TitForTatExpert;
  * @author HassassiN
  * 
  */
-public abstract class EEEBase extends AbstractExpert
+
+public class SEAExpert extends AbstractExpert
 {
 
 	private final boolean DEBUG = true;
@@ -30,13 +31,13 @@ public abstract class EEEBase extends AbstractExpert
 	private Phase phase;
 	private int agentChoice, maxStages, currentStage;
 	private String[] strategies;
-	
-	public EEEBase(int playerNo, String[] strategies)
+
+	public SEAExpert(int playerNo, String[] strategies)
 	{
 		this(playerNo, strategies, 1);
 	}
 
-	public EEEBase(int playerNo, String[] strategies, double prob)
+	public SEAExpert(int playerNo, String[] strategies, double prob)
 	{
 		super(playerNo);
 		this.prob = prob;
@@ -92,14 +93,15 @@ public abstract class EEEBase extends AbstractExpert
 	}
 
 	/**
-	 * �Exploration. An exploration phase consists of picking a random expert e
-	 * (i.e., from the uniform distribution over {1,...,r}), and following e�s
+	 * �Exploration. An exploration phase consists of picking a random expert
+	 * e (i.e., from the uniform distribution over {1,...,r}), and following
+	 * e�s recommendations for a certain number of stages depending on the
+	 * variant of the method.
+	 * 
+	 * �Exploitation. An exploitation phase consists of picking an expert e
+	 * with maximum Me, breaking ties at random, and following e�s
 	 * recommendations for a certain number of stages depending on the variant
 	 * of the method.
-	 * 
-	 * �Exploitation. An exploitation phase consists of picking an expert e with
-	 * maximum Me, breaking ties at random, and following e�s recommendations
-	 * for a certain number of stages depending on the variant of the method.
 	 */
 	@Override
 	public boolean move(GameHistory history)
@@ -117,7 +119,8 @@ public abstract class EEEBase extends AbstractExpert
 			findExploreAgent();
 			return explore(history);
 
-		} else
+		}
+		else
 		{
 			// first always update previous round scores
 			updateScores(history);
@@ -148,31 +151,32 @@ public abstract class EEEBase extends AbstractExpert
 
 				double exploreProb = Math.random();
 
-				if (exploreProb < getProb())
+				if (exploreProb < (1 / (i + 0.0)))
 				{
 					// Perform Exploration phase --> update scores from last
 					// phase first
 					findExploreAgent();
 					return explore(history);
-				} else
+				}
+				else
 				{
 					phase = Phase.EXPLOIT;
 					return exploit(history);
 				}
 				// Update last phase
 
-			} else if (phase == Phase.EXPLORE)
+			}
+			else if (phase == Phase.EXPLORE)
 			{
 				return explore(history);
-			} else if (phase == Phase.EXPLOIT)
+			}
+			else if (phase == Phase.EXPLOIT)
 			{
 				return exploit(history);
 			}
 		}
 		return false;
 	}
-
-	protected abstract double getProb();
 
 	private void findExploreAgent()
 	{
@@ -230,7 +234,8 @@ public abstract class EEEBase extends AbstractExpert
 			if (advisors[i].aveReward == bestScore)
 			{
 				indices.add(i);
-			} else if (advisors[i].aveReward > bestScore)
+			}
+			else if (advisors[i].aveReward > bestScore)
 			{
 				bestScore = advisors[i].aveReward;
 				indices.clear();
@@ -259,5 +264,11 @@ public abstract class EEEBase extends AbstractExpert
 		advisors[agentChoice].aveReward = advisors[agentChoice].aveReward
 				+ (((double) stages) / advisors[agentChoice].stage)
 				* (averageReward - advisors[agentChoice].aveReward);
+	}
+
+	@Override
+	public String getName()
+	{
+		return "SEA Expert";
 	}
 }

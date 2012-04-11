@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import Results.GraphingResults;
 import agent.IExpert;
 
 import common.Settings;
@@ -19,6 +20,7 @@ public class RoundRobinEngine
 	private int totalGames;
 	private ScoringSystem scoringSystem;
 	private Map<String, Double> totals;
+	private TreeMap<String, Double> sorted_map;
 
 	public RoundRobinEngine(IExpert[] experts, int totalGames,
 			ScoringSystem scoringSystem)
@@ -79,8 +81,7 @@ public class RoundRobinEngine
 
 	public void showTally()
 	{
-		TreeMap<String, Double> sorted_map = new TreeMap<String, Double>(
-				new ValueComparator(totals));
+		sorted_map = new TreeMap<String, Double>(new ValueComparator(totals));
 		sorted_map.putAll(totals);
 		double benchmark = Settings.getBenchMark(sorted_map.size());
 
@@ -97,6 +98,13 @@ public class RoundRobinEngine
 							+ df.format(sorted_map.get(key).doubleValue()
 									/ ((experts.length + 1) * benchmark) * 100) + "%"));
 		}
+	}
+
+	public void plotResults()
+	{
+		GraphingResults graph = new GraphingResults("Tournament Results");
+		graph.plot(sorted_map);
+		
 	}
 
 	private void printTwoColumns(String first, String second)

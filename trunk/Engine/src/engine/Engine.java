@@ -47,6 +47,7 @@ public class Engine
 		engine.run();
 		System.out.println();
 		engine.showTally();
+		engine.plotResults();
 		
 		
 		GAExpert ge = new GAExpert(0);
