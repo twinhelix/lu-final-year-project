@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import Performance.GraphingPerformance;
 import Results.GraphingResults;
 import agent.IExpert;
 
@@ -99,12 +100,18 @@ public class RoundRobinEngine
 									/ ((experts.length + 1) * benchmark) * 100) + "%"));
 		}
 	}
+	
+	public void plotPerformance()
+	{
+		GraphingPerformance graph = new GraphingPerformance("Tournament Results");
+		graph.plot();
+	}
 
+	
 	public void plotResults()
 	{
 		GraphingResults graph = new GraphingResults("Tournament Results");
 		graph.plot(sorted_map);
-		
 	}
 
 	private void printTwoColumns(String first, String second)
