@@ -20,7 +20,7 @@ import expert.titfortat.TitForTatExpert;
 public abstract class EEEBase extends AbstractExpert
 {
 
-	private final boolean DEBUG = true;
+	private final boolean DEBUG = false;
 
 	// Array of experts that the EEE algorithm can employ
 	private Advisor[] advisors;

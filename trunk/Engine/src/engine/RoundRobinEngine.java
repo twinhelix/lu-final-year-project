@@ -17,6 +17,8 @@ import environment.ScoringSystem;
 
 public class RoundRobinEngine
 {
+	private static boolean PRINT_RESULTS = false;
+
 	private IExpert[] experts;
 	private int totalGames;
 	private ScoringSystem scoringSystem;
@@ -74,8 +76,10 @@ public class RoundRobinEngine
 						.doubleValue() + result[0]));
 				totals.put(e2.getName(), new Double(totals.get(e2.getName())
 						.doubleValue() + result[1]));
-				printTwoColumns(e1.getName() + ": " + result[0], e2.getName()
-						+ ": " + result[1]);
+
+				if (PRINT_RESULTS)
+					printTwoColumns(e1.getName() + ": " + result[0],
+							e2.getName() + ": " + result[1]);
 			}
 		}
 	}
@@ -100,14 +104,14 @@ public class RoundRobinEngine
 									/ ((experts.length + 1) * benchmark) * 100) + "%"));
 		}
 	}
-	
+
 	public void plotPerformance()
 	{
-		GraphingPerformance graph = new GraphingPerformance("Tournament Results");
+		GraphingPerformance graph = new GraphingPerformance(
+				"Tournament Results");
 		graph.plot();
 	}
 
-	
 	public void plotResults()
 	{
 		GraphingResults graph = new GraphingResults("Tournament Results");

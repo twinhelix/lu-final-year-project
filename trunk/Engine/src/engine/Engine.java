@@ -16,6 +16,7 @@ import expert.titfortat.TitForTatExpert;
 
 public class Engine
 {
+	private static boolean PLOT_GRAPHS = false;
 
 	public static void main(String[] args)
 	{
@@ -38,7 +39,8 @@ public class Engine
 		IExpert[] experts = { new TitForTatExpert(0),
 				new EEEDecProb(0, strats), new EEEFixedProb(0, strats, 0.3),
 				new RandomExpert(0), new DefectExpert(0), new PavlovExpert(0),
-				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0) };
+				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
+				new GAExpert(0, false) };
 
 		IExpert[] experts1 = { new TitForTatExpert(0), new PavlovExpert(0) };
 
@@ -47,12 +49,15 @@ public class Engine
 		engine.run();
 		System.out.println();
 		engine.showTally();
-		engine.plotResults();
-		engine.plotPerformance();
-		
-		
-		GAExpert ge = new GAExpert(0);
-		
+
+		if (PLOT_GRAPHS)
+		{
+			engine.plotResults();
+			engine.plotPerformance();
+		}
+
+		// GAExpert ge = new GAExpert(0);
+
 		// Game g = new Game(new DefectExpert(1), new RandomExpert(2), 200,
 		// scoringSystem);
 		// double[] x = g.run();

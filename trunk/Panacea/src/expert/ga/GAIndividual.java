@@ -8,6 +8,7 @@ import environment.GameHistory;
 
 public class GAIndividual extends Individual
 {
+	
 	private final int CODEBIT_LENGTH = 70;
 	private GAExpert expert;
 
@@ -16,7 +17,7 @@ public class GAIndividual extends Individual
 	public GAIndividual(NSGA2 nsga2, int playerNo)
 	{
 		super(nsga2);
-		expert = new GAExpert(playerNo);
+		expert = new GAExpert(playerNo, true);
 		sigma_share = CODEBIT_LENGTH / 2;
 	}
 
