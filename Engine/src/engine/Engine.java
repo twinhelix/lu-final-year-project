@@ -48,6 +48,7 @@ public class Engine
 		System.out.println();
 		engine.showTally();
 		engine.plotResults();
+		engine.plotPerformance();
 		
 		
 		GAExpert ge = new GAExpert(0);
