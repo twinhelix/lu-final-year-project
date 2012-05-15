@@ -6,6 +6,7 @@ import static utils.Encoding.S;
 import static utils.Encoding.T;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import utils.Encoding;
 import environment.GameHistory;
@@ -13,6 +14,7 @@ import expert.AbstractExpert;
 
 public class GAExpert extends AbstractExpert
 {
+	private static boolean PRINT_RESULTS = true;
 	/*
 	 * Code the particular behavioral sequence as a 3-letter string. � e.g RRR
 	 * represents the sequence where both parties cooperated over the first
@@ -33,14 +35,21 @@ public class GAExpert extends AbstractExpert
 	 * mutated at a time.
 	 */
 
-	private GameHistory history = null;
 	private int code_length = 64, premises_length = 6;
 	private String codebit, premises;
+	private GameHistory history;
 
-	public GAExpert(int playerNo)
+	public GAExpert(int playerNo, boolean learning)
 	{
 		super(playerNo);
-		generateRandomStrategy();
+		if (learning)
+			generateRandomStrategy();
+		else
+		{
+			// codebit =
+			// "0000001110010000001000010110010000101110010101010011000010000011101100";
+			codebit = "0011000010000000001000010110010001101110010101000011000010000011101110";
+		}
 	}
 
 	public String getCodebit()
@@ -69,14 +78,10 @@ public class GAExpert extends AbstractExpert
 	 * 
 	 * @return
 	 */
-	private void assignPremises()
-	{
-		premises = generateRandomBitString(premises_length);
-	}
 
 	private void generateRandomStrategy()
 	{
-		assignPremises();
+		premises = generateRandomBitString(premises_length);
 		codebit = generateRandomBitString(code_length) + premises;
 	}
 
@@ -117,22 +122,19 @@ public class GAExpert extends AbstractExpert
 		if (move[playerNo - 1] && move[playerNo % 2])
 		{
 			return R;
-		} else if (move[playerNo - 1] && !move[playerNo % 2])
+		}
+		else if (move[playerNo - 1] && !move[playerNo % 2])
 		{
 			return S;
-		} else if (!move[playerNo - 1] && move[playerNo % 2])
+		}
+		else if (!move[playerNo - 1] && move[playerNo % 2])
 		{
 			return T;
-		} else
+		}
+		else
 		{
 			return P;
 		}
-	}
-
-	private String encode(Encoding[] strat)
-	{
-		int seq = encodeToInt(strat);
-		return pad(Integer.toBinaryString(seq), 64);
 	}
 
 	private int encodeToInt(Encoding[] strat)
@@ -146,34 +148,52 @@ public class GAExpert extends AbstractExpert
 		return seq;
 	}
 
+	private boolean lookupMove(int bit)
+	{
+		if (codebit.charAt(bit) == '0')
+			return false;
+		return true;
+	}
+
 	@Override
 	public boolean move(GameHistory history)
 	{
 		this.history = history;
 
-		if (history.getNumberOfMoves() > 3)
+		if (history.getNumberOfMoves() >= 3)
 		{
-			updateCodeString();
+			Collection<boolean[]> historyArray = history.getHistory();
 
+			// Get last 3 moves
+			boolean[][] last3Moves = new boolean[3][2];
+
+			for (int i = 0; i < 3; i++)
+				last3Moves[i] = ((ArrayList<boolean[]>) historyArray)
+						.get(historyArray.size() - 1 - i);
+
+			// Encode them in terms of R T P S
+			Encoding[] last3Encodings = new Encoding[3];
+			for (int i = 0; i < 3; i++)
+			{
+				last3Encodings[i] = getEncoding(last3Moves[i]);
+			}
+			if (PRINT_RESULTS)
+				System.out.println(last3Encodings[0].toString()
+						+ last3Encodings[1].toString()
+						+ last3Encodings[2].toString() + " "
+						+ encodeToInt(last3Encodings) + " "
+						+ lookupMove(encodeToInt(last3Encodings)));
+			
+			
+			return lookupMove(encodeToInt(last3Encodings));
 		}
 
-		// First 3 moves just randomize
-		if (Math.random() >= 0.5)
-			return true;
+		// First 3 moves just randomize using given premises
 		else
-			return false;
-	}
-
-	private void updateCodeString()
-	{
-		ArrayList<boolean[]> hist = (ArrayList<boolean[]>) history.getHistory();
-		Encoding[] strat = new Encoding[3];
-
-		for (int i = 1; i <= 3; i++)
 		{
-			strat[i - 1] = getEncoding((hist.get(hist.size() - i)));
+			int selection = 64 + ((int) (Math.random() * 2)) + 2
+					* history.getNumberOfMoves();
+			return lookupMove(selection);
 		}
-
-		codebit = encode(strat) + premises;
 	}
 }

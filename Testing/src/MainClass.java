@@ -1,22 +1,33 @@
 public class MainClass
 {
 
-	private enum P{
+	private enum P
+	{
 		A, B, C;
 	}
+
 	public static void main(String[] args)
 	{
+		int moves = 2;
+
+		int selection = ((int) (Math.random() * 2)) + 64 + 2 * moves;
+
+		System.out.println(selection);
+
+		String current_code = Integer.toBinaryString(64);
+		System.out.println(current_code + " " + current_code.length());
+
 		Iface f = new Face2();
 		f.setName("hey");
 		Iface ff = (Iface) f.clone();
 		f.setName("g-unit");
-		//ff.setName("man");
+		// ff.setName("man");
 		// System.out.println(f.getName() + ff.getName());
-
-		String x = generateRandomBitString(3);
-		System.out.println(x + " " + x.length());
+		//
+		// String x = generateRandomBitString(3);
+		// System.out.println(x + " " + x.length());
 		// System.out.println(replace(x, 5));
-		System.out.println(P.B.ordinal());
+		// System.out.println(P.B.ordinal());
 	}
 
 	public static String replace(String str, int index)

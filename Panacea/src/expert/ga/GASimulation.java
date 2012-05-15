@@ -26,13 +26,14 @@ public class GASimulation
 	public void initialize()
 	{
 		fitnessFunctions = new FitnessFunction[1];
-		fitnessFunctions[0] = new GAFitness();
+		fitnessFunctions[0] = new GAFitnessOwnScore();
 
 		nsgaConfig = new NSGA2Configuration(fitnessFunctions,
 				mutationProbability, crossoverProbability, populationSize,
 				numberOfGenerations);
 
 		nsga = new NSGA2(nsgaConfig);
+		
 	}
 
 	
