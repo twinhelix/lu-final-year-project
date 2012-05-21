@@ -14,7 +14,7 @@ import expert.SoftGrudgerExpert;
 import expert.titfortat.NaivePeaceMakerExpert;
 import expert.titfortat.NaiveProberExpert;
 import expert.titfortat.RemorsefulProberExpert;
-import expert.titfortat.SuspiciousTitForTat;
+import expert.titfortat.SuspiciousTitForTatExpert;
 import expert.titfortat.TitForTatExpert;
 import expert.titfortat.TitForTwoTatExpert;
 import expert.titfortat.TruePeaceMakerExpert;
@@ -49,7 +49,7 @@ public class ExpertsDictionary
 		IExpert naivepeace = new NaivePeaceMakerExpert(playerNo, prob);
 		IExpert naiveprob = new NaiveProberExpert(playerNo, prob);
 		IExpert remprob = new RemorsefulProberExpert(playerNo, prob);
-		IExpert susptitfortat = new SuspiciousTitForTat(playerNo);
+		IExpert susptitfortat = new SuspiciousTitForTatExpert(playerNo);
 		IExpert truepeace = new TruePeaceMakerExpert(playerNo, prob);
 		IExpert softgrudger = new SoftGrudgerExpert(playerNo);
 

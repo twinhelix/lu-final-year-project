@@ -14,7 +14,7 @@ import expert.AbstractExpert;
 
 public class GAExpert extends AbstractExpert
 {
-	private static boolean PRINT_RESULTS = true;
+	private static boolean PRINT_RESULTS = false;
 	/*
 	 * Code the particular behavioral sequence as a 3-letter string. � e.g RRR
 	 * represents the sequence where both parties cooperated over the first
@@ -46,9 +46,16 @@ public class GAExpert extends AbstractExpert
 			generateRandomStrategy();
 		else
 		{
+			codebit = "0000001110010000001000010110010000101110010101010011000010000011101100";
 			// codebit =
-			// "0000001110010000001000010110010000101110010101010011000010000011101100";
-			codebit = "0011000010000000001000010110010001101110010101000011000010000011101110";
+			// "0011000010000000001000010110010001101110010101000011000010000011101110";
+			// codebit =
+			// "0010000110100000001000010111010001101110010001000011000010000011101101";
+			// codebit =
+			// "0010000110100000001000010111010000101110010101000010000000000011101110";
+			// codebit =
+			// "0010000010010001001000010110010000101110000001010010000010100011111101";
+
 		}
 	}
 
@@ -183,8 +190,7 @@ public class GAExpert extends AbstractExpert
 						+ last3Encodings[2].toString() + " "
 						+ encodeToInt(last3Encodings) + " "
 						+ lookupMove(encodeToInt(last3Encodings)));
-			
-			
+
 			return lookupMove(encodeToInt(last3Encodings));
 		}
 

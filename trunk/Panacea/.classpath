@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="src" path="/Environment"/>
 	<classpathentry kind="lib" path="jnsga2-1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/HassassiN/Work/Final Project/Panacea/jdom-2.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
