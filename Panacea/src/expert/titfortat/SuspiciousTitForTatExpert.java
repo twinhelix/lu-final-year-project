@@ -2,7 +2,7 @@ package expert.titfortat;
 
 import environment.GameHistory;
 
-public class SuspiciousTitForTat extends TitForTatExpert
+public class SuspiciousTitForTatExpert extends TitForTatExpert
 {
 
 	/***
@@ -10,7 +10,7 @@ public class SuspiciousTitForTat extends TitForTatExpert
 	 * 
 	 * @param playerNo
 	 */
-	public SuspiciousTitForTat(int playerNo)
+	public SuspiciousTitForTatExpert(int playerNo)
 	{
 		super(playerNo);
 	}
