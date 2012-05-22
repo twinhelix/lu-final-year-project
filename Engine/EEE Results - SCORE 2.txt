@@ -1,0 +1,602 @@
+Results: 
+Results: 
+---------- BEST SCORES ROUND 1 ----------
+EEE - Decreasing Prob: 97.38333333333333
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, Always Defect Expert, Adaptive Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 92.01666666666667
+[Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert]
+---------- BEST SCORES ROUND 2 ----------
+EEE - Decreasing Prob: 93.96666666666667
+[Pavlov Expert, Grudger Expert, Always Cooperate Expert, Naive Prober Expert: 0.2%, Adaptive Expert]
+
+EEE - Fixed Prob: 93.30000000000001
+[Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 3 ----------
+EEE - Decreasing Prob: 94.28333333333333
+[Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, Random Expert]
+
+EEE - Fixed Prob: 92.85
+[Soft Grudger, Pavlov Expert, Grudger Expert, True Peace Maker Expert]
+---------- BEST SCORES ROUND 4 ----------
+EEE - Decreasing Prob: 95.61666666666667
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Alternate Expert, Gradual Expert, Tit-for-2-Tat Expert, Naive Prober Expert: 0.2%, Adaptive Expert]
+
+EEE - Fixed Prob: 91.68333333333332
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Gradual Expert, Alternate Expert]
+---------- BEST SCORES ROUND 5 ----------
+EEE - Decreasing Prob: 93.55
+[Soft Grudger, Remorseful Prober Expert: 0.2%, Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert, Always Defect Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 92.56666666666666
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Alternate Expert]
+---------- BEST SCORES ROUND 6 ----------
+EEE - Decreasing Prob: 94.15
+[Tit-for-Tat Expert, Soft Grudger, Always Cooperate Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 93.41666666666667
+[Pavlov Expert, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 7 ----------
+EEE - Decreasing Prob: 95.1
+[Tit-for-Tat Expert, Soft Grudger, Always Cooperate Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert, Tit-for-2-Tat Expert, Adaptive Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 92.30000000000001
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 8 ----------
+EEE - Decreasing Prob: 93.56666666666666
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 91.9
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 9 ----------
+EEE - Decreasing Prob: 94.26666666666667
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, True Peace Maker Expert, Gradual Expert, Tit-for-2-Tat Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 91.48333333333333
+[Tit-for-Tat Expert, Soft Grudger, Grudger Expert, True Peace Maker Expert, Gradual Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 10 ----------
+EEE - Decreasing Prob: 93.43333333333334
+[Soft Grudger, Pavlov Expert, Always Cooperate Expert, Grudger Expert, Gradual Expert, Tit-for-2-Tat Expert]
+
+EEE - Fixed Prob: 92.73333333333333
+[Tit-for-Tat Expert, Pavlov Expert, Alternate Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 11 ----------
+EEE - Decreasing Prob: 93.63333333333334
+[Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 92.73333333333333
+[Tit-for-Tat Expert, Pavlov Expert, Grudger Expert, Always Cooperate Expert, Alternate Expert]
+---------- BEST SCORES ROUND 12 ----------
+EEE - Decreasing Prob: 97.25
+[Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Tit-for-2-Tat Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 90.46666666666667
+[Soft Grudger, Pavlov Expert, Gradual Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 13 ----------
+EEE - Decreasing Prob: 93.18333333333332
+[Pavlov Expert, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Gradual Expert, Alternate Expert, Always Defect Expert, Naive Prober Expert: 0.2%, Suspicious Tit-for-Tat Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.60000000000001
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert]
+---------- BEST SCORES ROUND 14 ----------
+EEE - Decreasing Prob: 93.11666666666667
+[Grudger Expert, Tit-for-2-Tat Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 91.81666666666666
+[Pavlov Expert, Always Cooperate Expert, True Peace Maker Expert, Gradual Expert]
+---------- BEST SCORES ROUND 15 ----------
+EEE - Decreasing Prob: 93.26666666666667
+[Tit-for-Tat Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 92.4
+[Pavlov Expert, Grudger Expert, Gradual Expert, Alternate Expert]
+---------- BEST SCORES ROUND 16 ----------
+EEE - Decreasing Prob: 93.76666666666667
+[Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Gradual Expert, Alternate Expert, Always Defect Expert]
+
+EEE - Fixed Prob: 91.78333333333333
+[Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert, Tit-for-2-Tat Expert, Adaptive Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 17 ----------
+EEE - Decreasing Prob: 93.13333333333334
+[Tit-for-Tat Expert, Pavlov Expert, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert]
+
+EEE - Fixed Prob: 92.36666666666666
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 18 ----------
+EEE - Decreasing Prob: 93.31666666666666
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Grudger Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert]
+
+EEE - Fixed Prob: 92.03333333333333
+[Pavlov Expert, True Peace Maker Expert, Gradual Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 19 ----------
+EEE - Decreasing Prob: 93.15
+[Tit-for-Tat Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Gradual Expert, Naive Prober Expert: 0.2%]
+
+EEE - Fixed Prob: 92.15
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 20 ----------
+EEE - Decreasing Prob: 94.05
+[Remorseful Prober Expert: 0.2%, Tit-for-Tat Expert, Pavlov Expert, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Gradual Expert, Random Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.65
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, True Peace Maker Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 21 ----------
+EEE - Decreasing Prob: 93.46666666666667
+[Pavlov Expert, Grudger Expert, Always Cooperate Expert, Tit-for-2-Tat Expert, Alternate Expert]
+
+EEE - Fixed Prob: 92.78333333333333
+[Pavlov Expert, Grudger Expert, Alternate Expert, Gradual Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 22 ----------
+EEE - Decreasing Prob: 95.43333333333334
+[Pavlov Expert, Always Cooperate Expert, Gradual Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.38333333333333
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 23 ----------
+EEE - Decreasing Prob: 94.66666666666667
+[Soft Grudger, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Alternate Expert, Gradual Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 84.65
+[Remorseful Prober Expert: 0.2%, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert, Random Expert, Adaptive Expert]
+---------- BEST SCORES ROUND 24 ----------
+EEE - Decreasing Prob: 93.26666666666667
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Grudger Expert, Alternate Expert]
+
+EEE - Fixed Prob: 91.96666666666667
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 25 ----------
+EEE - Decreasing Prob: 94.55
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Alternate Expert, Always Defect Expert]
+
+EEE - Fixed Prob: 92.88333333333333
+[Pavlov Expert, Grudger Expert, Always Cooperate Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 26 ----------
+EEE - Decreasing Prob: 93.16666666666666
+[Pavlov Expert, Grudger Expert, Alternate Expert, Tit-for-2-Tat Expert]
+
+EEE - Fixed Prob: 91.08333333333334
+[Soft Grudger, Pavlov Expert, Always Cooperate Expert, Grudger Expert, Tit-for-2-Tat Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 27 ----------
+EEE - Decreasing Prob: 94.46666666666667
+[Soft Grudger, Remorseful Prober Expert: 0.2%, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Always Defect Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 90.33333333333333
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Gradual Expert]
+---------- BEST SCORES ROUND 28 ----------
+EEE - Decreasing Prob: 93.51666666666667
+[Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert]
+
+EEE - Fixed Prob: 90.0
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Gradual Expert]
+---------- BEST SCORES ROUND 29 ----------
+EEE - Decreasing Prob: 93.10000000000001
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Adaptive Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 92.93333333333334
+[Tit-for-Tat Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 30 ----------
+EEE - Decreasing Prob: 93.35
+[Pavlov Expert, Grudger Expert, Alternate Expert, Tit-for-2-Tat Expert]
+
+EEE - Fixed Prob: 92.45
+[Tit-for-Tat Expert, Pavlov Expert, True Peace Maker Expert]
+---------- BEST SCORES ROUND 31 ----------
+EEE - Decreasing Prob: 93.76666666666667
+[Soft Grudger, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Gradual Expert, Always Defect Expert, Suspicious Tit-for-Tat Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.33333333333333
+[Tit-for-Tat Expert, Soft Grudger, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert, Suspicious Tit-for-Tat Expert, Adaptive Expert]
+---------- BEST SCORES ROUND 32 ----------
+EEE - Decreasing Prob: 93.89999999999999
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Grudger Expert, Tit-for-2-Tat Expert, Naive Prober Expert: 0.2%]
+
+EEE - Fixed Prob: 92.0
+[Tit-for-Tat Expert, Soft Grudger, Grudger Expert, Always Cooperate Expert, Alternate Expert, Gradual Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 33 ----------
+EEE - Decreasing Prob: 93.28333333333333
+[Tit-for-Tat Expert, Grudger Expert, Gradual Expert, Alternate Expert]
+
+EEE - Fixed Prob: 92.45
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert]
+---------- BEST SCORES ROUND 34 ----------
+EEE - Decreasing Prob: 93.41666666666667
+[Tit-for-Tat Expert, Remorseful Prober Expert: 0.2%, Soft Grudger, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Alternate Expert]
+
+EEE - Fixed Prob: 90.23333333333333
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 35 ----------
+EEE - Decreasing Prob: 94.08333333333333
+[Always Cooperate Expert, True Peace Maker Expert, Alternate Expert, Tit-for-2-Tat Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 93.11666666666667
+[Pavlov Expert, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 36 ----------
+EEE - Decreasing Prob: 93.23333333333333
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 92.08333333333333
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Gradual Expert, Alternate Expert]
+---------- BEST SCORES ROUND 37 ----------
+EEE - Decreasing Prob: 94.21666666666667
+[Remorseful Prober Expert: 0.2%, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Alternate Expert, Random Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 92.46666666666667
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, True Peace Maker Expert, Alternate Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 38 ----------
+EEE - Decreasing Prob: 94.06666666666666
+[Tit-for-Tat Expert, Remorseful Prober Expert: 0.2%, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Gradual Expert, Suspicious Tit-for-Tat Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.75
+[Tit-for-Tat Expert, Grudger Expert, Alternate Expert]
+---------- BEST SCORES ROUND 39 ----------
+EEE - Decreasing Prob: 93.65
+[Pavlov Expert, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Naive Prober Expert: 0.2%, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 92.45
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Grudger Expert, True Peace Maker Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 40 ----------
+EEE - Decreasing Prob: 94.5
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.95
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Gradual Expert, Tit-for-2-Tat Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 41 ----------
+EEE - Decreasing Prob: 93.71666666666667
+[Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Naive Prober Expert: 0.2%, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 91.66666666666666
+[Pavlov Expert, Always Cooperate Expert]
+---------- BEST SCORES ROUND 42 ----------
+EEE - Decreasing Prob: 93.53333333333333
+[Pavlov Expert, Grudger Expert, True Peace Maker Expert, Random Expert, Always Defect Expert, Naive Prober Expert: 0.2%, Tit-for-Tat Expert, Remorseful Prober Expert: 0.2%, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert]
+
+EEE - Fixed Prob: 91.31666666666666
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Adaptive Expert]
+---------- BEST SCORES ROUND 43 ----------
+EEE - Decreasing Prob: 93.63333333333334
+[Pavlov Expert, Always Cooperate Expert, Gradual Expert, Tit-for-2-Tat Expert]
+
+EEE - Fixed Prob: 92.96666666666667
+[Soft Grudger, Grudger Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 44 ----------
+EEE - Decreasing Prob: 93.03333333333333
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Gradual Expert, Tit-for-2-Tat Expert, Naive Prober Expert: 0.2%, Adaptive Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 87.68333333333334
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Tit-for-2-Tat Expert, Gradual Expert]
+---------- BEST SCORES ROUND 45 ----------
+EEE - Decreasing Prob: 94.33333333333334
+[Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, Gradual Expert, Random Expert]
+
+EEE - Fixed Prob: 91.91666666666667
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 46 ----------
+EEE - Decreasing Prob: 93.45
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Grudger Expert, Gradual Expert, Tit-for-2-Tat Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 93.03333333333333
+[Tit-for-Tat Expert, Always Cooperate Expert, Grudger Expert, Gradual Expert]
+---------- BEST SCORES ROUND 47 ----------
+EEE - Decreasing Prob: 93.0
+[Tit-for-Tat Expert, Pavlov Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 91.88333333333333
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Gradual Expert]
+---------- BEST SCORES ROUND 48 ----------
+EEE - Decreasing Prob: 93.60000000000001
+[Soft Grudger, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Tit-for-2-Tat Expert, Gradual Expert, Naive Prober Expert: 0.2%, Suspicious Tit-for-Tat Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.41666666666667
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Gradual Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 49 ----------
+EEE - Decreasing Prob: 93.28333333333333
+[Naive Peace Maker Expert: 0.2%, Grudger Expert, Gradual Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 91.26666666666667
+[Pavlov Expert, Always Cooperate Expert]
+---------- BEST SCORES ROUND 50 ----------
+EEE - Decreasing Prob: 96.48333333333333
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Alternate Expert, Naive Prober Expert: 0.2%, Always Defect Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.95
+[Tit-for-Tat Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Gradual Expert]
+---------- BEST SCORES ROUND 51 ----------
+EEE - Decreasing Prob: 93.31666666666666
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Tit-for-2-Tat Expert]
+
+EEE - Fixed Prob: 92.61666666666667
+[Tit-for-Tat Expert, Pavlov Expert, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert]
+---------- BEST SCORES ROUND 52 ----------
+EEE - Decreasing Prob: 93.13333333333334
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert]
+
+EEE - Fixed Prob: 91.68333333333332
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Gradual Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 53 ----------
+EEE - Decreasing Prob: 93.21666666666667
+[Tit-for-Tat Expert, Pavlov Expert]
+
+EEE - Fixed Prob: 93.21666666666667
+[Tit-for-Tat Expert, Pavlov Expert]
+---------- BEST SCORES ROUND 54 ----------
+EEE - Decreasing Prob: 93.41666666666667
+[Grudger Expert, Alternate Expert]
+
+EEE - Fixed Prob: 92.58333333333333
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 55 ----------
+EEE - Decreasing Prob: 95.85000000000001
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Gradual Expert, Naive Prober Expert: 0.2%, Always Defect Expert]
+
+EEE - Fixed Prob: 93.33333333333333
+[Tit-for-Tat Expert, Pavlov Expert, Grudger Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 56 ----------
+EEE - Decreasing Prob: 93.26666666666667
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, Tit-for-2-Tat Expert, Alternate Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.18333333333332
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 57 ----------
+EEE - Decreasing Prob: 93.48333333333333
+[Tit-for-Tat Expert, Pavlov Expert, Grudger Expert]
+
+EEE - Fixed Prob: 91.86666666666666
+[Tit-for-Tat Expert, Pavlov Expert, Alternate Expert, Gradual Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 58 ----------
+EEE - Decreasing Prob: 93.53333333333333
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Tit-for-2-Tat Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 93.30000000000001
+[Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert]
+---------- BEST SCORES ROUND 59 ----------
+EEE - Decreasing Prob: 93.45
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, Alternate Expert, Tit-for-2-Tat Expert, Suspicious Tit-for-Tat Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.41666666666667
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 60 ----------
+EEE - Decreasing Prob: 93.55
+[Remorseful Prober Expert: 0.2%, Tit-for-Tat Expert, Pavlov Expert, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert, Random Expert]
+
+EEE - Fixed Prob: 92.60000000000001
+[Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, True Peace Maker Expert, Alternate Expert]
+---------- BEST SCORES ROUND 61 ----------
+EEE - Decreasing Prob: 94.01666666666667
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 92.60000000000001
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 62 ----------
+EEE - Decreasing Prob: 98.51666666666667
+[Pavlov Expert, Always Cooperate Expert, Alternate Expert, Gradual Expert, Tit-for-2-Tat Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.98333333333333
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Alternate Expert, Gradual Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 63 ----------
+EEE - Decreasing Prob: 93.26666666666667
+[Pavlov Expert, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Gradual Expert]
+
+EEE - Fixed Prob: 86.65
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert, Random Expert, Naive Prober Expert: 0.2%, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 64 ----------
+EEE - Decreasing Prob: 95.91666666666666
+[Soft Grudger, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Gradual Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 91.96666666666667
+[Pavlov Expert, Always Cooperate Expert]
+---------- BEST SCORES ROUND 65 ----------
+EEE - Decreasing Prob: 93.2
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Gradual Expert, Tit-for-2-Tat Expert]
+
+EEE - Fixed Prob: 92.15
+[Tit-for-Tat Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert]
+---------- BEST SCORES ROUND 66 ----------
+EEE - Decreasing Prob: 93.41666666666667
+[Soft Grudger, Naive Peace Maker Expert: 0.2%, Grudger Expert, Tit-for-2-Tat Expert]
+
+EEE - Fixed Prob: 88.93333333333334
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert, Adaptive Expert]
+---------- BEST SCORES ROUND 67 ----------
+EEE - Decreasing Prob: 94.95
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, True Peace Maker Expert, Always Defect Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 91.5
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 68 ----------
+EEE - Decreasing Prob: 93.18333333333332
+[Soft Grudger, Remorseful Prober Expert: 0.2%, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, Tit-for-2-Tat Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 91.61666666666667
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Gradual Expert]
+---------- BEST SCORES ROUND 69 ----------
+EEE - Decreasing Prob: 93.45
+[Soft Grudger, Pavlov Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert]
+
+EEE - Fixed Prob: 92.4
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, Alternate Expert]
+---------- BEST SCORES ROUND 70 ----------
+EEE - Decreasing Prob: 93.31666666666666
+[Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, True Peace Maker Expert, Gradual Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.73333333333333
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, True Peace Maker Expert, Gradual Expert, Alternate Expert]
+---------- BEST SCORES ROUND 71 ----------
+EEE - Decreasing Prob: 94.48333333333333
+[Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, True Peace Maker Expert, Alternate Expert, Suspicious Tit-for-Tat Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.11666666666667
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, Gradual Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 72 ----------
+EEE - Decreasing Prob: 93.28333333333333
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert]
+
+EEE - Fixed Prob: 92.13333333333334
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Alternate Expert]
+---------- BEST SCORES ROUND 73 ----------
+EEE - Decreasing Prob: 93.30000000000001
+[Soft Grudger, Pavlov Expert, Always Cooperate Expert, Gradual Expert]
+
+EEE - Fixed Prob: 92.58333333333333
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, Gradual Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 74 ----------
+EEE - Decreasing Prob: 94.31666666666668
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Gradual Expert, Random Expert]
+
+EEE - Fixed Prob: 92.36666666666666
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 75 ----------
+EEE - Decreasing Prob: 93.63333333333334
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 93.63333333333334
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 76 ----------
+EEE - Decreasing Prob: 93.60000000000001
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 93.35
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Grudger Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 77 ----------
+EEE - Decreasing Prob: 93.43333333333334
+[Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, Tit-for-2-Tat Expert, Gradual Expert]
+
+EEE - Fixed Prob: 92.36666666666666
+[Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert]
+---------- BEST SCORES ROUND 78 ----------
+EEE - Decreasing Prob: 93.15
+[Tit-for-Tat Expert, Grudger Expert, True Peace Maker Expert, Gradual Expert]
+
+EEE - Fixed Prob: 92.61666666666667
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, Gradual Expert]
+---------- BEST SCORES ROUND 79 ----------
+EEE - Decreasing Prob: 93.33333333333333
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Alternate Expert, Tit-for-2-Tat Expert]
+
+EEE - Fixed Prob: 91.71666666666667
+[Soft Grudger, Pavlov Expert, Gradual Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 80 ----------
+EEE - Decreasing Prob: 93.43333333333334
+[Pavlov Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Naive Prober Expert: 0.2%]
+
+EEE - Fixed Prob: 91.56666666666666
+[Soft Grudger, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert]
+---------- BEST SCORES ROUND 81 ----------
+EEE - Decreasing Prob: 93.36666666666666
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, True Peace Maker Expert, Gradual Expert, Tit-for-2-Tat Expert]
+
+EEE - Fixed Prob: 92.45
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, Gradual Expert]
+---------- BEST SCORES ROUND 82 ----------
+EEE - Decreasing Prob: 96.58333333333333
+[Tit-for-Tat Expert, Always Cooperate Expert, Grudger Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert, Always Defect Expert, Naive Prober Expert: 0.2%, Adaptive Expert]
+
+EEE - Fixed Prob: 92.4
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Alternate Expert]
+---------- BEST SCORES ROUND 83 ----------
+EEE - Decreasing Prob: 93.35
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 89.45
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Tit-for-2-Tat Expert, Gradual Expert]
+---------- BEST SCORES ROUND 84 ----------
+EEE - Decreasing Prob: 93.11666666666667
+[Tit-for-Tat Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Gradual Expert, Alternate Expert, Random Expert, Always Defect Expert]
+
+EEE - Fixed Prob: 91.71666666666667
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Gradual Expert, Alternate Expert]
+---------- BEST SCORES ROUND 85 ----------
+EEE - Decreasing Prob: 93.73333333333333
+[Pavlov Expert, Grudger Expert, Always Cooperate Expert, Tit-for-2-Tat Expert, Gradual Expert]
+
+EEE - Fixed Prob: 92.08333333333333
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 86 ----------
+EEE - Decreasing Prob: 93.36666666666666
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Grudger Expert, Tit-for-2-Tat Expert, Naive Prober Expert: 0.2%]
+
+EEE - Fixed Prob: 91.7
+[Soft Grudger, Pavlov Expert, Always Cooperate Expert, Alternate Expert, Gradual Expert]
+---------- BEST SCORES ROUND 87 ----------
+EEE - Decreasing Prob: 93.68333333333332
+[Soft Grudger, Pavlov Expert, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Gradual Expert]
+
+EEE - Fixed Prob: 92.25
+[Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Alternate Expert]
+---------- BEST SCORES ROUND 88 ----------
+EEE - Decreasing Prob: 93.4
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert]
+
+EEE - Fixed Prob: 91.35
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Gradual Expert, Alternate Expert]
+---------- BEST SCORES ROUND 89 ----------
+EEE - Decreasing Prob: 93.55
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Alternate Expert]
+
+EEE - Fixed Prob: 92.18333333333332
+[Soft Grudger, Pavlov Expert, Grudger Expert, True Peace Maker Expert, Alternate Expert]
+---------- BEST SCORES ROUND 90 ----------
+EEE - Decreasing Prob: 93.30000000000001
+[Tit-for-Tat Expert, Remorseful Prober Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Gradual Expert, Random Expert, Adaptive Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 92.41666666666667
+[Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 91 ----------
+EEE - Decreasing Prob: 93.13333333333334
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Alternate Expert, Naive Prober Expert: 0.2%]
+
+EEE - Fixed Prob: 91.91666666666667
+[Soft Grudger, Grudger Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert]
+---------- BEST SCORES ROUND 92 ----------
+EEE - Decreasing Prob: 97.81666666666666
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert, Random Expert, Always Defect Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 89.9
+[Soft Grudger, Always Cooperate Expert, True Peace Maker Expert, Gradual Expert, Tit-for-2-Tat Expert, Random Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 93 ----------
+EEE - Decreasing Prob: 93.86666666666666
+[Soft Grudger, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, True Peace Maker Expert, Gradual Expert, Alternate Expert, Always Defect Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.9
+[Pavlov Expert, Grudger Expert, Always Cooperate Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 94 ----------
+EEE - Decreasing Prob: 94.86666666666666
+[Remorseful Prober Expert: 0.2%, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, True Peace Maker Expert, Gradual Expert, Naive Prober Expert: 0.2%, Adaptive Expert]
+
+EEE - Fixed Prob: 74.91666666666667
+[Tit-for-Tat Expert, Pavlov Expert, Always Cooperate Expert, True Peace Maker Expert, Tit-for-2-Tat Expert, Alternate Expert, Random Expert, Naive Prober Expert: 0.2%, Adaptive Expert]
+---------- BEST SCORES ROUND 95 ----------
+EEE - Decreasing Prob: 94.06666666666666
+[Tit-for-Tat Expert, Remorseful Prober Expert: 0.2%, Pavlov Expert, Grudger Expert, Always Cooperate Expert, True Peace Maker Expert, Alternate Expert, Tit-for-2-Tat Expert, Always Defect Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 91.55
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, Always Cooperate Expert, Tit-for-2-Tat Expert, Gradual Expert, Alternate Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 96 ----------
+EEE - Decreasing Prob: 93.76666666666667
+[Soft Grudger, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert, Alternate Expert, Gradual Expert]
+
+EEE - Fixed Prob: 93.25
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Grudger Expert, True Peace Maker Expert]
+---------- BEST SCORES ROUND 97 ----------
+EEE - Decreasing Prob: 95.55
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Alternate Expert, Gradual Expert, Random Expert, Always Defect Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.88333333333333
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Suspicious Tit-for-Tat Expert]
+---------- BEST SCORES ROUND 98 ----------
+EEE - Decreasing Prob: 95.53333333333333
+[Always Cooperate Expert, Grudger Expert, True Peace Maker Expert, Random Expert, Suspicious Tit-for-Tat Expert, Adaptive Expert]
+
+EEE - Fixed Prob: 92.26666666666667
+[Soft Grudger, Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Grudger Expert, Gradual Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 99 ----------
+EEE - Decreasing Prob: 93.48333333333333
+[Tit-for-Tat Expert, Pavlov Expert, Naive Peace Maker Expert: 0.2%, True Peace Maker Expert, Alternate Expert, Naive Prober Expert: 0.2%, Always Defect Expert, Adaptive Expert, Suspicious Tit-for-Tat Expert]
+
+EEE - Fixed Prob: 92.4
+[Pavlov Expert, True Peace Maker Expert, Alternate Expert, Tit-for-2-Tat Expert]
+---------- BEST SCORES ROUND 100 ----------
+EEE - Decreasing Prob: 93.53333333333333
+[Grudger Expert, Tit-for-2-Tat Expert, Gradual Expert]
+
+EEE - Fixed Prob: 92.76666666666667
+[Pavlov Expert, Naive Peace Maker Expert: 0.2%, Always Cooperate Expert, Alternate Expert, Gradual Expert]

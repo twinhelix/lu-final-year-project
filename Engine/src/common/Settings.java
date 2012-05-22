@@ -10,7 +10,7 @@ public class Settings
 	private static double[] dd = { 1, 1 };
 	public static final ScoringSystem SCORING_SYSTEM = new ScoringSystem(cc,
 			cd, dc, dd);
-	public static final int NO_OF_ROUNDS = 2000;
+	public static final int NO_OF_ROUNDS = 200;
 
 	/***
 	 * MEASURING PERFORMANCE OF PLAYERS Suppose there are 15 players, each

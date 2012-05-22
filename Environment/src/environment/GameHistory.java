@@ -1,11 +1,10 @@
 package environment;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class GameHistory
 {
-	private Collection<boolean[]> history;
+	private ArrayList<boolean[]> history;
 	private ScoringSystem scoringSystem;
 	private double[] result;
 
@@ -68,7 +67,7 @@ public class GameHistory
 	 * 
 	 * @return
 	 */
-	public Collection<boolean[]> getHistory()
+	public ArrayList<boolean[]> getHistory()
 	{
 		return history;
 	}

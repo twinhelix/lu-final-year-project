@@ -1,6 +1,5 @@
 package expert.titfortat;
 
-import java.util.Collection;
 import java.util.Stack;
 
 import environment.GameHistory;
@@ -25,7 +24,6 @@ public class TitForTwoTatExpert extends AbstractExpert
 		return ("Tit-for-2-Tat Expert");
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public boolean move(GameHistory history)
 	{
@@ -37,10 +35,9 @@ public class TitForTwoTatExpert extends AbstractExpert
 		}
 
 		// If opponent defects twice in a row, retaliate
-		Collection<boolean[]> hist = (Collection<boolean[]>) ((Stack<boolean[]>) history
-				.getHistory()).clone();
-
-		Stack<boolean[]> moves = (Stack<boolean[]>) hist;
+		
+		Stack<boolean[]> moves = new Stack<boolean[]>();
+		moves.addAll(history.getHistory());
 
 		boolean[] lastMove = moves.pop();
 		boolean[] last2Move = moves.pop();

@@ -84,6 +84,13 @@ public class RoundRobinEngine
 		}
 	}
 
+	public double getScore(String key)
+	{
+		double benchmark = Settings.getBenchMark(totals.size());
+		return (totals.get(key).doubleValue()
+				/ ((experts.length + 1) * benchmark) * 100);
+	}
+
 	public void showTally()
 	{
 		sorted_map = new TreeMap<String, Double>(new ValueComparator(totals));
@@ -115,7 +122,7 @@ public class RoundRobinEngine
 	public void plotResults()
 	{
 		GraphingResults graph = new GraphingResults("Tournament Results");
-		graph.plot(sorted_map);
+		graph.plotDouble(sorted_map);
 	}
 
 	private void printTwoColumns(String first, String second)
