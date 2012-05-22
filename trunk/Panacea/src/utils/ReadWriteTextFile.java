@@ -74,7 +74,10 @@ public class ReadWriteTextFile
 		}
 		if (!aFile.exists())
 		{
-			throw new FileNotFoundException("File does not exist: " + aFile);
+			Writer output = new BufferedWriter(new FileWriter(aFile, true));
+			output.write("");
+			output.close();
+			// throw new FileNotFoundException("File does not exist: " + aFile);
 		}
 		if (!aFile.isFile())
 		{
@@ -88,12 +91,13 @@ public class ReadWriteTextFile
 		}
 
 		// use buffering
-		Writer output = new BufferedWriter(new FileWriter(aFile));
+		Writer output = new BufferedWriter(new FileWriter(aFile, true));
 		try
 		{
 			// FileWriter always assumes default encoding is OK!
-			output.write(aContents);
-		}
+			output.append(aContents);
+			output.append(System.getProperty("line.separator"));
+		} 
 		finally
 		{
 			output.close();

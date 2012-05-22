@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class MainClass
 {
 
@@ -8,26 +13,29 @@ public class MainClass
 
 	public static void main(String[] args)
 	{
-		int moves = 2;
+		List<String> strats = new ArrayList<String>();
+		strats.add("hi");
+		strats.add("hello");
+		strats.add("hello");
+		strats.add("bye");
+		strats.add("hi");
 
-		int selection = ((int) (Math.random() * 2)) + 64 + 2 * moves;
+		Map<String, Integer> histo = new HashMap<String, Integer>();
 
-		System.out.println(selection);
+		for (String expert : strats)
+		{
+			if (!histo.containsKey(expert))
+			{
+				histo.put(expert, new Integer(0));
+				System.out.println(expert + " " + histo.get(expert));
+			}
+			histo.put(expert, new Integer(histo.get(expert).intValue() + 1));
+			System.out.println(expert + " " + histo.get(expert));
 
-		String current_code = Integer.toBinaryString(64);
-		System.out.println(current_code + " " + current_code.length());
+		}
 
-		Iface f = new Face2();
-		f.setName("hey");
-		Iface ff = (Iface) f.clone();
-		f.setName("g-unit");
-		// ff.setName("man");
-		// System.out.println(f.getName() + ff.getName());
-		//
-		// String x = generateRandomBitString(3);
-		// System.out.println(x + " " + x.length());
-		// System.out.println(replace(x, 5));
-		// System.out.println(P.B.ordinal());
+		System.out.println(histo.get("hi").intValue());
+
 	}
 
 	public static String replace(String str, int index)
