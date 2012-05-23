@@ -54,7 +54,7 @@ public class ResultFrame extends ApplicationFrame
 		}
 
 		final ChartPanel chartPanel = new ChartPanel(chart);
-		chartPanel.setPreferredSize(new Dimension(500, 270));
+		chartPanel.setPreferredSize(new Dimension(800, 600));
 		setContentPane(chartPanel);
 
 		this.pack();
@@ -76,8 +76,8 @@ public class ResultFrame extends ApplicationFrame
 		chart.setBackgroundPaint(ChartColor.WHITE);
 		try
 		{
-			ChartUtilities.saveChartAsPNG(new File("chart.png"), chart, 400,
-					300);
+			ChartUtilities.saveChartAsPNG(new File("chart.png"), chart, 800,
+					600);
 		}
 		catch (IOException e)
 		{
