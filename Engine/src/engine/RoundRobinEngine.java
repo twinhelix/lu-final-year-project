@@ -49,12 +49,10 @@ public class RoundRobinEngine
 	 */
 	public void run()
 	{
-
 		for (int i = 0; i < experts.length; i++)
 		{
 			for (int j = i; j < experts.length; j++)
 			{
-
 				IExpert e1 = experts[i];
 				IExpert e2 = experts[j];
 
