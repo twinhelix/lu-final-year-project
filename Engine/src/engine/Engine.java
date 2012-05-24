@@ -6,6 +6,7 @@ import agent.IExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
 import expert.PavlovExpert;
+import expert.ProbableExpert;
 import expert.RandomExpert;
 import expert.SoftGrudgerExpert;
 import expert.eee.EEEDecProb;
@@ -16,7 +17,7 @@ import expert.titfortat.TitForTatExpert;
 
 public class Engine
 {
-	private static boolean PLOT_GRAPHS = true;
+	private static boolean PLOT_GRAPHS = false;
 
 	public static void main(String[] args)
 	{
@@ -43,12 +44,12 @@ public class Engine
 				"Naive Peace Maker Expert: 0.2%", "Always Cooperate Expert",
 				"True Peace Maker Expert", "Alternate Expert",
 				"Gradual Expert", "Naive Prober Expert: 0.2%" };
-		
+
 		IExpert[] experts = { new TitForTatExpert(0),
 				new EEEDecProb(0, strats1), new EEEFixedProb(0, strats, 0.3),
 				new RandomExpert(0), new DefectExpert(0), new PavlovExpert(0),
 				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
-				new GAExpert(0, false) };
+				new GAExpert(0, false), new ProbableExpert(0) };
 
 		IExpert[] experts1 = { new TitForTatExpert(0), new PavlovExpert(0) };
 
