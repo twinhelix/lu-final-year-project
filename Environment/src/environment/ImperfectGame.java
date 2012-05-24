@@ -16,6 +16,17 @@ public class ImperfectGame implements IGame
 	// private Logger logger = Logger.getLogger(this.getClass());
 
 	public ImperfectGame(IExpert expert1, IExpert expert2, int totalGames,
+			ScoringSystem scoringSystem)
+	{
+		this.expert1 = expert1;
+		this.expert2 = expert2;
+		this.scoringSystem = scoringSystem;
+		this.totalGames = totalGames;
+		results = new double[2];
+		history = new GameHistory(scoringSystem);
+	}
+	
+	public ImperfectGame(IExpert expert1, IExpert expert2, int totalGames,
 			ScoringSystem scoringSystem, double imperfect_prob)
 	{
 		this.expert1 = expert1;

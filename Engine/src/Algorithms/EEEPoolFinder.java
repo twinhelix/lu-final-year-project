@@ -39,7 +39,7 @@ import expert.titfortat.TitForTatExpert;
 import expert.titfortat.TitForTwoTatExpert;
 import expert.titfortat.TruePeaceMakerExpert;
 
-public class EEEFinder
+public class EEEPoolFinder
 {
 	private static class ExpertArrayDetails
 	{
@@ -74,7 +74,7 @@ public class EEEFinder
 		Set<Set<String>> expertSets = SetUtils.powerSet(experts);
 		for (int counter = 0; counter < rounds; counter++)
 		{
-			Map<String, ExpertArrayDetails> currentBests = new HashMap<String, EEEFinder.ExpertArrayDetails>();
+			Map<String, ExpertArrayDetails> currentBests = new HashMap<String, EEEPoolFinder.ExpertArrayDetails>();
 			currentBests.put(EEEdec, new ExpertArrayDetails());
 			currentBests.put(EEEfix, new ExpertArrayDetails());
 			bestScores.add(currentBests);

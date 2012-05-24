@@ -24,5 +24,4 @@ public class DefectExpert extends AbstractExpert
 	{
 		return false;
 	}
-
 }
