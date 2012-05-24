@@ -4,23 +4,25 @@ package environment;
 
 import agent.IExpert;
 
-public class Game implements IGame
+public class ImperfectGame implements IGame
 {
 	private IExpert expert1, expert2;
 	private double[] results;
 	private int totalGames;
 	private ScoringSystem scoringSystem;
 	private GameHistory history;
+	private double imperfect_prob = 0.05;
 
 	// private Logger logger = Logger.getLogger(this.getClass());
 
-	public Game(IExpert expert1, IExpert expert2, int totalGames,
-			ScoringSystem scoringSystem)
+	public ImperfectGame(IExpert expert1, IExpert expert2, int totalGames,
+			ScoringSystem scoringSystem, double imperfect_prob)
 	{
 		this.expert1 = expert1;
 		this.expert2 = expert2;
 		this.scoringSystem = scoringSystem;
 		this.totalGames = totalGames;
+		this.imperfect_prob = imperfect_prob;
 		results = new double[2];
 		history = new GameHistory(scoringSystem);
 	}
@@ -50,6 +52,19 @@ public class Game implements IGame
 	{
 		boolean player1 = expert1.move(history);
 		boolean player2 = expert2.move(history);
+
+		if (Math.random() < imperfect_prob)
+		{
+			if (Math.random() < 0.5)
+			{
+				player1 = !player1;
+			}
+			else
+			{
+				player2 = !player2;
+			}
+		}
+
 		// System.out.println("Expert: " + expert1.getName() + " played " +
 		// player1);
 		// System.out.println("Expert: " + expert2.getName() + " played " +

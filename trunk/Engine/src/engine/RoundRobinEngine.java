@@ -17,13 +17,13 @@ import environment.ScoringSystem;
 
 public class RoundRobinEngine
 {
-	private static boolean PRINT_RESULTS = false;
+	protected static boolean PRINT_RESULTS = false;
 
-	private IExpert[] experts;
-	private int totalGames;
-	private ScoringSystem scoringSystem;
-	private Map<String, Double> totals;
-	private TreeMap<String, Double> sorted_map;
+	protected IExpert[] experts;
+	protected int totalGames;
+	protected ScoringSystem scoringSystem;
+	protected Map<String, Double> totals;
+	protected TreeMap<String, Double> sorted_map;
 
 	public RoundRobinEngine(IExpert[] experts, int totalGames,
 			ScoringSystem scoringSystem)
@@ -123,7 +123,7 @@ public class RoundRobinEngine
 		graph.plotDouble(sorted_map);
 	}
 
-	private void printTwoColumns(String first, String second)
+	protected void printTwoColumns(String first, String second)
 	{
 		System.out.print(first);
 		if (first.length() < 45)

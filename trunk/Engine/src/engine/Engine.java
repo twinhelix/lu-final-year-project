@@ -53,8 +53,11 @@ public class Engine
 
 		IExpert[] experts1 = { new TitForTatExpert(0), new PavlovExpert(0) };
 
-		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
+		ImperfectRoundRobinEngine engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
 				SCORING_SYSTEM);
+//		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
+//				SCORING_SYSTEM);
+
 		engine.run();
 		System.out.println();
 		engine.showTally();
