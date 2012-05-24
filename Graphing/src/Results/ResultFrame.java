@@ -104,7 +104,5 @@ public class ResultFrame extends ApplicationFrame
 			dataset.addValue(entry.getValue(), entry.getKey(), entry.getKey());
 		}
 		return dataset;
-
 	}
-
 }

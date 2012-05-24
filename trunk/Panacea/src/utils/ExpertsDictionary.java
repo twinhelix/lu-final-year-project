@@ -3,12 +3,14 @@ package utils;
 import java.util.HashMap;
 import java.util.Map;
 
+import agent.IExpert;
 import expert.AdaptiveExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
 import expert.GradualExpert;
 import expert.GrudgerExpert;
 import expert.PavlovExpert;
+import expert.ProbableExpert;
 import expert.RandomExpert;
 import expert.SoftGrudgerExpert;
 import expert.titfortat.NaivePeaceMakerExpert;
@@ -18,8 +20,6 @@ import expert.titfortat.SuspiciousTitForTatExpert;
 import expert.titfortat.TitForTatExpert;
 import expert.titfortat.TitForTwoTatExpert;
 import expert.titfortat.TruePeaceMakerExpert;
-
-import agent.IExpert;
 
 public class ExpertsDictionary
 {
@@ -52,6 +52,7 @@ public class ExpertsDictionary
 		IExpert susptitfortat = new SuspiciousTitForTatExpert(playerNo);
 		IExpert truepeace = new TruePeaceMakerExpert(playerNo, prob);
 		IExpert softgrudger = new SoftGrudgerExpert(playerNo);
+		IExpert probable = new ProbableExpert(playerNo);
 
 		dictionary.put(random.getName(), random);
 		dictionary.put(grudger.getName(), grudger);
@@ -68,6 +69,7 @@ public class ExpertsDictionary
 		dictionary.put(susptitfortat.getName(), susptitfortat);
 		dictionary.put(truepeace.getName(), truepeace);
 		dictionary.put(softgrudger.getName(), softgrudger);
+		dictionary.put(probable.getName(), probable);
 	}
 
 	public IExpert getExpert(String name)
