@@ -54,7 +54,7 @@ public class Engine
 		IExpert[] experts1 = { new TitForTatExpert(0), new PavlovExpert(0) };
 
 		ImperfectRoundRobinEngine engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
-				SCORING_SYSTEM);
+				SCORING_SYSTEM, 0.2);
 //		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
 //				SCORING_SYSTEM);
 

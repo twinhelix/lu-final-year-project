@@ -3,16 +3,26 @@ package engine;
 import static engine.RoundRobinEngine.PRINT_RESULTS;
 import agent.IExpert;
 import environment.Game;
+import environment.ImperfectGame;
 import environment.ScoringSystem;
 
 public class ImperfectRoundRobinEngine extends RoundRobinEngine
 {
+	private double prob = -1d;
 
 	public ImperfectRoundRobinEngine(IExpert[] experts, int totalGames,
 			ScoringSystem scoringSystem)
 	{
 		super(experts, totalGames, scoringSystem);
 	}
+
+	public ImperfectRoundRobinEngine(IExpert[] experts, int totalGames,
+			ScoringSystem scoringSystem, double prob)
+	{
+		super(experts, totalGames, scoringSystem);
+		this.prob = prob;
+	}
+
 	public void run()
 	{
 		for (int i = 0; i < experts.length; i++)
@@ -33,7 +43,16 @@ public class ImperfectRoundRobinEngine extends RoundRobinEngine
 				e1.initialize();
 				e2.initialize();
 
-				Game game = new Game(e1, e2, totalGames, scoringSystem);
+				ImperfectGame game;
+				if (prob == -1d)
+				{
+					game = new ImperfectGame(e1, e2, totalGames, scoringSystem);
+				}
+				else
+				{
+					game = new ImperfectGame(e1, e2, totalGames, scoringSystem,
+							prob);
+				}
 				double[] result = game.run();
 
 				totals.put(e1.getName(), new Double(totals.get(e1.getName())
