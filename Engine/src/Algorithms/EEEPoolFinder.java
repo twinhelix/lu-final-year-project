@@ -6,6 +6,7 @@ import static common.Settings.SCORING_SYSTEM;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -60,13 +61,13 @@ public class EEEPoolFinder
 	private static Stack<Map<String, ExpertArrayDetails>> bestScores;
 	private static final int rounds = 100;
 
-	private static File testFile = new File("EEE Results.txt");
+	private static File testFile = new File("EEE Pool Finding Results.txt");
 
 	public static void main(String[] args) throws FileNotFoundException,
 			IOException
 	{
 
-		ReadWriteTextFile.setContents(testFile, "Results: ");
+		ReadWriteTextFile.setContents(testFile, "EEE Pool Finding Results: ");
 
 		Set<String> experts = populateExperts();
 		bestScores = new Stack<Map<String, ExpertArrayDetails>>();
@@ -117,6 +118,7 @@ public class EEEPoolFinder
 			System.out.println(bestScores.peek().get(EEEfix).strategies);
 		}
 		createHistogram(EEEdec);
+		createHistogram(EEEfix);
 	}
 
 	public static Set<String> populateExperts()
@@ -173,7 +175,7 @@ public class EEEPoolFinder
 
 		if (currentFixScore > bestScores.peek().get(EEEfix).score)
 		{
-			bestScores.peek().get(EEEfix).score = currentDecScore;
+			bestScores.peek().get(EEEfix).score = currentFixScore;
 			bestScores.peek().get(EEEfix).strategies = strategies;
 		}
 
@@ -208,9 +210,41 @@ public class EEEPoolFinder
 				histo.put(expert, new Integer(histo.get(expert).intValue() + 1));
 			}
 		}
+		Map<String, Integer> sorted_histo = new TreeMap<String, Integer>(
+				new ValueComparator(histo));
+		sorted_histo.putAll(histo);
 
-		GraphingResults gr = new GraphingResults("EEE Results");
+		GraphingResults gr = new GraphingResults("EEE Pool Finding Results");
 		gr.plotInteger(histo);
 
+	}
+
+	private static class ValueComparator implements Comparator<Object>
+	{
+
+		Map<String, Integer> base;
+
+		public ValueComparator(Map<String, Integer> base)
+		{
+			this.base = base;
+		}
+
+		public int compare(Object a, Object b)
+		{
+
+			if ((Integer) base.get(a) < (Integer) base.get(b))
+			{
+				return 1;
+			}
+			else if ((Integer) base.get(a) == (Integer) base.get(b))
+			{
+				return 0;
+			}
+			else
+			{
+				return -1;
+			}
+
+		}
 	}
 }

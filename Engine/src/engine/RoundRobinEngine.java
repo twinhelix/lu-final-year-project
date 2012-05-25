@@ -146,7 +146,6 @@ public class RoundRobinEngine
 
 		public int compare(Object a, Object b)
 		{
-
 			if ((Double) base.get(a) < (Double) base.get(b))
 			{
 				return 1;

@@ -110,12 +110,12 @@ public abstract class EEEBase extends AbstractExpert
 	}
 
 	/**
-	 * �Exploration. An exploration phase consists of picking a random expert
+	 * -Exploration. An exploration phase consists of picking a random expert
 	 * e (i.e., from the uniform distribution over {1,...,r}), and following
 	 * e�s recommendations for a certain number of stages depending on the
 	 * variant of the method.
 	 * 
-	 * �Exploitation. An exploitation phase consists of picking an expert e
+	 * -Exploitation. An exploitation phase consists of picking an expert e
 	 * with maximum Me, breaking ties at random, and following e�s
 	 * recommendations for a certain number of stages depending on the variant
 	 * of the method.
