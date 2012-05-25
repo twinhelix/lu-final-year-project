@@ -85,13 +85,9 @@ public class EEEPoolFinder
 				if (s.size() >= 2)
 				{
 					if (PRINT_DETAILS)
-						ReadWriteTextFile.setContents(testFile, s.toString());
+						System.out.println(s);
 
-					System.out.println(s);
 					run(s);
-
-					if (PRINT_DETAILS)
-						ReadWriteTextFile.setContents(testFile, "");
 				}
 			}
 
@@ -108,14 +104,17 @@ public class EEEPoolFinder
 			ReadWriteTextFile.setContents(testFile,
 					bestScores.peek().get(EEEfix).strategies.toString());
 
-			System.out.println();
-			System.out.println(EEEdec + ": "
-					+ bestScores.peek().get(EEEdec).score);
-			System.out.println(bestScores.peek().get(EEEdec).strategies);
-			System.out.println();
-			System.out.println(EEEfix + ": "
-					+ bestScores.peek().get(EEEfix).score);
-			System.out.println(bestScores.peek().get(EEEfix).strategies);
+			if (PRINT_DETAILS)
+			{
+				System.out.println();
+				System.out.println(EEEdec + ": "
+						+ bestScores.peek().get(EEEdec).score);
+				System.out.println(bestScores.peek().get(EEEdec).strategies);
+				System.out.println();
+				System.out.println(EEEfix + ": "
+						+ bestScores.peek().get(EEEfix).score);
+				System.out.println(bestScores.peek().get(EEEfix).strategies);
+			}
 		}
 		createHistogram(EEEdec);
 		createHistogram(EEEfix);
@@ -179,18 +178,18 @@ public class EEEPoolFinder
 			bestScores.peek().get(EEEfix).strategies = strategies;
 		}
 
-		System.out.println(EEEdec + ": " + currentDecScore + "%");
-		System.out.println(EEEfix + ": " + currentFixScore + "%");
-
 		if (PRINT_DETAILS)
 		{
+			System.out.println(EEEdec + ": " + currentDecScore + "%");
+			System.out.println(EEEfix + ": " + currentFixScore + "%");
+
 			ReadWriteTextFile.setContents(testFile, EEEdec + ": "
 					+ currentDecScore + "%");
 			ReadWriteTextFile.setContents(testFile, EEEfix + ": "
 					+ currentFixScore + "%");
 			ReadWriteTextFile.setContents(testFile, "");
+			System.out.println();
 		}
-		System.out.println();
 		// engine.showTally();
 	}
 
@@ -244,7 +243,6 @@ public class EEEPoolFinder
 			{
 				return -1;
 			}
-
 		}
 	}
 }
