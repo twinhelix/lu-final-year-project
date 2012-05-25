@@ -5,6 +5,7 @@ import static common.Settings.SCORING_SYSTEM;
 import agent.IExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
+import expert.GrudgerExpert;
 import expert.PavlovExpert;
 import expert.ProbableExpert;
 import expert.RandomExpert;
@@ -34,11 +35,11 @@ public class Engine
 		// new RemorsefulProberExpert(0, 0.2), new SuspiciousTitForTat(0),
 		// new TruePeaceMakerExpert(0, 0.2) };
 
-		String[] strats = { new SoftGrudgerExpert(0).getName(),
-				new TitForTatExpert(0).getName(),
+		String[] strats = { new GrudgerExpert(0).getName(),
+				//new TitForTatExpert(0).getName(),
 				new PavlovExpert(0).getName(),
 				new CooperateExpert(0).getName(),
-				new RemorsefulProberExpert(0, 0.2).getName() };
+				};
 
 		String[] strats1 = { "Tit-for-Tat Expert", "Soft Grudger",
 				"Naive Peace Maker Expert: 0.2%", "Always Cooperate Expert",
@@ -46,17 +47,17 @@ public class Engine
 				"Gradual Expert", "Naive Prober Expert: 0.2%" };
 
 		IExpert[] experts = { new TitForTatExpert(0),
-				new EEEDecProb(0, strats1), new EEEFixedProb(0, strats, 0.3),
+				new EEEDecProb(0, strats), new EEEFixedProb(0, strats, 0.3),
 				new RandomExpert(0), new DefectExpert(0), new PavlovExpert(0),
 				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
 				new GAExpert(0, false), new ProbableExpert(0) };
 
 		IExpert[] experts1 = { new TitForTatExpert(0), new PavlovExpert(0) };
 
-		ImperfectRoundRobinEngine engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
-				SCORING_SYSTEM, 0.2);
-//		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
-//				SCORING_SYSTEM);
+//		ImperfectRoundRobinEngine engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
+//				SCORING_SYSTEM, 0.2);
+		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
+				SCORING_SYSTEM);
 
 		engine.run();
 		System.out.println();
