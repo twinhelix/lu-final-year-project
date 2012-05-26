@@ -18,7 +18,7 @@ import expert.titfortat.TitForTatExpert;
 
 public class Engine
 {
-	private static boolean PLOT_GRAPHS = false;
+	private static boolean PLOT_GRAPHS = true;
 
 	public static void main(String[] args)
 	{
@@ -36,26 +36,34 @@ public class Engine
 		// new TruePeaceMakerExpert(0, 0.2) };
 
 		String[] strats = { new GrudgerExpert(0).getName(),
-				//new TitForTatExpert(0).getName(),
+				// new TitForTatExpert(0).getName(),
 				new PavlovExpert(0).getName(),
-				new CooperateExpert(0).getName(),
-				};
+				new CooperateExpert(0).getName(), };
 
 		String[] strats1 = { "Tit-for-Tat Expert", "Soft Grudger",
 				"Naive Peace Maker Expert: 0.2%", "Always Cooperate Expert",
 				"True Peace Maker Expert", "Alternate Expert",
 				"Gradual Expert", "Naive Prober Expert: 0.2%" };
 
-		IExpert[] experts = { new TitForTatExpert(0),
-				new EEEDecProb(0, strats), new EEEFixedProb(0, strats, 0.3),
-				new RandomExpert(0), new DefectExpert(0), new PavlovExpert(0),
-				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
-				new GAExpert(0, false), new ProbableExpert(0) };
+		IExpert[] experts = {
+				new TitForTatExpert(0),
+				new EEEDecProb(0, strats),
+				new EEEFixedProb(0, strats, 0.3),
+				new RandomExpert(0),
+				new DefectExpert(0),
+				new PavlovExpert(0),
+				new RemorsefulProberExpert(0, 0.2),
+				new SoftGrudgerExpert(0),
+				new GAExpert(0, false,
+						"1111010010010000110111001101001001110000100101001011110001101011111111"),
+				new ProbableExpert(0) };
 
 		IExpert[] experts1 = { new TitForTatExpert(0), new PavlovExpert(0) };
 
-//		ImperfectRoundRobinEngine engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
-//				SCORING_SYSTEM, 0.2);
+		//"1111010010010000110111001101001001110000100101001011110001101011111111" - REALLY GOOD
+		// ImperfectRoundRobinEngine engine = new
+		// ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
+		// SCORING_SYSTEM, 0.2);
 		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
 				SCORING_SYSTEM);
 
