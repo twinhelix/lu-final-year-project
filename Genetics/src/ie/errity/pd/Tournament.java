@@ -126,6 +126,4 @@ public class Tournament
 		}	
 		return mean;
 	}
-	
-	
 }
