@@ -11,7 +11,7 @@ import de.uka.aifb.com.jnsga2.NSGA2Configuration;
 
 public class GASimulation
 {
-	private static final int populationSize = 4;
+	private static final int populationSize = 200;
 	private static final int numberOfGenerations = 1000;
 	private static final double mutationProbability = 0.14286d; // prob: 1/70
 	private static final double crossoverProbability = 0.9;
@@ -30,7 +30,7 @@ public class GASimulation
 	}
 
 	public void initialize()
-	{	
+	{
 		// Set up NSGA object
 		fitnessFunctions = new FitnessFunction[1];
 		fitnessFunctions[0] = new GAFitnessOwnScore();
@@ -41,21 +41,16 @@ public class GASimulation
 
 		nsga = new NSGA2(nsgaConfig);
 		nsga.addNSGA2Listener(new GAExpertEventListner());
-			
+
 		// Create starting Pop
-		GAIndividual expert = new GAIndividual(nsga, 0);
 		LinkedList<Individual> startPopulation = new LinkedList<Individual>();
-		startPopulation.add(expert);
-		startPopulation.add(new GAIndividual(nsga, 0));
-		startPopulation.add(new GAIndividual(nsga, 0));
-		startPopulation.add(new GAIndividual(nsga, 0));
-
-		
-		System.out.println(expert.getExpert().getCodebit());
+		for (int i = 0; i < populationSize; i++)
+		{
+			startPopulation.add(new GAIndividual(nsga, 0));
+		}
 		LinkedList<Individual> pop = nsga.evolve(startPopulation);
-		GAIndividual e = (GAIndividual) pop.getFirst();
-		System.out.println(e.getExpert().getCodebit());
-
+		System.out.println(pop.getFirst().getRank());
+		
 	}
 
 	private void writeToFile(String code)

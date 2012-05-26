@@ -1,8 +1,23 @@
 package nsga_expert;
 
+import static common.Settings.NO_OF_ROUNDS;
+import static common.Settings.SCORING_SYSTEM;
+import agent.IExpert;
 import de.uka.aifb.com.jnsga2.FitnessFunction;
 import de.uka.aifb.com.jnsga2.Individual;
+import engine.RoundRobinEngine;
+import expert.CooperateExpert;
+import expert.DefectExpert;
 import expert.GAExpert;
+import expert.GrudgerExpert;
+import expert.PavlovExpert;
+import expert.ProbableExpert;
+import expert.RandomExpert;
+import expert.SoftGrudgerExpert;
+import expert.eee.EEEDecProb;
+import expert.eee.EEEFixedProb;
+import expert.titfortat.RemorsefulProberExpert;
+import expert.titfortat.TitForTatExpert;
 
 public class GAFitnessOwnScore implements FitnessFunction
 {
@@ -22,11 +37,21 @@ public class GAFitnessOwnScore implements FitnessFunction
 
 		GAIndividual individual = (GAIndividual) paramIndividual;
 		GAExpert expert = individual.getExpert();
-		
-		
-		
-		
-		return 5d;
+
+		String[] strats = { new GrudgerExpert(0).getName(),
+				new PavlovExpert(0).getName(),
+				new CooperateExpert(0).getName(), };
+
+		IExpert[] experts = { new TitForTatExpert(0),
+				new EEEDecProb(0, strats), new EEEFixedProb(0, strats, 0.3),
+				new RandomExpert(0), new DefectExpert(0), new PavlovExpert(0),
+				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
+				expert, new ProbableExpert(0) };
+
+		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
+				SCORING_SYSTEM);
+		engine.run();
+		return - engine.getScore(expert.getName());
 	}
 
 }

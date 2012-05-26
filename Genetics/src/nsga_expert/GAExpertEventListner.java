@@ -69,9 +69,10 @@ public class GAExpertEventListner implements NSGA2Listener
 
 		for (int i = 0; i < array.length; i++)
 		{
-			System.out.println("EVENT!");
-			// System.out.print(" Number no wish event: "
-			// + array[i].getFitnessValue(0));
+			
+			System.out.print("Fitness: "
+			+ array[i].getFitnessValue(0));
+			System.out.println("Expert Codebit: " + array[i].getExpert().getCodebit());
 			// System.out.print(" / Sum priorities: "
 			// + array[i].getFitnessValue(1));
 			// System.out.println(" / Sizes variance: "
