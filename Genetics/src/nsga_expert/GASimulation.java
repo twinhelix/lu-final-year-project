@@ -1,7 +1,5 @@
 package nsga_expert;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.util.LinkedList;
 
 import de.uka.aifb.com.jnsga2.FitnessFunction;
@@ -11,7 +9,7 @@ import de.uka.aifb.com.jnsga2.NSGA2Configuration;
 
 public class GASimulation
 {
-	private static final int populationSize = 200;
+	private static final int populationSize = 20;
 	private static final int numberOfGenerations = 1000;
 	private static final double mutationProbability = 0.14286d; // prob: 1/70
 	private static final double crossoverProbability = 0.9;
@@ -27,13 +25,15 @@ public class GASimulation
 
 	public GASimulation()
 	{
+		
 	}
 
 	public void initialize()
 	{
 		// Set up NSGA object
-		fitnessFunctions = new FitnessFunction[1];
+		fitnessFunctions = new FitnessFunction[2];
 		fitnessFunctions[0] = new GAFitnessOwnScore();
+		fitnessFunctions[1] = new GAFitnessOpponentScore();
 
 		nsgaConfig = new NSGA2Configuration(fitnessFunctions,
 				mutationProbability, crossoverProbability, populationSize,
@@ -50,25 +50,6 @@ public class GASimulation
 		}
 		LinkedList<Individual> pop = nsga.evolve(startPopulation);
 		System.out.println(pop.getFirst().getRank());
-		
-	}
 
-	private void writeToFile(String code)
-	{
-		{
-			try
-			{
-				// Create file
-				FileWriter fstream = new FileWriter("out.txt");
-				BufferedWriter out = new BufferedWriter(fstream);
-				out.write(code);
-				// Close the output stream
-				out.close();
-			}
-			catch (Exception e)
-			{// Catch exception if any
-				System.err.println("Error: " + e.getMessage());
-			}
-		}
 	}
 }
