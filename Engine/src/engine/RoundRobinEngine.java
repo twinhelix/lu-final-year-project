@@ -89,6 +89,23 @@ public class RoundRobinEngine
 				/ ((experts.length + 1) * benchmark) * 100);
 	}
 
+	public double getAverageOpponentScore(String key)
+	{
+		double benchmark = ((experts.length + 1) * Settings.getBenchMark(totals
+				.size()));
+
+		double totalOpponentsScore = 0d;
+		for (String expertName : totals.keySet())
+		{
+			totalOpponentsScore += totals.get(expertName);
+		}
+
+		totalOpponentsScore -= totals.get(key).doubleValue();
+		double averageOpponentsScore = totalOpponentsScore
+				/ (experts.length - 1);
+		return (averageOpponentsScore / benchmark * 100);
+	}
+
 	public void showTally()
 	{
 		sorted_map = new TreeMap<String, Double>(new ValueComparator(totals));
@@ -160,5 +177,4 @@ public class RoundRobinEngine
 			}
 		}
 	}
-
 }

@@ -18,7 +18,7 @@ import expert.titfortat.TitForTatExpert;
 
 public class Engine
 {
-	private static boolean PLOT_GRAPHS = true;
+	private static boolean PLOT_GRAPHS = false;
 
 	public static void main(String[] args)
 	{
@@ -60,7 +60,8 @@ public class Engine
 
 		IExpert[] experts1 = { new TitForTatExpert(0), new PavlovExpert(0) };
 
-		//"1111010001100010101000101101000011001100100010001000101101100000111111" - REALLY GOOD
+		// "1111010001100010101000101101000011001100100010001000101101100000111111"
+		// - REALLY GOOD
 		// ImperfectRoundRobinEngine engine = new
 		// ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
 		// SCORING_SYSTEM, 0.2);
