@@ -5,6 +5,7 @@ import static common.Settings.SCORING_SYSTEM;
 import agent.IExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
+import expert.GAExpert;
 import expert.GrudgerExpert;
 import expert.PavlovExpert;
 import expert.ProbableExpert;
@@ -12,7 +13,6 @@ import expert.RandomExpert;
 import expert.SoftGrudgerExpert;
 import expert.eee.EEEDecProb;
 import expert.eee.EEEFixedProb;
-import expert.ga.GAExpert;
 import expert.titfortat.RemorsefulProberExpert;
 import expert.titfortat.TitForTatExpert;
 
