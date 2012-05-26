@@ -1,4 +1,4 @@
-package expert.ga;
+package nsga_expert;
 
 import de.uka.aifb.com.jnsga2.FitnessFunction;
 import de.uka.aifb.com.jnsga2.Individual;

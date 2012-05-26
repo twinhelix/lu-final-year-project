@@ -1,4 +1,4 @@
-package expert.ga;
+package nsga_expert;
 
 import java.util.Arrays;
 import java.util.Comparator;

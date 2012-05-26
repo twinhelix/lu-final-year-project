@@ -1,4 +1,4 @@
-package expert.ga;
+package nsga_expert;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
