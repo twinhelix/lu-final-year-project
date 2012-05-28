@@ -3,11 +3,11 @@ package algorithms;
 import static common.Settings.NO_OF_ROUNDS;
 import static common.Settings.SCORING_SYSTEM;
 
-import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
 import Results.GraphingResults;
+import Utils.IntegerValueComparator;
 import agent.IExpert;
 import engine.RoundRobinEngine;
 import expert.CooperateExpert;
@@ -69,7 +69,7 @@ public class EEEDecVsFixed
 		histo.put(EEEfix, new Integer(fixedWins));
 
 		Map<String, Integer> sorted_histo = new TreeMap<String, Integer>(
-				new ValueComparator(histo));
+				new IntegerValueComparator(histo));
 		sorted_histo.putAll(histo);
 
 		GraphingResults gr = new GraphingResults(
@@ -77,31 +77,5 @@ public class EEEDecVsFixed
 		gr.plotInteger(histo);
 	}
 
-	private static class ValueComparator implements Comparator<Object>
-	{
-
-		Map<String, Integer> base;
-
-		public ValueComparator(Map<String, Integer> base)
-		{
-			this.base = base;
-		}
-
-		public int compare(Object a, Object b)
-		{
-
-			if ((Integer) base.get(a) < (Integer) base.get(b))
-			{
-				return 1;
-			}
-			else if ((Integer) base.get(a) == (Integer) base.get(b))
-			{
-				return 0;
-			}
-			else
-			{
-				return -1;
-			}
-		}
-	}
+	
 }
