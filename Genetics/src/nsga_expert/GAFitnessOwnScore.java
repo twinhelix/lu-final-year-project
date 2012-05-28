@@ -2,6 +2,7 @@ package nsga_expert;
 
 import static common.Settings.NO_OF_ROUNDS;
 import static common.Settings.SCORING_SYSTEM;
+import static nsga_expert.GASettings.RUNS_PER_EVALUATION;
 import agent.IExpert;
 import de.uka.aifb.com.jnsga2.FitnessFunction;
 import de.uka.aifb.com.jnsga2.Individual;
@@ -48,14 +49,22 @@ public class GAFitnessOwnScore implements FitnessFunction
 				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
 				expert, new ProbableExpert(0) };
 
-		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
-				SCORING_SYSTEM);
-		engine.run();
-		double score = engine.getScore(expert.getName());
-		if (score >95){
+		double totalScore = 0d;
+		for (int i = 0; i < RUNS_PER_EVALUATION; i++)
+		{
+			RoundRobinEngine engine = new RoundRobinEngine(experts,
+					NO_OF_ROUNDS, SCORING_SYSTEM);
+			engine.run();
+			totalScore += engine.getScore(expert.getName());
+		}
+
+		double averageScore = totalScore / RUNS_PER_EVALUATION;
+		if (averageScore > 95)
+		{
 			System.err.println(expert.getCodebit());
 		}
-		return -score;
+
+		return -averageScore;
 	}
 
 }
