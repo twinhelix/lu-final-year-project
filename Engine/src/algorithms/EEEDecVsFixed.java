@@ -1,4 +1,4 @@
-package algorithms1;
+package algorithms;
 
 import static common.Settings.NO_OF_ROUNDS;
 import static common.Settings.SCORING_SYSTEM;
