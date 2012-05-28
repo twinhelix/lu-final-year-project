@@ -65,19 +65,21 @@ public class Engine
 		// ImperfectRoundRobinEngine engine = new
 		// ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
 		// SCORING_SYSTEM, 0.2);
-		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
-				SCORING_SYSTEM);
-
-		engine.run();
-		System.out.println();
-		engine.showTally();
-
-		if (PLOT_GRAPHS)
+		for (int i = 0; i < 5; i++)
 		{
-			engine.plotResults();
-			engine.plotPerformance();
-		}
+			RoundRobinEngine engine = new RoundRobinEngine(experts,
+					NO_OF_ROUNDS, SCORING_SYSTEM);
 
+			engine.run();
+			System.out.println();
+			engine.showTally();
+
+			if (PLOT_GRAPHS)
+			{
+				engine.plotResults();
+				engine.plotPerformance();
+			}
+		}
 		// GAExpert ge = new GAExpert(0);
 
 		// Game g = new Game(new DefectExpert(1), new RandomExpert(2), 200,
