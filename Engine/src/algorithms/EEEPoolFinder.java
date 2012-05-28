@@ -6,16 +6,18 @@ import static common.Settings.SCORING_SYSTEM;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Comparator;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.Stack;
+import java.util.SortedMap;
 import java.util.TreeMap;
 
 import utils.ReadWriteTextFile;
 import Results.GraphingResults;
+import Utils.DoubleValueComparator;
+import Utils.MapUtils;
 import Utils.SetUtils;
 import agent.IExpert;
 import engine.RoundRobinEngine;
@@ -28,6 +30,7 @@ import expert.GradualExpert;
 import expert.GrudgerExpert;
 import expert.PavlovExpert;
 import expert.PavlovRandomExpert;
+import expert.ProbableExpert;
 import expert.RandomExpert;
 import expert.SoftGrudgerExpert;
 import expert.eee.EEEDecProb;
@@ -42,82 +45,61 @@ import expert.titfortat.TruePeaceMakerExpert;
 
 public class EEEPoolFinder
 {
-	private static class ExpertArrayDetails
-	{
-		private Double score;
-		private Set<String> strategies;
-
-		private ExpertArrayDetails()
-		{
-			score = 0d;
-			strategies = new HashSet<String>();
-		}
-	}
-
 	private static final boolean PRINT_DETAILS = false;
 	private static final double prob = 0.2;
 	private static final String EEEdec = "EEE - Decreasing Prob";
 	private static final String EEEfix = "EEE - Fixed Prob";
-	private static Stack<Map<String, ExpertArrayDetails>> bestScores;
-	private static final int rounds = 100;
 
+	private static Map<String, Double> eeeDecResults;
+	private static Map<String, Double> eeeFixResults;
+
+	private static final int ROUNDS = 100;
+	private static DecimalFormat df = new DecimalFormat("#.##");
 	private static File testFile = new File("EEE Pool Finding Results.txt");
 
 	public static void main(String[] args) throws FileNotFoundException,
 			IOException
 	{
-
-		ReadWriteTextFile.setContents(testFile, "EEE Pool Finding Results: ");
+		eeeDecResults = new HashMap<String, Double>();
+		eeeFixResults = new HashMap<String, Double>();
 
 		Set<String> experts = populateExperts();
-		bestScores = new Stack<Map<String, ExpertArrayDetails>>();
-
 		Set<Set<String>> expertSets = SetUtils.powerSet(experts);
-		for (int counter = 0; counter < rounds; counter++)
+
+		ReadWriteTextFile.setContents(testFile,
+				"---------- EEE Pool Finding Results: ----------");
+		ReadWriteTextFile.setContents(testFile, "");
+
+		for (Set<String> s : expertSets)
 		{
-			Map<String, ExpertArrayDetails> currentBests = new HashMap<String, EEEPoolFinder.ExpertArrayDetails>();
-			currentBests.put(EEEdec, new ExpertArrayDetails());
-			currentBests.put(EEEfix, new ExpertArrayDetails());
-			bestScores.add(currentBests);
-
-			for (Set<String> s : expertSets)
+			if (s.size() >= 2)
 			{
-				if (s.size() >= 2)
-				{
-					if (PRINT_DETAILS)
-						System.out.println(s);
+				if (PRINT_DETAILS)
+					System.out.println(s);
 
-					run(s);
+				double[] result = run(s, ROUNDS);
+				eeeDecResults.put(s.toString(), new Double(result[0]));
+				eeeFixResults.put(s.toString(), new Double(result[1]));
+
+				// Write results to file
+
+				ReadWriteTextFile.setContents(testFile, s.toString());
+				ReadWriteTextFile.setContents(
+						testFile,
+						"Dec: " + df.format(result[0]) + "\t\t Fixed: "
+								+ df.format(result[1]));
+				ReadWriteTextFile.setContents(testFile, "");
+
+				if (PRINT_DETAILS)
+				{
+					System.out.println(s.toString());
+					System.out.println("Dec: " + df.format(result[0])
+							+ "\t\t Fixed: " + df.format(result[1]));
+					System.out.println();
 				}
 			}
-
-			ReadWriteTextFile.setContents(testFile,
-					"---------- BEST SCORES ROUND " + (counter + 1)
-							+ " ----------");
-			ReadWriteTextFile.setContents(testFile, EEEdec + ": "
-					+ bestScores.peek().get(EEEdec).score);
-			ReadWriteTextFile.setContents(testFile,
-					bestScores.peek().get(EEEdec).strategies.toString());
-			ReadWriteTextFile.setContents(testFile, "");
-			ReadWriteTextFile.setContents(testFile, EEEfix + ": "
-					+ bestScores.peek().get(EEEfix).score);
-			ReadWriteTextFile.setContents(testFile,
-					bestScores.peek().get(EEEfix).strategies.toString());
-
-			if (PRINT_DETAILS)
-			{
-				System.out.println();
-				System.out.println(EEEdec + ": "
-						+ bestScores.peek().get(EEEdec).score);
-				System.out.println(bestScores.peek().get(EEEdec).strategies);
-				System.out.println();
-				System.out.println(EEEfix + ": "
-						+ bestScores.peek().get(EEEfix).score);
-				System.out.println(bestScores.peek().get(EEEfix).strategies);
-			}
 		}
-		createHistogram(EEEdec);
-		createHistogram(EEEfix);
+		createGraph();
 	}
 
 	public static Set<String> populateExperts()
@@ -135,6 +117,7 @@ public class EEEPoolFinder
 		experts.add(new PavlovRandomExpert(0, prob).getName());
 		experts.add(new RandomExpert(0).getName());
 		experts.add(new SoftGrudgerExpert(0).getName());
+		experts.add(new ProbableExpert(0).getName());
 
 		// All Tit-for-Tat variants
 		experts.add(new TitForTatExpert(0).getName());
@@ -148,9 +131,21 @@ public class EEEPoolFinder
 		return experts;
 	}
 
-	private static void run(Set<String> strategies)
+	/***
+	 * Returns the average score of given set of strategies and numberof rounds
+	 * ran
+	 * 
+	 * @param strategies
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	private static double[] run(Set<String> strategies, int rounds)
 			throws FileNotFoundException, IOException
 	{
+
+		double[] results = { 0d, 0d };
+
 		String[] strats = strategies.toArray(new String[0]);
 
 		IExpert[] experts = { new TitForTatExpert(0),
@@ -159,90 +154,46 @@ public class EEEPoolFinder
 				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
 				new GAExpert(0, false) };
 
-		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
-				SCORING_SYSTEM);
-		engine.run();
-
-		double currentDecScore = engine.getScore(EEEdec);
-		double currentFixScore = engine.getScore(EEEfix);
-
-		if (currentDecScore > bestScores.peek().get(EEEdec).score)
+		for (int i = 0; i < rounds; i++)
 		{
-			bestScores.peek().get(EEEdec).score = currentDecScore;
-			bestScores.peek().get(EEEdec).strategies = strategies;
+			RoundRobinEngine engine = new RoundRobinEngine(experts,
+					NO_OF_ROUNDS, SCORING_SYSTEM);
+			engine.run();
+			results[0] += engine.getScore(EEEdec);
+			results[1] += engine.getScore(EEEfix);
 		}
 
-		if (currentFixScore > bestScores.peek().get(EEEfix).score)
-		{
-			bestScores.peek().get(EEEfix).score = currentFixScore;
-			bestScores.peek().get(EEEfix).strategies = strategies;
-		}
+		results[0] = results[0] / rounds;
+		results[1] = results[1] / rounds;
 
-		if (PRINT_DETAILS)
-		{
-			System.out.println(EEEdec + ": " + currentDecScore + "%");
-			System.out.println(EEEfix + ": " + currentFixScore + "%");
-
-			ReadWriteTextFile.setContents(testFile, EEEdec + ": "
-					+ currentDecScore + "%");
-			ReadWriteTextFile.setContents(testFile, EEEfix + ": "
-					+ currentFixScore + "%");
-			ReadWriteTextFile.setContents(testFile, "");
-			System.out.println();
-		}
-		// engine.showTally();
+		return results;
 	}
 
-	private static void createHistogram(String algo)
+	private static void createGraph()
 	{
-		// Create Histogram of all the most commonly appeared experts
-		Map<String, Integer> histo = new TreeMap<String, Integer>();
-		for (Map<String, ExpertArrayDetails> current : bestScores)
-		{
-			Set<String> strats = current.get(algo).strategies;
-			for (String expert : strats)
-			{
-				if (!histo.containsKey(expert))
-				{
-					histo.put(expert, new Integer(0));
-				}
-				histo.put(expert, new Integer(histo.get(expert).intValue() + 1));
-			}
-		}
-		Map<String, Integer> sorted_histo = new TreeMap<String, Integer>(
-				new ValueComparator(histo));
-		sorted_histo.putAll(histo);
+		// Create Graph of all the best pools
 
-		GraphingResults gr = new GraphingResults("EEE Pool Finding Results");
-		gr.plotInteger(histo);
+		// Dec
+		SortedMap<String, Double> dec_sorted_performance = new TreeMap<String, Double>(
+				new DoubleValueComparator(eeeDecResults));
+		dec_sorted_performance.putAll(eeeDecResults);
+		dec_sorted_performance = MapUtils.putFirstEntries(10,
+				dec_sorted_performance);
 
-	}
+		GraphingResults gr_dec = new GraphingResults(
+				"EEE Dec - Best Pool Performance ");
+		gr_dec.plotDouble(dec_sorted_performance);
 
-	private static class ValueComparator implements Comparator<Object>
-	{
+		// Fixed
+		SortedMap<String, Double> fixed_sorted_performance = new TreeMap<String, Double>(
+				new DoubleValueComparator(eeeFixResults));
+		fixed_sorted_performance.putAll(eeeFixResults);
+		fixed_sorted_performance = MapUtils.putFirstEntries(10,
+				fixed_sorted_performance);
 
-		Map<String, Integer> base;
+		GraphingResults gr_fix = new GraphingResults(
+				"EEE Fixed - Best Pool Performance ");
+		gr_fix.plotDouble(fixed_sorted_performance);
 
-		public ValueComparator(Map<String, Integer> base)
-		{
-			this.base = base;
-		}
-
-		public int compare(Object a, Object b)
-		{
-
-			if ((Integer) base.get(a) < (Integer) base.get(b))
-			{
-				return 1;
-			}
-			else if ((Integer) base.get(a) == (Integer) base.get(b))
-			{
-				return 0;
-			}
-			else
-			{
-				return -1;
-			}
-		}
 	}
 }
