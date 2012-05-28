@@ -34,7 +34,7 @@ public class Engine
 		// new NaiveProberExpert(0, 0.2),
 		// new RemorsefulProberExpert(0, 0.2), new SuspiciousTitForTat(0),
 		// new TruePeaceMakerExpert(0, 0.2) };
-
+ 
 		String[] strats = { new GrudgerExpert(0).getName(),
 				// new TitForTatExpert(0).getName(),
 				new PavlovExpert(0).getName(),
