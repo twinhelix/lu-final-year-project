@@ -51,7 +51,11 @@ public class GAFitnessOwnScore implements FitnessFunction
 		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
 				SCORING_SYSTEM);
 		engine.run();
-		return - engine.getScore(expert.getName());
+		double score = engine.getScore(expert.getName());
+		if (score >95){
+			System.err.println(expert.getCodebit());
+		}
+		return -score;
 	}
 
 }

@@ -9,7 +9,7 @@ import de.uka.aifb.com.jnsga2.NSGA2Configuration;
 
 public class GASimulation
 {
-	private static final int populationSize = 20;
+	private static final int populationSize = 200;
 	private static final int numberOfGenerations = 1000;
 	private static final double mutationProbability = 0.14286d; // prob: 1/70
 	private static final double crossoverProbability = 0.9;
