@@ -4,27 +4,23 @@ import de.uka.aifb.com.jnsga2.FitnessFunction;
 import de.uka.aifb.com.jnsga2.Individual;
 import de.uka.aifb.com.jnsga2.NSGA2;
 import environment.GameHistory;
-import expert.GAExpert;
+import expert.GAExpertModified;
 
-public class GAIndividual extends Individual
+public class GAIndividualModified extends Individual
 {
-
-	private final int CODEBIT_LENGTH = 70;
-	private GAExpert expert;
+	private final int CODEBIT_LENGTH = 64 + 16 + 4 + 2;
+	private GAExpertModified expert;
 	private double[] fitnessValues;
 
-	private int sigma_share;
-
-	public GAIndividual(NSGA2 nsga2, int playerNo)
+	public GAIndividualModified(NSGA2 nsga2, int playerNo)
 	{
 		this(nsga2, playerNo, true);
 	}
 
-	public GAIndividual(NSGA2 nsga2, int playerNo, boolean learning)
+	public GAIndividualModified(NSGA2 nsga2, int playerNo, boolean learning)
 	{
 		super(nsga2);
-		expert = new GAExpert(playerNo, null, 3);
-		sigma_share = CODEBIT_LENGTH / 2;
+		expert = new GAExpertModified(playerNo, null);
 
 		fitnessValues = new double[nsga2.getNSGA2Configuration()
 				.getNumberOfObjectives()];
@@ -38,7 +34,8 @@ public class GAIndividual extends Individual
 	@Override
 	protected Individual createClonedIndividual()
 	{
-		GAIndividual clone = new GAIndividual(nsga2, expert.getPlayerNumber());
+		GAIndividualModified clone = new GAIndividualModified(nsga2,
+				expert.getPlayerNumber());
 		clone.expert.setCodebit(expert.getCodebit());
 		return clone;
 	}
@@ -52,7 +49,7 @@ public class GAIndividual extends Individual
 					"'otherIndividual' must not be null.");
 		}
 
-		GAIndividual otherGAIndividual = ((GAIndividual) otherIndividual);
+		GAIndividualModified otherGAIndividual = ((GAIndividualModified) otherIndividual);
 
 		if (nsga2 != otherGAIndividual.nsga2)
 		{
@@ -69,6 +66,7 @@ public class GAIndividual extends Individual
 			String own_codebit = expert.getCodebit();
 
 			// Single Point Crossover
+			int sigma_share = generateRandomSharePart();
 			own_codebit = own_codebit.substring(0, sigma_share)
 					+ other_codebit.substring(sigma_share,
 							other_codebit.length());
@@ -87,6 +85,17 @@ public class GAIndividual extends Individual
 		}
 	}
 
+	/***
+	 * Cross over at random point
+	 * 
+	 * @return
+	 */
+	private int generateRandomSharePart()
+	{
+		int cross_move = (int) (Math.random() * CODEBIT_LENGTH);
+		return cross_move;
+	}
+
 	/**
 	 * Mutates this individual.
 	 * 
@@ -96,12 +105,12 @@ public class GAIndividual extends Individual
 	protected void mutate()
 	{
 		boolean mutated = false;
-		// Mutate random bit of the 70 bits
+
 		if (Math.random() < nsga2.getNSGA2Configuration()
 				.getMutationProbability())
 		{
 			String codebit = expert.getCodebit();
-			int mutatebit = (int) (Math.random() * 70);
+			int mutatebit = (int) (Math.random() * CODEBIT_LENGTH);
 			codebit = negateBit(codebit, mutatebit);
 			expert.setCodebit(codebit);
 			mutated = true;
@@ -147,7 +156,7 @@ public class GAIndividual extends Individual
 		return expert.getPlayerNumber();
 	}
 
-	public GAExpert getExpert()
+	public GAExpertModified getExpert()
 	{
 		return expert;
 	}

@@ -27,7 +27,6 @@ public class GASimulation
 
 	public GASimulation()
 	{
-
 	}
 
 	public void initialize()
@@ -48,10 +47,10 @@ public class GASimulation
 		LinkedList<Individual> startPopulation = new LinkedList<Individual>();
 		for (int i = 0; i < POPULATION_SIZE; i++)
 		{
-			startPopulation.add(new GAIndividual(nsga, 0));
+			// startPopulation.add(new GAIndividual(nsga, 0));
+			startPopulation.add(new GAIndividualModified(nsga, 0));
 		}
 		LinkedList<Individual> pop = nsga.evolve(startPopulation);
 		System.out.println(pop.getFirst().getRank());
-
 	}
 }

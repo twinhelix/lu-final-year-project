@@ -6,18 +6,18 @@ import de.uka.aifb.com.jnsga2.NSGA2;
 import environment.GameHistory;
 import expert.GAExpert;
 
-public class GAIndividualImproved extends Individual
+public class GAIndividualSmartCrossover extends Individual
 {
 	private final int CODEBIT_LENGTH = 70;
 	private GAExpert expert;
 	private double[] fitnessValues;
 
-	public GAIndividualImproved(NSGA2 nsga2, int playerNo)
+	public GAIndividualSmartCrossover(NSGA2 nsga2, int playerNo)
 	{
 		this(nsga2, playerNo, true);
 	}
 
-	public GAIndividualImproved(NSGA2 nsga2, int playerNo, boolean learning)
+	public GAIndividualSmartCrossover(NSGA2 nsga2, int playerNo, boolean learning)
 	{
 		super(nsga2);
 		expert = new GAExpert(playerNo, null, 3);
@@ -34,7 +34,7 @@ public class GAIndividualImproved extends Individual
 	@Override
 	protected Individual createClonedIndividual()
 	{
-		GAIndividualImproved clone = new GAIndividualImproved(nsga2,
+		GAIndividualSmartCrossover clone = new GAIndividualSmartCrossover(nsga2,
 				expert.getPlayerNumber());
 		clone.expert.setCodebit(expert.getCodebit());
 		return clone;
@@ -49,7 +49,7 @@ public class GAIndividualImproved extends Individual
 					"'otherIndividual' must not be null.");
 		}
 
-		GAIndividualImproved otherGAIndividual = ((GAIndividualImproved) otherIndividual);
+		GAIndividualSmartCrossover otherGAIndividual = ((GAIndividualSmartCrossover) otherIndividual);
 
 		if (nsga2 != otherGAIndividual.nsga2)
 		{
