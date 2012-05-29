@@ -1,4 +1,4 @@
-package nsga_expert;
+package nsga_expert.modified;
 
 import static nsga_expert.GASettings.CROSSOVER_PROBABILITY;
 import static nsga_expert.GASettings.MUTATION_PROBABILITY;
@@ -7,12 +7,14 @@ import static nsga_expert.GASettings.POPULATION_SIZE;
 
 import java.util.LinkedList;
 
+import nsga_expert.GAExpertEventListner;
+
 import de.uka.aifb.com.jnsga2.FitnessFunction;
 import de.uka.aifb.com.jnsga2.Individual;
 import de.uka.aifb.com.jnsga2.NSGA2;
 import de.uka.aifb.com.jnsga2.NSGA2Configuration;
 
-public class GASimulation
+public class GASimulationModified
 {
 
 	private FitnessFunction[] fitnessFunctions;
@@ -21,11 +23,11 @@ public class GASimulation
 
 	public static void main(String[] args)
 	{
-		GASimulation sim = new GASimulation();
+		GASimulationModified sim = new GASimulationModified();
 		sim.initialize();
 	}
 
-	public GASimulation()
+	public GASimulationModified()
 	{
 
 	}
@@ -34,21 +36,21 @@ public class GASimulation
 	{
 		// Set up NSGA object
 		fitnessFunctions = new FitnessFunction[2];
-		fitnessFunctions[0] = new GAFitnessOwnScore();
-		fitnessFunctions[1] = new GAFitnessOpponentScore();
+		fitnessFunctions[0] = new GAFitnessOwnScoreModified();
+		fitnessFunctions[1] = new GAFitnessOpponentScoreModified();
 
 		nsgaConfig = new NSGA2Configuration(fitnessFunctions,
 				MUTATION_PROBABILITY, CROSSOVER_PROBABILITY, POPULATION_SIZE,
 				NUMBER_OF_GENERATIONS);
 
 		nsga = new NSGA2(nsgaConfig);
-		nsga.addNSGA2Listener(new GAExpertEventListner());
+		nsga.addNSGA2Listener(new GAExpertModifiedEventListner());
 
 		// Create starting Pop
 		LinkedList<Individual> startPopulation = new LinkedList<Individual>();
 		for (int i = 0; i < POPULATION_SIZE; i++)
 		{
-			startPopulation.add(new GAIndividual(nsga, 0));
+			startPopulation.add(new GAIndividualModified(nsga, 0));
 		}
 		LinkedList<Individual> pop = nsga.evolve(startPopulation);
 		System.out.println(pop.getFirst().getRank());

@@ -58,9 +58,11 @@ public class Engine
 				new GAExpert(
 						0,
 						"1111000010110110010100001110001010101000010101010001100001000000111111",
-						3), new ProbableExpert(0),
-				new GAExpertModified(0, null) 
-				};
+						3),
+				new ProbableExpert(0),
+				new GAExpertModified(
+						0,
+						"10110010000010000010000001001010010000011001001000001010000000001011011011101011100011") };
 
 		IExpert[] experts1 = { new TitForTatExpert(0), new PavlovExpert(0) };
 
