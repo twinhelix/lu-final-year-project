@@ -6,6 +6,7 @@ import agent.IExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
 import expert.GAExpert;
+import expert.GAExpertModified;
 import expert.GrudgerExpert;
 import expert.PavlovExpert;
 import expert.ProbableExpert;
@@ -57,7 +58,9 @@ public class Engine
 				new GAExpert(
 						0,
 						"1111000010110110010100001110001010101000010101010001100001000000111111",
-						3), new GAExpert(0, null, 5), new ProbableExpert(0) };
+						3), new ProbableExpert(0),
+				new GAExpertModified(0, null) 
+				};
 
 		IExpert[] experts1 = { new TitForTatExpert(0), new PavlovExpert(0) };
 
