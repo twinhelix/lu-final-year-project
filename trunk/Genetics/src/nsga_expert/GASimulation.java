@@ -14,6 +14,7 @@ import de.uka.aifb.com.jnsga2.NSGA2Configuration;
 
 public class GASimulation
 {
+	private static final int HISTORY_DEPTH = 3;
 
 	private FitnessFunction[] fitnessFunctions;
 	private NSGA2Configuration nsgaConfig;
@@ -48,7 +49,7 @@ public class GASimulation
 		LinkedList<Individual> startPopulation = new LinkedList<Individual>();
 		for (int i = 0; i < POPULATION_SIZE; i++)
 		{
-			startPopulation.add(new GAIndividual(nsga, 0));
+			startPopulation.add(new GAIndividual(nsga, 0, HISTORY_DEPTH));
 		}
 		LinkedList<Individual> pop = nsga.evolve(startPopulation);
 		System.out.println(pop.getFirst().getRank());
