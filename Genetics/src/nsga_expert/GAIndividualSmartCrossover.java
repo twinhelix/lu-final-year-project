@@ -8,7 +8,6 @@ import expert.GAExpert;
 
 public class GAIndividualSmartCrossover extends Individual
 {
-	private final int CODEBIT_LENGTH = 70;
 	private GAExpert expert;
 	private double[] fitnessValues;
 
@@ -67,13 +66,10 @@ public class GAIndividualSmartCrossover extends Individual
 			String own_codebit = expert.getCodebit();
 
 			// Single Point Crossover
-			int sigma_share = generateRandomSharePart();
-			own_codebit = own_codebit.substring(0, sigma_share)
-					+ other_codebit.substring(sigma_share, other_codebit
-							.length());
-
-			expert.setCodebit(own_codebit);
-
+			String[] crossoverResults = smartCrossover(own_codebit,
+					other_codebit);
+			expert.setCodebit(crossoverResults[0]);
+			otherGAIndividual.getExpert().setCodebit(crossoverResults[1]);
 			// update fitness values
 			for (int i = 0; i < fitnessValues.length; i++)
 			{
@@ -91,11 +87,12 @@ public class GAIndividualSmartCrossover extends Individual
 	 * 
 	 * @return
 	 */
-	private int generateRandomSharePart()
+	private String[] smartCrossover(String first, String second)
 	{
 		int cross_move = (int) (Math.random() * 3) + 1;
-		
-		return 0;
+		SmartCrossover sc = new SmartCrossover();
+		String[] result = sc.crossover(first, second, cross_move);
+		return result;
 	}
 
 	/**
