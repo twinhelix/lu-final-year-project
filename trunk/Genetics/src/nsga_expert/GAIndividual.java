@@ -69,18 +69,24 @@ public class GAIndividual extends Individual
 			String own_codebit = expert.getCodebit();
 
 			// Single Point Crossover
-			own_codebit = own_codebit.substring(0, sigma_share)
-					+ other_codebit.substring(sigma_share,
-							other_codebit.length());
+			String dummy = own_codebit;
 
+			own_codebit = own_codebit.substring(0, sigma_share)
+					+ other_codebit.substring(sigma_share, other_codebit
+							.length());
 			expert.setCodebit(own_codebit);
+
+			other_codebit = other_codebit.substring(0, sigma_share)
+					+ dummy.substring(sigma_share, dummy.length());
 
 			// update fitness values
 			for (int i = 0; i < fitnessValues.length; i++)
 			{
 				FitnessFunction fitnessFunction = nsga2.getNSGA2Configuration()
 						.getFitnessFunction(i);
+
 				fitnessValues[i] = fitnessFunction.evaluate(this);
+
 				otherGAIndividual.fitnessValues[i] = fitnessFunction
 						.evaluate(otherGAIndividual);
 			}
