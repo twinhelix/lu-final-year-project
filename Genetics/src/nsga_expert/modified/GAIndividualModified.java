@@ -34,8 +34,8 @@ public class GAIndividualModified extends Individual
 	@Override
 	protected Individual createClonedIndividual()
 	{
-		GAIndividualModified clone = new GAIndividualModified(nsga2,
-				expert.getPlayerNumber());
+		GAIndividualModified clone = new GAIndividualModified(nsga2, expert
+				.getPlayerNumber());
 		clone.expert.setCodebit(expert.getCodebit());
 		return clone;
 	}
@@ -67,11 +67,16 @@ public class GAIndividualModified extends Individual
 
 			// Single Point Crossover
 			int sigma_share = generateRandomSharePart();
-			own_codebit = own_codebit.substring(0, sigma_share)
-					+ other_codebit.substring(sigma_share,
-							other_codebit.length());
 
+			String dummy = own_codebit;
+
+			own_codebit = own_codebit.substring(0, sigma_share)
+					+ other_codebit.substring(sigma_share, other_codebit
+							.length());
 			expert.setCodebit(own_codebit);
+
+			other_codebit = other_codebit.substring(0, sigma_share)
+					+ dummy.substring(sigma_share, dummy.length());
 
 			// update fitness values
 			for (int i = 0; i < fitnessValues.length; i++)
