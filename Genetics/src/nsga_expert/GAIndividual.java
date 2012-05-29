@@ -9,23 +9,20 @@ import expert.GAExpert;
 public class GAIndividual extends Individual
 {
 
-	private final int CODEBIT_LENGTH = 70;
+	private int CODEBIT_LENGTH;
 	private GAExpert expert;
 	private double[] fitnessValues;
 
-	private int sigma_share;
-
 	public GAIndividual(NSGA2 nsga2, int playerNo)
 	{
-		this(nsga2, playerNo, true);
+		this(nsga2, playerNo, 3);
 	}
 
-	public GAIndividual(NSGA2 nsga2, int playerNo, boolean learning)
+	public GAIndividual(NSGA2 nsga2, int playerNo, int history_depth)
 	{
 		super(nsga2);
-		expert = new GAExpert(playerNo, null, 3);
-		sigma_share = CODEBIT_LENGTH / 2;
-
+		expert = new GAExpert(playerNo, null, history_depth);
+		CODEBIT_LENGTH = (int) Math.pow(4, history_depth) + 2 * history_depth;
 		fitnessValues = new double[nsga2.getNSGA2Configuration()
 				.getNumberOfObjectives()];
 		for (int i = 0; i < fitnessValues.length; i++)
@@ -69,6 +66,7 @@ public class GAIndividual extends Individual
 			String own_codebit = expert.getCodebit();
 
 			// Single Point Crossover
+			int sigma_share = (int) (Math.random() * CODEBIT_LENGTH);
 			String dummy = own_codebit;
 
 			own_codebit = own_codebit.substring(0, sigma_share)
