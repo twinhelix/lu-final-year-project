@@ -99,26 +99,17 @@ public class GAIndividual extends Individual
 	@Override
 	protected void mutate()
 	{
-		boolean mutated = false;
-		// Mutate random bit of the 70 bits
-		if (Math.random() < nsga2.getNSGA2Configuration()
-				.getMutationProbability())
-		{
-			String codebit = expert.getCodebit();
-			int mutatebit = (int) (Math.random() * 70);
-			codebit = negateBit(codebit, mutatebit);
-			expert.setCodebit(codebit);
-			mutated = true;
-		}
+		// Mutate a random bit of the 70 bit
+		String codebit = expert.getCodebit();
+		int mutatebit = (int) (Math.random() * 70);
+		codebit = negateBit(codebit, mutatebit);
+		expert.setCodebit(codebit);
 
-		if (mutated)
+		// update fitness values
+		for (int i = 0; i < fitnessValues.length; i++)
 		{
-			// update fitness values
-			for (int i = 0; i < fitnessValues.length; i++)
-			{
-				fitnessValues[i] = nsga2.getNSGA2Configuration()
-						.getFitnessFunction(i).evaluate(this);
-			}
+			fitnessValues[i] = nsga2.getNSGA2Configuration()
+					.getFitnessFunction(i).evaluate(this);
 		}
 
 	}

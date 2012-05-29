@@ -1,7 +1,6 @@
 package nsga_expert.modified;
 
-import static nsga_expert.GASettings.WRITEFILE;
-
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
@@ -26,6 +25,7 @@ public class GAExpertModifiedEventListner implements NSGA2Listener
 	 * @param nsga2event
 	 *            NSGA-II event
 	 */
+	static File WRITEFILE = new File("GA Expert - Frontiers Modified.txt");
 
 	@Override
 	public void performNSGA2Event(NSGA2Event nsga2event)
@@ -40,17 +40,14 @@ public class GAExpertModifiedEventListner implements NSGA2Listener
 			try
 			{
 				ReadWriteTextFile.setContents(WRITEFILE, "");
-				ReadWriteTextFile.setContents(
-						WRITEFILE,
+				ReadWriteTextFile.setContents(WRITEFILE,
 						"--------- Generation: "
 								+ nsga2event.getNumberGeneration()
 								+ "---------");
-			}
-			catch (FileNotFoundException e)
+			} catch (FileNotFoundException e)
 			{
 				e.printStackTrace();
-			}
-			catch (IOException e)
+			} catch (IOException e)
 			{
 				e.printStackTrace();
 			}
@@ -67,12 +64,10 @@ public class GAExpertModifiedEventListner implements NSGA2Listener
 			try
 			{
 				printBestAssignments(bestAssignments);
-			}
-			catch (FileNotFoundException e)
+			} catch (FileNotFoundException e)
 			{
 				e.printStackTrace();
-			}
-			catch (IOException e)
+			} catch (IOException e)
 			{
 				e.printStackTrace();
 			}
