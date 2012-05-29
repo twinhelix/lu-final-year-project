@@ -6,25 +6,21 @@ import de.uka.aifb.com.jnsga2.NSGA2;
 import environment.GameHistory;
 import expert.GAExpert;
 
-public class GAIndividual extends Individual
+public class GAIndividualImproved extends Individual
 {
-
 	private final int CODEBIT_LENGTH = 70;
 	private GAExpert expert;
 	private double[] fitnessValues;
 
-	private int sigma_share;
-
-	public GAIndividual(NSGA2 nsga2, int playerNo)
+	public GAIndividualImproved(NSGA2 nsga2, int playerNo)
 	{
 		this(nsga2, playerNo, true);
 	}
 
-	public GAIndividual(NSGA2 nsga2, int playerNo, boolean learning)
+	public GAIndividualImproved(NSGA2 nsga2, int playerNo, boolean learning)
 	{
 		super(nsga2);
 		expert = new GAExpert(playerNo, null, 3);
-		sigma_share = CODEBIT_LENGTH / 2;
 
 		fitnessValues = new double[nsga2.getNSGA2Configuration()
 				.getNumberOfObjectives()];
@@ -38,7 +34,8 @@ public class GAIndividual extends Individual
 	@Override
 	protected Individual createClonedIndividual()
 	{
-		GAIndividual clone = new GAIndividual(nsga2, expert.getPlayerNumber());
+		GAIndividualImproved clone = new GAIndividualImproved(nsga2,
+				expert.getPlayerNumber());
 		clone.expert.setCodebit(expert.getCodebit());
 		return clone;
 	}
@@ -52,7 +49,7 @@ public class GAIndividual extends Individual
 					"'otherIndividual' must not be null.");
 		}
 
-		GAIndividual otherGAIndividual = ((GAIndividual) otherIndividual);
+		GAIndividualImproved otherGAIndividual = ((GAIndividualImproved) otherIndividual);
 
 		if (nsga2 != otherGAIndividual.nsga2)
 		{
@@ -69,7 +66,7 @@ public class GAIndividual extends Individual
 			String own_codebit = expert.getCodebit();
 
 			// Single Point Crossover
-
+			int sigma_share = generateRandomSharePart();
 			own_codebit = own_codebit.substring(0, sigma_share)
 					+ other_codebit.substring(sigma_share,
 							other_codebit.length());
@@ -86,6 +83,18 @@ public class GAIndividual extends Individual
 						.evaluate(otherGAIndividual);
 			}
 		}
+	}
+
+	/***
+	 * Cross over at points 16, 32,
+	 * 
+	 * @return
+	 */
+	private int generateRandomSharePart()
+	{
+		int cross_move = (int) (Math.random() * 3) + 1;
+
+		return 0;
 	}
 
 	/**
