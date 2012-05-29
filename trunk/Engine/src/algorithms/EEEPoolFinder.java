@@ -148,11 +148,19 @@ public class EEEPoolFinder
 
 		String[] strats = strategies.toArray(new String[0]);
 
-		IExpert[] experts = { new TitForTatExpert(0),
-				new EEEDecProb(0, strats), new EEEFixedProb(0, strats, 0.3),
-				new RandomExpert(0), new DefectExpert(0), new PavlovExpert(0),
-				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
-				new GAExpert(0, false) };
+		IExpert[] experts = {
+				new TitForTatExpert(0),
+				new EEEDecProb(0, strats),
+				new EEEFixedProb(0, strats, 0.3),
+				new RandomExpert(0),
+				new DefectExpert(0),
+				new PavlovExpert(0),
+				new RemorsefulProberExpert(0, 0.2),
+				new SoftGrudgerExpert(0),
+				new GAExpert(
+						0,
+						"1111000010110110010100001110001010101000010101010001100001000000111111",
+						3) };
 
 		for (int i = 0; i < rounds; i++)
 		{

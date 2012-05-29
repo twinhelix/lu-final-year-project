@@ -11,12 +11,10 @@ import java.util.Collection;
 import utils.Encoding;
 import environment.GameHistory;
 
-public class GAModifiedExpert extends AbstractExpert
+public class GAExpertModified extends AbstractExpert
 {
-
-	private static boolean PRINT_RESULTS = false;
 	/*
-	 * Code the particular behavioral sequence as a 3-letter string. � e.g RRR
+	 * Code the particular behavioral sequence as a n-letter string. � e.g RRR
 	 * represents the sequence where both parties cooperated over the first
 	 * three moves SSP : The first player was played for sucker twice and
 	 * defected.
@@ -34,31 +32,27 @@ public class GAModifiedExpert extends AbstractExpert
 	 * 1/70, so that, on an average, only one bit in a string of 70 bits gets
 	 * mutated at a time.
 	 */
-
-	private int code_length = 64, premises_length = 6;
+	private int history_depth;
+	private int code_length, premises_length;
 	private String codebit, premises;
 	private GameHistory history;
 
-	public GAModifiedExpert(int playerNo, boolean learning)
-	{
-
-		// "0000001110010000001000010110010000101110010101010011000010000011101100";
-		// "0011000010000000001000010110010001101110010101000011000010000011101110";
-		// "0010000110100000001000010111010001101110010001000011000010000011101101";
-		// "0010000110100000001000010111010000101110010101000010000000000011101110";
-		// "0010000010010001001000010110010000101110000001010010000010100011111101";
-		this(playerNo, learning,
-				"0000001110010000001000010110010000101110010101010011000010000011101100");
-	}
-
-	public GAModifiedExpert(int playerNo, boolean learning, String codebit)
+	public GAExpertModified(int playerNo, String code)
 	{
 		super(playerNo);
-		if (learning)
+
+		this.history_depth = 3;
+		code_length = (int) Math.pow(4d, history_depth);
+		premises_length = 2 * history_depth;
+
+		int full_length = code_length + premises_length;
+		if (code == null || code.length() != (full_length))
+		{
 			generateRandomStrategy();
+		}
 		else
 		{
-			this.codebit = codebit;
+			this.codebit = code;
 		}
 	}
 
@@ -75,7 +69,7 @@ public class GAModifiedExpert extends AbstractExpert
 	@Override
 	public String getName()
 	{
-		return "GA Modified Expert";
+		return "GA Expert - " + history_depth;
 	}
 
 	public GameHistory getHistory()
@@ -132,13 +126,16 @@ public class GAModifiedExpert extends AbstractExpert
 		if (move[playerNo - 1] && move[playerNo % 2])
 		{
 			return R;
-		} else if (move[playerNo - 1] && !move[playerNo % 2])
+		}
+		else if (move[playerNo - 1] && !move[playerNo % 2])
 		{
 			return S;
-		} else if (!move[playerNo - 1] && move[playerNo % 2])
+		}
+		else if (!move[playerNo - 1] && move[playerNo % 2])
 		{
 			return T;
-		} else
+		}
+		else
 		{
 			return P;
 		}
@@ -167,37 +164,30 @@ public class GAModifiedExpert extends AbstractExpert
 	{
 		this.history = history;
 
-		if (history.getNumberOfMoves() >= 3)
+		if (history.getNumberOfMoves() >= history_depth)
 		{
 			Collection<boolean[]> historyArray = history.getHistory();
 
 			// Get last 3 moves
-			boolean[][] last3Moves = new boolean[3][2];
+			boolean[][] lastMoves = new boolean[history_depth][2];
 
-			for (int i = 0; i < 3; i++)
-				last3Moves[i] = ((ArrayList<boolean[]>) historyArray)
+			for (int i = 0; i < history_depth; i++)
+				lastMoves[i] = ((ArrayList<boolean[]>) historyArray)
 						.get(historyArray.size() - 1 - i);
 
 			// Encode them in terms of R T P S
-			Encoding[] last3Encodings = new Encoding[3];
-			for (int i = 0; i < 3; i++)
+			Encoding[] lastEncodings = new Encoding[history_depth];
+			for (int i = 0; i < history_depth; i++)
 			{
-				last3Encodings[i] = getEncoding(last3Moves[i]);
+				lastEncodings[i] = getEncoding(lastMoves[i]);
 			}
-			if (PRINT_RESULTS)
-				System.out.println(last3Encodings[0].toString()
-						+ last3Encodings[1].toString()
-						+ last3Encodings[2].toString() + " "
-						+ encodeToInt(last3Encodings) + " "
-						+ lookupMove(encodeToInt(last3Encodings)));
-
-			return lookupMove(encodeToInt(last3Encodings));
+			return lookupMove(encodeToInt(lastEncodings));
 		}
 
 		// First 3 moves just randomize using given premises
 		else
 		{
-			int selection = 64 + ((int) (Math.random() * 2)) + 2
+			int selection = code_length + ((int) (Math.random() * 2)) + 2
 					* history.getNumberOfMoves();
 			return lookupMove(selection);
 		}

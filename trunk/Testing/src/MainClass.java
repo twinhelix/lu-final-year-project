@@ -13,29 +13,11 @@ public class MainClass
 
 	public static void main(String[] args)
 	{
-		List<String> strats = new ArrayList<String>();
-		strats.add("hi");
-		strats.add("hello");
-		strats.add("hello");
-		strats.add("bye");
-		strats.add("hi");
-
-		Map<String, Integer> histo = new HashMap<String, Integer>();
-
-		for (String expert : strats)
-		{
-			if (!histo.containsKey(expert))
-			{
-				histo.put(expert, new Integer(0));
-				System.out.println(expert + " " + histo.get(expert));
-			}
-			histo.put(expert, new Integer(histo.get(expert).intValue() + 1));
-			System.out.println(expert + " " + histo.get(expert));
-
-		}
-
-		System.out.println(histo.get("hi").intValue());
-
+		// String x = generateRandomBitString(1026);
+		String x = "hello";
+		String y = new String(x);
+		x = "bye";
+		System.out.println(y);
 	}
 
 	public static String replace(String str, int index)

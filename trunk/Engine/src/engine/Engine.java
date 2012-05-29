@@ -34,7 +34,7 @@ public class Engine
 		// new NaiveProberExpert(0, 0.2),
 		// new RemorsefulProberExpert(0, 0.2), new SuspiciousTitForTat(0),
 		// new TruePeaceMakerExpert(0, 0.2) };
- 
+
 		String[] strats = { new GrudgerExpert(0).getName(),
 				// new TitForTatExpert(0).getName(),
 				new PavlovExpert(0).getName(),
@@ -54,13 +54,15 @@ public class Engine
 				new PavlovExpert(0),
 				new RemorsefulProberExpert(0, 0.2),
 				new SoftGrudgerExpert(0),
-				new GAExpert(0, false,
-						"1111010001100010101000101101000011001100100010001000101101100000111111"),
-				new ProbableExpert(0) };
+				new GAExpert(
+						0,
+						"1111000010110110010100001110001010101000010101010001100001000000111111",
+						3), new GAExpert(0, null, 5), new ProbableExpert(0) };
 
 		IExpert[] experts1 = { new TitForTatExpert(0), new PavlovExpert(0) };
 
 		// "1111010001100010101000101101000011001100100010001000101101100000111111"
+		// 1111000010110110010100001110001010101000010101010001100001000000111111
 		// - REALLY GOOD
 		// ImperfectRoundRobinEngine engine = new
 		// ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
