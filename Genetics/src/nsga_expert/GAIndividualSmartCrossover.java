@@ -17,7 +17,8 @@ public class GAIndividualSmartCrossover extends Individual
 		this(nsga2, playerNo, true);
 	}
 
-	public GAIndividualSmartCrossover(NSGA2 nsga2, int playerNo, boolean learning)
+	public GAIndividualSmartCrossover(NSGA2 nsga2, int playerNo,
+			boolean learning)
 	{
 		super(nsga2);
 		expert = new GAExpert(playerNo, null, 3);
@@ -34,8 +35,8 @@ public class GAIndividualSmartCrossover extends Individual
 	@Override
 	protected Individual createClonedIndividual()
 	{
-		GAIndividualSmartCrossover clone = new GAIndividualSmartCrossover(nsga2,
-				expert.getPlayerNumber());
+		GAIndividualSmartCrossover clone = new GAIndividualSmartCrossover(
+				nsga2, expert.getPlayerNumber());
 		clone.expert.setCodebit(expert.getCodebit());
 		return clone;
 	}
@@ -68,8 +69,8 @@ public class GAIndividualSmartCrossover extends Individual
 			// Single Point Crossover
 			int sigma_share = generateRandomSharePart();
 			own_codebit = own_codebit.substring(0, sigma_share)
-					+ other_codebit.substring(sigma_share,
-							other_codebit.length());
+					+ other_codebit.substring(sigma_share, other_codebit
+							.length());
 
 			expert.setCodebit(own_codebit);
 
@@ -93,7 +94,7 @@ public class GAIndividualSmartCrossover extends Individual
 	private int generateRandomSharePart()
 	{
 		int cross_move = (int) (Math.random() * 3) + 1;
-
+		
 		return 0;
 	}
 
@@ -105,28 +106,18 @@ public class GAIndividualSmartCrossover extends Individual
 	@Override
 	protected void mutate()
 	{
-		boolean mutated = false;
-		// Mutate random bit of the 70 bits
-		if (Math.random() < nsga2.getNSGA2Configuration()
-				.getMutationProbability())
-		{
-			String codebit = expert.getCodebit();
-			int mutatebit = (int) (Math.random() * 70);
-			codebit = negateBit(codebit, mutatebit);
-			expert.setCodebit(codebit);
-			mutated = true;
-		}
+		// Mutate a random bit of the 70 bit
+		String codebit = expert.getCodebit();
+		int mutatebit = (int) (Math.random() * 70);
+		codebit = negateBit(codebit, mutatebit);
+		expert.setCodebit(codebit);
 
-		if (mutated)
+		// update fitness values
+		for (int i = 0; i < fitnessValues.length; i++)
 		{
-			// update fitness values
-			for (int i = 0; i < fitnessValues.length; i++)
-			{
-				fitnessValues[i] = nsga2.getNSGA2Configuration()
-						.getFitnessFunction(i).evaluate(this);
-			}
+			fitnessValues[i] = nsga2.getNSGA2Configuration()
+					.getFitnessFunction(i).evaluate(this);
 		}
-
 	}
 
 	public String negateBit(String str, int index)
