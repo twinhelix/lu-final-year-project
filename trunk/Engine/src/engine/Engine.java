@@ -3,17 +3,21 @@ package engine;
 import static common.Settings.NO_OF_ROUNDS;
 import static common.Settings.SCORING_SYSTEM;
 import agent.IExpert;
+import expert.AlternateCCDExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
 import expert.GAExpert;
 import expert.GAExpertModified;
 import expert.GrudgerExpert;
+import expert.HardMajorityExpert;
 import expert.PavlovExpert;
 import expert.ProbableExpert;
 import expert.RandomExpert;
 import expert.SoftGrudgerExpert;
+import expert.SoftMajorityExpert;
 import expert.eee.EEEDecProb;
 import expert.eee.EEEFixedProb;
+import expert.titfortat.HardTitforTatExpert;
 import expert.titfortat.RemorsefulProberExpert;
 import expert.titfortat.TitForTatExpert;
 
@@ -57,17 +61,20 @@ public class Engine
 				new SoftGrudgerExpert(0),
 				new GAExpert(
 						0,
-						"1111000010110110010100001110001010101000010101010001100001000000111111",
+						"1001011111001010111000000010100000100100110101010010001011011000111111",
 						3),
 				new ProbableExpert(0),
 				new GAExpertModified(
 						0,
-						"10110010000010000010000001001010010000011001001000001010000000001011011011101011100011") };
+						"10110010000010000010000001001010010000011001001000001010000000001011011011101011100011"),
+				new CooperateExpert(0), new SoftMajorityExpert(0),
+				new HardMajorityExpert(0), new AlternateCCDExpert(0),
+				new HardTitforTatExpert(0) };
 
 		IExpert[] experts1 = { new TitForTatExpert(0), new PavlovExpert(0) };
 
 		// "1111010001100010101000101101000011001100100010001000101101100000111111"
-		// 1111000010110110010100001110001010101000010101010001100001000000111111
+		// 1000011001000100000010001111101110100100110101001010000011001001111111
 		// - REALLY GOOD
 		// ImperfectRoundRobinEngine engine = new
 		// ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
