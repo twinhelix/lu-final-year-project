@@ -56,6 +56,7 @@ public class EEEPoolFinder
 	private static final int ROUNDS = 100;
 	private static DecimalFormat df = new DecimalFormat("#.##");
 	private static File testFile = new File("EEE Pool Finding Results.txt");
+	private static File bestFile = new File("EEE Pool Finding Best Scoring.txt");
 
 	public static void main(String[] args) throws FileNotFoundException,
 			IOException
@@ -177,7 +178,7 @@ public class EEEPoolFinder
 		return results;
 	}
 
-	private static void createGraph()
+	private static void createGraph() throws FileNotFoundException, IOException
 	{
 		// Create Graph of all the best pools
 
@@ -192,12 +193,29 @@ public class EEEPoolFinder
 				"EEE Dec - Best Pool Performance ");
 		gr_dec.plotDouble(dec_sorted_performance);
 
+		ReadWriteTextFile.setContents(bestFile,
+				"---------- EEE DEC Best Pool  ----------");
+		for (String key : dec_sorted_performance.keySet())
+		{
+			ReadWriteTextFile.setContents(bestFile, key + ": "
+					+ dec_sorted_performance.get(key));
+		}
+		ReadWriteTextFile.setContents(bestFile, "");
+
 		// Fixed
 		SortedMap<String, Double> fixed_sorted_performance = new TreeMap<String, Double>(
 				new DoubleValueComparator(eeeFixResults));
 		fixed_sorted_performance.putAll(eeeFixResults);
 		fixed_sorted_performance = MapUtils.putFirstEntries(10,
 				fixed_sorted_performance);
+
+		ReadWriteTextFile.setContents(bestFile,
+				"---------- EEE FIX Best Pool ----------");
+		for (String key : fixed_sorted_performance.keySet())
+		{
+			ReadWriteTextFile.setContents(bestFile, key + ": "
+					+ fixed_sorted_performance.get(key));
+		}
 
 		GraphingResults gr_fix = new GraphingResults(
 				"EEE Fixed - Best Pool Performance ");
