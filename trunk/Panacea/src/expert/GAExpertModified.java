@@ -7,6 +7,7 @@ import static utils.Encoding.T;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Stack;
 
 import utils.Encoding;
 import environment.GameHistory;
@@ -43,7 +44,7 @@ public class GAExpertModified extends AbstractExpert
 
 		this.history_depth = 3;
 		code_length = (int) Math.pow(4d, history_depth);
-		premises_length = 2 * history_depth;
+		premises_length = 2 + 4 + 16;
 
 		int full_length = code_length + premises_length;
 		if (code == null || code.length() != (full_length))
@@ -69,7 +70,7 @@ public class GAExpertModified extends AbstractExpert
 	@Override
 	public String getName()
 	{
-		return "GA Expert - " + history_depth;
+		return "GA Expert (Modified)";
 	}
 
 	public GameHistory getHistory()
@@ -184,11 +185,40 @@ public class GAExpertModified extends AbstractExpert
 			return lookupMove(encodeToInt(lastEncodings));
 		}
 
+		if (history.getNumberOfMoves() == 2)
+		{
+			// get last 2 moves
+			Stack<boolean[]> moves = new Stack<boolean[]>();
+			moves.addAll(history.getHistory());
+
+			boolean[][] lastMoves = new boolean[2][2];
+
+			lastMoves[0] = moves.pop();
+			lastMoves[1] = moves.pop();
+
+			// Encode them in terms of R T P S
+			Encoding[] lastEncodings = new Encoding[2];
+			for (int i = 0; i < 2; i++)
+			{
+				lastEncodings[i] = getEncoding(lastMoves[i]);
+			}
+			int selection = code_length + encodeToInt(lastEncodings);
+			return lookupMove(selection);
+		}
+
+		if (history.getNumberOfMoves() == 1)
+		{
+			// get move
+			boolean[] lastMove = history.getLastMove();
+			Encoding[] lastEncoding = { getEncoding(lastMove) };
+			int selection = code_length + 16 + encodeToInt(lastEncoding);
+			return lookupMove(selection);
+		}
+
 		// First 3 moves just randomize using given premises
 		else
 		{
-			int selection = code_length + ((int) (Math.random() * 2)) + 2
-					* history.getNumberOfMoves();
+			int selection = code_length + 16 + 4 + ((int) (Math.random() * 2));
 			return lookupMove(selection);
 		}
 	}
