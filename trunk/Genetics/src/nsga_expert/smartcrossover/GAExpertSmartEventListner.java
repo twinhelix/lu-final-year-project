@@ -30,7 +30,7 @@ public class GAExpertSmartEventListner implements NSGA2Listener
 	@Override
 	public void performNSGA2Event(NSGA2Event nsga2event)
 	{
-		if (nsga2event.getNumberGeneration() % 100 == 0)
+		if (nsga2event.getNumberGeneration() % 50 == 0)
 		{
 
 			System.out.println();
