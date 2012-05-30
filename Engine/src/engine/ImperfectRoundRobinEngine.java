@@ -64,9 +64,9 @@ public class ImperfectRoundRobinEngine extends RoundRobinEngine
 								+ result[1]));
 
 				if (PRINT_RESULTS)
-					printTwoColumns(e1.getName() + ": " + result[0], e2
+					printThreeColumns(e1.getName() + ": " + result[0], e2
 							.getName()
-							+ ": " + result[1]);
+							+ ": " + result[1], "");
 			}
 		}
 	}

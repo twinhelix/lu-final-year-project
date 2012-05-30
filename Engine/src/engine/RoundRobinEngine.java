@@ -109,9 +109,9 @@ public class RoundRobinEngine
 									+ result[1]));
 
 					if (PRINT_RESULTS)
-						printTwoColumns(e1.getName() + ": " + result[0], e2
+						printThreeColumns(e1.getName() + ": " + result[0], e2
 								.getName()
-								+ ": " + result[1]);
+								+ ": " + result[1], "");
 				}
 			}
 		}
@@ -138,7 +138,23 @@ public class RoundRobinEngine
 
 	private void calculateVariances()
 	{
-		// TODO Auto-generated method stub
+		for (Map<String, Double> roundScore : totals)
+		{
+			for (String key : roundScore.keySet())
+			{
+				double benchmark = Settings.getBenchMark(averageScores.size());
+
+				double squaredDiff = Math.pow(roundScore.get(key) / benchmark
+						- averageScores.get(key) / benchmark, 2);
+
+				variances
+						.put(key, new Double(variances.get(key) + squaredDiff));
+			}
+		}
+		for (String key : variances.keySet())
+		{
+			variances.put(key, new Double(variances.get(key) / runs));
+		}
 
 	}
 
@@ -181,10 +197,11 @@ public class RoundRobinEngine
 		for (String key : sorted_map.keySet())
 		{
 			i++;
-			printTwoColumns((i + ". " + key + ": " + df.format(sorted_map.get(
-					key).doubleValue())), ("Benchmark Score: "
+			printThreeColumns((i + ". " + key + ": " + df.format(sorted_map
+					.get(key).doubleValue())), ("Benchmark Score: "
 					+ df.format(sorted_map.get(key).doubleValue()
-							/ ((experts.length + 1) * benchmark) * 100) + "%"));
+							/ ((experts.length + 1) * benchmark) * 100) + "%"),
+					("Variance: " + variances.get(key)));
 		}
 	}
 
@@ -201,7 +218,7 @@ public class RoundRobinEngine
 		graph.plotDouble(sorted_map);
 	}
 
-	protected void printTwoColumns(String first, String second)
+	protected void printThreeColumns(String first, String second, String third)
 	{
 		System.out.print(first);
 		if (first.length() < 45)
@@ -209,7 +226,13 @@ public class RoundRobinEngine
 			for (int i = first.length(); i < 45; i++)
 				System.out.print(" ");
 		}
-		System.out.println(second);
+		System.out.print(second);
+		if (second.length() < 40)
+		{
+			for (int i = second.length(); i < 45; i++)
+				System.out.print(" ");
+		}
+		System.out.println(third);
 	}
 
 	class ValueComparator implements Comparator<Object>
