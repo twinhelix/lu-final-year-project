@@ -34,16 +34,28 @@ public class EEEGAEngine
 				new TitForTwoTatExpert(0).getName(),
 				new PavlovExpert(0).getName(), new CooperateExpert(0).getName() };
 
-		IExpert[] experts = { new TitForTatExpert(0),
-				//new EEEDecProb(0, strats), 
+		IExpert[] experts = {
+				new TitForTatExpert(0),
+				// new EEEDecProb(0, strats),
 				new EEEGADecProb(0, strats),
-				new EEEFixedProb(0, strats, 0.3), new RandomExpert(0),
-				new DefectExpert(0), new PavlovExpert(0),
-				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
-				new ProbableExpert(0), new CooperateExpert(0),
-				new TitForTwoTatExpert(0), new SoftMajorityExpert(0),
-				new SuspiciousTitForTatExpert(0), new HardMajorityExpert(0),
-				new AlternateCCDExpert(0), new HardTitforTatExpert(0) };
+				new EEEFixedProb(0, strats, 0.3),
+				new RandomExpert(0),
+				new DefectExpert(0),
+				new PavlovExpert(0),
+				new RemorsefulProberExpert(0, 0.2),
+				new SoftGrudgerExpert(0),
+				new ProbableExpert(0),
+				new CooperateExpert(0),
+				new TitForTwoTatExpert(0),
+				new SoftMajorityExpert(0),
+				new SuspiciousTitForTatExpert(0),
+				new HardMajorityExpert(0),
+				new AlternateCCDExpert(0),
+				new HardTitforTatExpert(0),
+				new GAExpert(
+						0,
+						"1101000000001011011000000101001001100100100100110100001010010000111111",
+						3) };
 
 		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
 				SCORING_SYSTEM, 10000);

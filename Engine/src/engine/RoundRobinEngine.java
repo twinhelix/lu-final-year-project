@@ -153,7 +153,7 @@ public class RoundRobinEngine
 		}
 		for (String key : variances.keySet())
 		{
-			variances.put(key, new Double(variances.get(key) / runs));
+			variances.put(key, new Double(variances.get(key) / runs) * 100);
 		}
 
 	}
