@@ -1,8 +1,6 @@
 package engine;
 
-import static engine.RoundRobinEngine.PRINT_RESULTS;
 import agent.IExpert;
-import environment.Game;
 import environment.ImperfectGame;
 import environment.ScoringSystem;
 
@@ -11,15 +9,15 @@ public class ImperfectRoundRobinEngine extends RoundRobinEngine
 	private double prob = -1d;
 
 	public ImperfectRoundRobinEngine(IExpert[] experts, int totalGames,
-			ScoringSystem scoringSystem)
+			ScoringSystem scoringSystem, int runs)
 	{
-		super(experts, totalGames, scoringSystem);
+		super(experts, totalGames, scoringSystem, runs);
 	}
 
 	public ImperfectRoundRobinEngine(IExpert[] experts, int totalGames,
-			ScoringSystem scoringSystem, double prob)
+			ScoringSystem scoringSystem, int runs, double prob)
 	{
-		super(experts, totalGames, scoringSystem);
+		super(experts, totalGames, scoringSystem, runs);
 		this.prob = prob;
 	}
 
@@ -47,22 +45,28 @@ public class ImperfectRoundRobinEngine extends RoundRobinEngine
 				if (prob == -1d)
 				{
 					game = new ImperfectGame(e1, e2, totalGames, scoringSystem);
-				}
-				else
+				} else
 				{
 					game = new ImperfectGame(e1, e2, totalGames, scoringSystem,
 							prob);
 				}
 				double[] result = game.run();
 
-				totals.put(e1.getName(), new Double(totals.get(e1.getName())
-						.doubleValue() + result[0]));
-				totals.put(e2.getName(), new Double(totals.get(e2.getName())
-						.doubleValue() + result[1]));
+				totals.peek().put(
+						e1.getName(),
+						new Double(totals.peek().get(e1.getName())
+								.doubleValue()
+								+ result[0]));
+				totals.peek().put(
+						e2.getName(),
+						new Double(totals.peek().get(e2.getName())
+								.doubleValue()
+								+ result[1]));
 
 				if (PRINT_RESULTS)
-					printTwoColumns(e1.getName() + ": " + result[0],
-							e2.getName() + ": " + result[1]);
+					printTwoColumns(e1.getName() + ": " + result[0], e2
+							.getName()
+							+ ": " + result[1]);
 			}
 		}
 	}
