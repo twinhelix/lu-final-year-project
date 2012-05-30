@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 import java.util.TreeMap;
 
 import Performance.GraphingPerformance;
@@ -22,25 +23,48 @@ public class RoundRobinEngine
 	protected IExpert[] experts;
 	protected int totalGames;
 	protected ScoringSystem scoringSystem;
-	protected Map<String, Double> totals;
+	protected Stack<Map<String, Double>> totals;
+	protected Map<String, Double> averageScores;
+	protected Map<String, Double> variances;
 	protected TreeMap<String, Double> sorted_map;
+	protected int runs;
 
 	public RoundRobinEngine(IExpert[] experts, int totalGames,
 			ScoringSystem scoringSystem)
 	{
+		this(experts, totalGames, scoringSystem, 1);
+	}
+
+	public RoundRobinEngine(IExpert[] experts, int totalGames,
+			ScoringSystem scoringSystem, int runs)
+	{
 		this.experts = experts;
 		this.totalGames = totalGames;
 		this.scoringSystem = scoringSystem;
-		initialiseTally(experts);
+		this.runs = runs;
+		totals = new Stack<Map<String, Double>>();
+		initialiseScores();
 	}
 
-	private void initialiseTally(IExpert[] experts)
+	private void initialiseTally()
 	{
-		totals = new HashMap<String, Double>();
+		Map<String, Double> total = new HashMap<String, Double>();
+		for (IExpert expert : experts)
+		{
+			total.put(expert.getName(), new Double(0));
+		}
+		totals.push(total);
+	}
+
+	private void initialiseScores()
+	{
+		averageScores = new HashMap<String, Double>();
+		variances = new HashMap<String, Double>();
 
 		for (IExpert expert : experts)
 		{
-			totals.put(expert.getName(), new Double(0));
+			averageScores.put(expert.getName(), new Double(0));
+			variances.put(expert.getName(), new Double(0));
 		}
 	}
 
@@ -49,58 +73,95 @@ public class RoundRobinEngine
 	 */
 	public void run()
 	{
-		for (int i = 0; i < experts.length; i++)
+		for (int run = 0; run < runs; run++)
 		{
-			for (int j = i; j < experts.length; j++)
+			initialiseTally();
+			for (int i = 0; i < experts.length; i++)
 			{
-				IExpert e1 = experts[i];
-				IExpert e2 = experts[j];
-
-				if (i == j)
+				for (int j = i; j < experts.length; j++)
 				{
-					e2 = (IExpert) experts[j].clone();
+					IExpert e1 = experts[i];
+					IExpert e2 = experts[j];
+
+					if (i == j)
+					{
+						e2 = (IExpert) experts[j].clone();
+					}
+
+					e1.setPlayerNumber(1);
+					e2.setPlayerNumber(2);
+
+					e1.initialize();
+					e2.initialize();
+
+					Game game = new Game(e1, e2, totalGames, scoringSystem);
+					double[] result = game.run();
+
+					totals.peek().put(
+							e1.getName(),
+							new Double(totals.peek().get(e1.getName())
+									.doubleValue()
+									+ result[0]));
+					totals.peek().put(
+							e2.getName(),
+							new Double(totals.peek().get(e2.getName())
+									.doubleValue()
+									+ result[1]));
+
+					if (PRINT_RESULTS)
+						printTwoColumns(e1.getName() + ": " + result[0], e2
+								.getName()
+								+ ": " + result[1]);
 				}
-
-				e1.setPlayerNumber(1);
-				e2.setPlayerNumber(2);
-
-				e1.initialize();
-				e2.initialize();
-
-				Game game = new Game(e1, e2, totalGames, scoringSystem);
-				double[] result = game.run();
-
-				totals.put(e1.getName(), new Double(totals.get(e1.getName())
-						.doubleValue() + result[0]));
-				totals.put(e2.getName(), new Double(totals.get(e2.getName())
-						.doubleValue() + result[1]));
-
-				if (PRINT_RESULTS)
-					printTwoColumns(e1.getName() + ": " + result[0],
-							e2.getName() + ": " + result[1]);
 			}
 		}
+		calculateAverageScores();
+		calculateVariances();
+	}
+
+	private void calculateAverageScores()
+	{
+		for (Map<String, Double> roundScore : totals)
+		{
+			for (String key : roundScore.keySet())
+			{
+				averageScores.put(key, new Double(averageScores.get(key)
+						+ roundScore.get(key)));
+			}
+		}
+		for (String key : averageScores.keySet())
+		{
+			averageScores.put(key, new Double(averageScores.get(key) / runs));
+		}
+
+	}
+
+	private void calculateVariances()
+	{
+		// TODO Auto-generated method stub
+
 	}
 
 	public double getScore(String key)
 	{
-		double benchmark = Settings.getBenchMark(totals.size());
-		return (totals.get(key).doubleValue()
+		double benchmark = Settings.getBenchMark(averageScores.size());
+
+		return (averageScores.get(key).doubleValue()
 				/ ((experts.length + 1) * benchmark) * 100);
 	}
 
 	public double getAverageOpponentScore(String key)
 	{
-		double benchmark = ((experts.length + 1) * Settings.getBenchMark(totals
-				.size()));
+		double benchmark = ((experts.length + 1) * Settings
+				.getBenchMark(averageScores.size()));
 
 		double totalOpponentsScore = 0d;
-		for (String expertName : totals.keySet())
+		for (String expertName : averageScores.keySet())
 		{
-			totalOpponentsScore += totals.get(expertName);
+			totalOpponentsScore += averageScores.get(expertName);
 		}
 
-		totalOpponentsScore -= totals.get(key).doubleValue();
+		totalOpponentsScore -= averageScores.get(key).doubleValue();
 		double averageOpponentsScore = totalOpponentsScore
 				/ (experts.length - 1);
 		return (averageOpponentsScore / benchmark * 100);
@@ -108,22 +169,22 @@ public class RoundRobinEngine
 
 	public void showTally()
 	{
-		sorted_map = new TreeMap<String, Double>(new ValueComparator(totals));
-		sorted_map.putAll(totals);
+		sorted_map = new TreeMap<String, Double>(new ValueComparator(
+				averageScores));
+		sorted_map.putAll(averageScores);
 		double benchmark = Settings.getBenchMark(sorted_map.size());
 
-		System.out.println("--- RESULTS ---");
+		System.out.println("--- AVERAGE RESULTS OF " + runs + " runs ---");
 		int i = 0;
 		DecimalFormat df = new DecimalFormat("#.##");
 
 		for (String key : sorted_map.keySet())
 		{
 			i++;
-			printTwoColumns(
-					(i + ". " + key + ": " + sorted_map.get(key).doubleValue()),
-					("Benchmark Score: "
-							+ df.format(sorted_map.get(key).doubleValue()
-									/ ((experts.length + 1) * benchmark) * 100) + "%"));
+			printTwoColumns((i + ". " + key + ": " + df.format(sorted_map.get(
+					key).doubleValue())), ("Benchmark Score: "
+					+ df.format(sorted_map.get(key).doubleValue()
+							/ ((experts.length + 1) * benchmark) * 100) + "%"));
 		}
 	}
 
@@ -166,12 +227,10 @@ public class RoundRobinEngine
 			if ((Double) base.get(a) < (Double) base.get(b))
 			{
 				return 1;
-			}
-			else if ((Double) base.get(a) == (Double) base.get(b))
+			} else if ((Double) base.get(a) == (Double) base.get(b))
 			{
 				return 0;
-			}
-			else
+			} else
 			{
 				return -1;
 			}
