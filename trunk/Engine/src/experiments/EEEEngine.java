@@ -15,7 +15,6 @@ import expert.SoftGrudgerExpert;
 import expert.SoftMajorityExpert;
 import expert.eee.EEEDecProb;
 import expert.eee.EEEFixedProb;
-import expert.eee.EEEGADecProb;
 import expert.titfortat.HardTitforTatExpert;
 import expert.titfortat.RemorsefulProberExpert;
 import expert.titfortat.SuspiciousTitForTatExpert;

@@ -90,6 +90,23 @@ public class ExpertsDictionary
 
 	}
 
+	public IExpert[] getRandomExperts(int number)
+	{
+		IExpert[] experts = new IExpert[number];
+		int size = dictionary.size();
+		for (String key : dictionary.keySet())
+		{
+			double prob = ((double) number) / size;
+			if (Math.random() < prob)
+			{
+				experts[number - 1] = dictionary.get(key);
+				number--;
+			}
+			size--;
+		}
+		return experts;
+	}
+
 	public IExpert getExpert(String name)
 	{
 		if (dictionary.keySet().contains(name))

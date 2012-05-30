@@ -53,7 +53,7 @@ public class EEEPoolFinder
 	private static Map<String, Double> eeeDecResults;
 	private static Map<String, Double> eeeFixResults;
 
-	private static final int ROUNDS = 100;
+	private static final int ROUNDS = 10;
 	private static DecimalFormat df = new DecimalFormat("#.##");
 	private static File testFile = new File("EEE Pool Finding Results.txt");
 	private static File bestFile = new File("EEE Pool Finding Best Scoring.txt");
@@ -79,8 +79,8 @@ public class EEEPoolFinder
 					System.out.println(s);
 
 				double[] result = run(s, ROUNDS);
-				eeeDecResults.put(s.toString(), new Double(result[0]));
-				eeeFixResults.put(s.toString(), new Double(result[1]));
+//				eeeDecResults.put(s.toString(), new Double(result[0]));
+//				eeeFixResults.put(s.toString(), new Double(result[1]));
 
 				// Write results to file
 
@@ -100,7 +100,7 @@ public class EEEPoolFinder
 				}
 			}
 		}
-		createGraph();
+		//createGraph();
 	}
 
 	public static Set<String> populateExperts()
