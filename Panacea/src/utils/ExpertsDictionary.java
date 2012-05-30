@@ -5,14 +5,19 @@ import java.util.Map;
 
 import agent.IExpert;
 import expert.AdaptiveExpert;
+import expert.AlternateCCDExpert;
+import expert.AlternateDDCExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
 import expert.GradualExpert;
 import expert.GrudgerExpert;
+import expert.HardMajorityExpert;
 import expert.PavlovExpert;
 import expert.ProbableExpert;
 import expert.RandomExpert;
 import expert.SoftGrudgerExpert;
+import expert.SoftMajorityExpert;
+import expert.titfortat.HardTitforTatExpert;
 import expert.titfortat.NaivePeaceMakerExpert;
 import expert.titfortat.NaiveProberExpert;
 import expert.titfortat.RemorsefulProberExpert;
@@ -54,6 +59,12 @@ public class ExpertsDictionary
 		IExpert softgrudger = new SoftGrudgerExpert(playerNo);
 		IExpert probable = new ProbableExpert(playerNo);
 
+		IExpert softMajority = new SoftMajorityExpert(playerNo);
+		IExpert hardMajority = new HardMajorityExpert(playerNo);
+		IExpert alternateCCD = new AlternateCCDExpert(playerNo);
+		IExpert alternateDDC = new AlternateDDCExpert(playerNo);
+		IExpert hardTitforTat = new HardTitforTatExpert(playerNo);
+
 		dictionary.put(random.getName(), random);
 		dictionary.put(grudger.getName(), grudger);
 		dictionary.put(coop.getName(), coop);
@@ -70,6 +81,13 @@ public class ExpertsDictionary
 		dictionary.put(truepeace.getName(), truepeace);
 		dictionary.put(softgrudger.getName(), softgrudger);
 		dictionary.put(probable.getName(), probable);
+
+		dictionary.put(softMajority.getName(), softMajority);
+		dictionary.put(hardMajority.getName(), hardMajority);
+		dictionary.put(alternateCCD.getName(), alternateCCD);
+		dictionary.put(alternateDDC.getName(), alternateDDC);
+		dictionary.put(hardTitforTat.getName(), hardTitforTat);
+
 	}
 
 	public IExpert getExpert(String name)
