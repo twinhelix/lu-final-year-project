@@ -8,6 +8,11 @@ public class EEEDecProb extends EEEBase
 		super(playerNo, strategies);
 	}
 
+	public EEEDecProb(int playerNo, int poolSize)
+	{
+		super(playerNo, poolSize);
+	}
+
 	@Override
 	protected double getProb()
 	{

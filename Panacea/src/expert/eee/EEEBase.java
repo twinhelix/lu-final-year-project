@@ -32,25 +32,32 @@ public abstract class EEEBase extends AbstractExpert
 	private double currentTotalScore;
 	private Phase phase;
 	private int agentChoice, maxStages, currentStage;
-	private String[] strategies;
+	private IExpert[] experts;
 
 	public EEEBase(int playerNo, String[] strategies)
 	{
 		this(playerNo, strategies, 1);
 	}
 
+	public EEEBase(int playerNo, int poolSize)
+	{
+		super(playerNo);
+		this.prob = 1;
+		populateRandomExpertArray(poolSize);
+		initialize();
+	}
+
 	public EEEBase(int playerNo, String[] strategies, double prob)
 	{
 		super(playerNo);
 		this.prob = prob;
-		this.strategies = strategies;
+		populateExpertArray(strategies);
 		initialize();
 	}
 
 	@Override
 	public void initialize()
 	{
-		populateExpertArray(strategies);
 		phase = Phase.IDLE;
 		agentChoice = 0;
 		i = 1;
@@ -74,6 +81,31 @@ public abstract class EEEBase extends AbstractExpert
 		return performance;
 	}
 
+	private void populateRandomExpertArray(int poolSize)
+	{
+		ExpertsDictionary dict = new ExpertsDictionary(playerNo, 0.2);
+		IExpert[] experts = dict.getRandomExperts(poolSize);
+		reassignPool(experts);
+	}
+
+	public IExpert[] getExperts()
+	{
+		return experts;
+	}
+
+	public void reassignPool(IExpert[] experts)
+	{
+		this.experts = experts;
+
+		advisors = new Advisor[experts.length];
+
+		for (int i = 0; i < experts.length; i++)
+		{
+			advisors[i] = new Advisor(experts[i]);
+		}
+		initialize();
+	}
+
 	/***
 	 * need to override set player number as all player numbers need to be reset
 	 */
@@ -95,7 +127,7 @@ public abstract class EEEBase extends AbstractExpert
 	protected void populateExpertArray(String[] strategies)
 	{
 		ExpertsDictionary dict = new ExpertsDictionary(playerNo, 0.2);
-
+		experts = new IExpert[strategies.length];
 		advisors = new Advisor[strategies.length];
 
 		for (int i = 0; i < advisors.length; i++)
@@ -105,6 +137,7 @@ public abstract class EEEBase extends AbstractExpert
 			{
 				e = new TitForTatExpert(playerNo);
 			}
+			experts[i] = e;
 			advisors[i] = new Advisor(e);
 		}
 	}
@@ -135,7 +168,8 @@ public abstract class EEEBase extends AbstractExpert
 			findExploreAgent();
 			return explore(history);
 
-		} else
+		}
+		else
 		{
 			// first always update previous round scores
 			updateScores(history);
@@ -172,17 +206,20 @@ public abstract class EEEBase extends AbstractExpert
 					// phase first
 					findExploreAgent();
 					return explore(history);
-				} else
+				}
+				else
 				{
 					phase = Phase.EXPLOIT;
 					return exploit(history);
 				}
 				// Update last phase
 
-			} else if (phase == Phase.EXPLORE)
+			}
+			else if (phase == Phase.EXPLORE)
 			{
 				return explore(history);
-			} else if (phase == Phase.EXPLOIT)
+			}
+			else if (phase == Phase.EXPLOIT)
 			{
 				return exploit(history);
 			}
@@ -248,7 +285,8 @@ public abstract class EEEBase extends AbstractExpert
 			if (advisors[i].aveReward == bestScore)
 			{
 				indices.add(i);
-			} else if (advisors[i].aveReward > bestScore)
+			}
+			else if (advisors[i].aveReward > bestScore)
 			{
 				bestScore = advisors[i].aveReward;
 				indices.clear();
