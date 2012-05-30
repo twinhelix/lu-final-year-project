@@ -64,10 +64,10 @@ public class GAFitnessOwnScore implements FitnessFunction
 		}
 
 		double averageScore = totalScore / RUNS_PER_EVALUATION;
-//		if (averageScore > 95)
-//		{
-//			System.err.println(expert.getCodebit());
-//		}
+		// if (averageScore > 95)
+		// {
+		// System.err.println(expert.getCodebit());
+		// }
 
 		return -averageScore;
 	}
