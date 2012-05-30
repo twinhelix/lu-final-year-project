@@ -36,12 +36,15 @@ public class GAExpert extends AbstractExpert
 	private int code_length, premises_length;
 	private String codebit, premises;
 	private GameHistory history;
+	private String name;
 
 	public GAExpert(int playerNo, String code, int history_depth)
 	{
 		super(playerNo);
 
 		this.history_depth = history_depth;
+		this.name = "GA Expert - " + history_depth;
+
 		code_length = (int) Math.pow(4d, history_depth);
 		premises_length = 2 * history_depth;
 
@@ -49,8 +52,7 @@ public class GAExpert extends AbstractExpert
 		if (code == null || code.length() != (full_length))
 		{
 			generateRandomStrategy();
-		}
-		else
+		} else
 		{
 			this.codebit = code;
 		}
@@ -69,7 +71,12 @@ public class GAExpert extends AbstractExpert
 	@Override
 	public String getName()
 	{
-		return "GA Expert - " + history_depth;
+		return name;
+	}
+
+	public void setUniqueName(String name)
+	{
+		this.name = name;
 	}
 
 	public GameHistory getHistory()
@@ -126,16 +133,13 @@ public class GAExpert extends AbstractExpert
 		if (move[playerNo - 1] && move[playerNo % 2])
 		{
 			return R;
-		}
-		else if (move[playerNo - 1] && !move[playerNo % 2])
+		} else if (move[playerNo - 1] && !move[playerNo % 2])
 		{
 			return S;
-		}
-		else if (!move[playerNo - 1] && move[playerNo % 2])
+		} else if (!move[playerNo - 1] && move[playerNo % 2])
 		{
 			return T;
-		}
-		else
+		} else
 		{
 			return P;
 		}
