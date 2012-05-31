@@ -7,8 +7,6 @@ import static nsga_expert.GASettings.POPULATION_SIZE;
 
 import java.util.LinkedList;
 
-import nsga_expert.GAExpertEventListner;
-
 import de.uka.aifb.com.jnsga2.FitnessFunction;
 import de.uka.aifb.com.jnsga2.Individual;
 import de.uka.aifb.com.jnsga2.NSGA2;

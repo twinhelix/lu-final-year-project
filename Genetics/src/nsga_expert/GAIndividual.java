@@ -12,6 +12,7 @@ public class GAIndividual extends Individual
 	private int CODEBIT_LENGTH;
 	private GAExpert expert;
 	private double[] fitnessValues;
+	private boolean useSingleCrossover = false;
 
 	public GAIndividual(NSGA2 nsga2, int playerNo)
 	{
@@ -61,22 +62,42 @@ public class GAIndividual extends Individual
 		if (Math.random() < nsga2.getNSGA2Configuration()
 				.getCrossoverProbability())
 		{
-			// crossover in front of 'randomIndex'
 			String other_codebit = otherGAIndividual.getExpert().getCodebit();
 			String own_codebit = expert.getCodebit();
-
-			// Single Point Crossover
-			int sigma_share = (int) (Math.random() * CODEBIT_LENGTH);
 			String dummy = own_codebit;
+			if (useSingleCrossover)
+			{
+				// crossover in front of 'randomIndex'
+				// Single Point Crossover
+				int sigma_share = (int) (Math.random() * CODEBIT_LENGTH);
 
-			own_codebit = own_codebit.substring(0, sigma_share)
-					+ other_codebit.substring(sigma_share, other_codebit
-							.length());
-			expert.setCodebit(own_codebit);
+				own_codebit = own_codebit.substring(0, sigma_share)
+						+ other_codebit.substring(sigma_share, other_codebit
+								.length());
+				expert.setCodebit(own_codebit);
 
-			other_codebit = other_codebit.substring(0, sigma_share)
-					+ dummy.substring(sigma_share, dummy.length());
+				other_codebit = other_codebit.substring(0, sigma_share)
+						+ dummy.substring(sigma_share, dummy.length());
+			} else
+			{
+				int start = (int) (Math.random() * CODEBIT_LENGTH);
+				int finish = (int) (Math.random() * CODEBIT_LENGTH);
 
+				if (start > finish)
+				{
+					int temp = start;
+					start = finish;
+					finish = temp;
+				}
+
+				own_codebit = own_codebit.substring(0, start)
+						+ other_codebit.substring(start, finish)
+						+ own_codebit.substring(finish, own_codebit.length());
+				other_codebit = other_codebit.substring(0, start)
+						+ dummy.substring(start, finish)
+						+ other_codebit.substring(finish, other_codebit
+								.length());
+			}
 			// update fitness values
 			for (int i = 0; i < fitnessValues.length; i++)
 			{
