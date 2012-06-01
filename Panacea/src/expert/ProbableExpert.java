@@ -29,7 +29,7 @@ public class ProbableExpert extends AbstractExpert
 	@Override
 	public String getName()
 	{
-		return "ProbabalExpert";
+		return "Probabal Expert";
 	}
 
 	@Override

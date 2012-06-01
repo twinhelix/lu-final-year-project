@@ -17,7 +17,7 @@ public class SuspiciousTitForTatExpert extends TitForTatExpert
 
 	public String getName()
 	{
-		return ("Suspicious Tit-for-Tat Expert");
+		return ("Suspicious Tit-for-Tat");
 	}
 
 	@Override
@@ -27,8 +27,7 @@ public class SuspiciousTitForTatExpert extends TitForTatExpert
 		if (history.getNumberOfMoves() == 0)
 		{
 			return false;
-		}
-		else
+		} else
 			return super.move(history);
 	}
 

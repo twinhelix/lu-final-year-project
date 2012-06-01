@@ -26,7 +26,9 @@ public class RoundRobinEngine
 	protected Stack<Map<String, Double>> totals;
 	protected Map<String, Double> averageScores;
 	protected Map<String, Double> variances;
+	protected Map<String, double[]> cis;
 	protected TreeMap<String, Double> sorted_map;
+	protected DecimalFormat df;
 	protected int runs;
 
 	public RoundRobinEngine(IExpert[] experts, int totalGames,
@@ -43,6 +45,7 @@ public class RoundRobinEngine
 		this.scoringSystem = scoringSystem;
 		this.runs = runs;
 		totals = new Stack<Map<String, Double>>();
+		df = new DecimalFormat("#.####");
 		initialiseScores();
 	}
 
@@ -60,11 +63,12 @@ public class RoundRobinEngine
 	{
 		averageScores = new HashMap<String, Double>();
 		variances = new HashMap<String, Double>();
-
+		cis = new HashMap<String, double[]>();
 		for (IExpert expert : experts)
 		{
 			averageScores.put(expert.getName(), new Double(0));
 			variances.put(expert.getName(), new Double(0));
+			// cis.put(expert.getName(), new double[2]);
 		}
 	}
 
@@ -109,14 +113,14 @@ public class RoundRobinEngine
 									+ result[1]));
 
 					if (PRINT_RESULTS)
-						printThreeColumns(e1.getName() + ": " + result[0], e2
+						printTable(e1.getName() + ": " + result[0], e2
 								.getName()
-								+ ": " + result[1], "");
+								+ ": " + result[1], "", "");
 				}
 			}
 		}
 		calculateAverageScores();
-		calculateVariances();
+		calculateStats();
 	}
 
 	private void calculateAverageScores()
@@ -136,16 +140,24 @@ public class RoundRobinEngine
 
 	}
 
-	private void calculateVariances()
+	/***
+	 * Calculates variances and 99% CI
+	 */
+	private void calculateStats()
 	{
+		double benchmark = Settings.getBenchMark(averageScores.size());
 		for (Map<String, Double> roundScore : totals)
 		{
+
 			for (String key : roundScore.keySet())
 			{
-				double benchmark = Settings.getBenchMark(averageScores.size());
+				double roundBenchmarkScore = roundScore.get(key)
+						/ ((experts.length + 1) * benchmark) * 100;
+				double aveBenchmarkScore = averageScores.get(key)
+						/ ((experts.length + 1) * benchmark) * 100;
 
-				double squaredDiff = Math.pow(roundScore.get(key) / benchmark
-						- averageScores.get(key) / benchmark, 2);
+				double squaredDiff = Math.pow(roundBenchmarkScore
+						- aveBenchmarkScore, 2);
 
 				variances
 						.put(key, new Double(variances.get(key) + squaredDiff));
@@ -153,9 +165,14 @@ public class RoundRobinEngine
 		}
 		for (String key : variances.keySet())
 		{
-			variances.put(key, new Double(variances.get(key) / runs) * 100);
-		}
+			Double var = new Double(variances.get(key) / runs);
+			variances.put(key, var);
 
+			double aveBenchMark = (averageScores.get(key)
+					/ ((experts.length + 1) * benchmark) * 100);
+
+			cis.put(key, calc99CI(aveBenchMark, var));
+		}
 	}
 
 	public double getScore(String key)
@@ -164,6 +181,17 @@ public class RoundRobinEngine
 
 		return (averageScores.get(key).doubleValue()
 				/ ((experts.length + 1) * benchmark) * 100);
+	}
+
+	protected double[] calc99CI(double mean, double variance)
+	{
+
+		double std = Math.sqrt(variance);
+
+		double[] result = { (mean - 2.58 * std / Math.sqrt(totalGames)),
+				(mean + 2.54 * std / Math.sqrt(totalGames)) };
+		return result;
+
 	}
 
 	public double getAverageOpponentScore(String key)
@@ -192,16 +220,17 @@ public class RoundRobinEngine
 
 		System.out.println("--- AVERAGE RESULTS OF " + runs + " runs ---");
 		int i = 0;
-		DecimalFormat df = new DecimalFormat("#.##");
-
+		printTable("Expert", "Benchmark Score", "Variance", "99% CI");
 		for (String key : sorted_map.keySet())
 		{
 			i++;
-			printThreeColumns((i + ". " + key + ": " + df.format(sorted_map
-					.get(key).doubleValue())), ("Benchmark Score: "
-					+ df.format(sorted_map.get(key).doubleValue()
-							/ ((experts.length + 1) * benchmark) * 100) + "%"),
-					("Variance: " + variances.get(key)));
+			double[] ci = cis.get(key);
+			printTable((i + ". " + key + ": " + df.format(sorted_map.get(key)
+					.doubleValue())), (df.format(sorted_map.get(key)
+					.doubleValue()
+					/ ((experts.length + 1) * benchmark) * 100) + "%"), (df
+					.format(variances.get(key))), ("[" + df.format(ci[0])
+					+ ", " + df.format(ci[1]) + "]"));
 		}
 	}
 
@@ -218,7 +247,8 @@ public class RoundRobinEngine
 		graph.plotDouble(sorted_map);
 	}
 
-	protected void printThreeColumns(String first, String second, String third)
+	protected void printTable(String first, String second, String third,
+			String fourth)
 	{
 		System.out.print(first);
 		if (first.length() < 45)
@@ -229,10 +259,18 @@ public class RoundRobinEngine
 		System.out.print(second);
 		if (second.length() < 40)
 		{
-			for (int i = second.length(); i < 45; i++)
+			for (int i = second.length(); i < 40; i++)
 				System.out.print(" ");
 		}
-		System.out.println(third);
+		System.out.print(third);
+
+		if (third.length() < 40)
+		{
+			for (int i = third.length(); i < 40; i++)
+				System.out.print(" ");
+		}
+		System.out.println(fourth);
+
 	}
 
 	class ValueComparator implements Comparator<Object>

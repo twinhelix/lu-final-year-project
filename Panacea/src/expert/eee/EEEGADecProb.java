@@ -16,7 +16,7 @@ public class EEEGADecProb extends EEEBase
 	@Override
 	public String getName()
 	{
-		return "EEE with GA - Decreasing Prob";
+		return "EEE w/ GA - Dec Prob";
 	}
 
 	@Override
