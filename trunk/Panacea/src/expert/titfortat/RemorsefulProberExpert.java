@@ -32,7 +32,7 @@ public class RemorsefulProberExpert extends TitForTatExpert
 	@Override
 	public String getName()
 	{
-		return ("Remorseful Prober Expert: " + prob + "%");
+		return ("Remorseful Prober: " + prob + "%");
 	}
 
 	public boolean move(GameHistory history)
