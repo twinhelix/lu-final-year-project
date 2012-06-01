@@ -188,8 +188,8 @@ public class RoundRobinEngine
 
 		double std = Math.sqrt(variance);
 
-		double[] result = { (mean - 2.58 * std / Math.sqrt(totalGames)),
-				(mean + 2.54 * std / Math.sqrt(totalGames)) };
+		double[] result = { (mean - 2.58 * std / Math.sqrt(runs)),
+				(mean + 2.54 * std / Math.sqrt(runs)) };
 		return result;
 
 	}
