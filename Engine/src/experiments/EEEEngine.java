@@ -3,6 +3,8 @@ package experiments;
 import static common.Settings.NO_OF_ROUNDS;
 import static common.Settings.SCORING_SYSTEM;
 import agent.IExpert;
+import engine.IEngine;
+import engine.ImperfectRoundRobinEngine;
 import engine.RoundRobinEngine;
 import expert.AlternateCCDExpert;
 import expert.CooperateExpert;
@@ -24,13 +26,18 @@ import expert.titfortat.TitForTwoTatExpert;
 public class EEEEngine
 {
 	private static boolean PLOT_GRAPHS = false;
+	private static boolean IMPERFECT = true;
 
 	public static void main(String[] args)
 	{
 
-		String[] strats = { new SoftMajorityExpert(0).getName(),
+		String[] strats1 = { new SoftMajorityExpert(0).getName(),
 				new TitForTwoTatExpert(0).getName(),
 				new CooperateExpert(0).getName(), new PavlovExpert(0).getName() };
+
+		String[] strats = { new TitForTatExpert(0).getName(),
+				new TitForTwoTatExpert(0).getName(),
+				new SoftMajorityExpert(0).getName() };
 
 		IExpert[] experts = { new TitForTatExpert(0),
 				new EEEDecProb(0, strats), new EEEFixedProb(0, strats, 0.3),
@@ -41,8 +48,17 @@ public class EEEEngine
 				new SoftMajorityExpert(0), new HardMajorityExpert(0),
 				new AlternateCCDExpert(0), new HardTitforTatExpert(0) };
 
-		RoundRobinEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
-				SCORING_SYSTEM, 10000);
+		IEngine engine;
+		if (!IMPERFECT)
+		{
+			engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
+					SCORING_SYSTEM, 100);
+		}
+		else
+		{
+			engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
+					SCORING_SYSTEM, 100, 0.2);
+		}
 
 		engine.run();
 		System.out.println();
@@ -53,12 +69,5 @@ public class EEEEngine
 			engine.plotResults();
 			engine.plotPerformance();
 		}
-
-		// GAExpert ge = new GAExpert(0);
-
-		// Game g = new Game(new DefectExpert(1), new RandomExpert(2), 200,
-		// scoringSystem);
-		// double[] x = g.run();
-		// System.out.println(x[0] + " " + x[1]);
 	}
 }

@@ -34,6 +34,7 @@ public class GAExpert extends AbstractExpert
 	 */
 	private int history_depth;
 	private int code_length, premises_length;
+	protected int full_length;
 	private String codebit, premises;
 	private GameHistory history;
 	private String name;
@@ -48,11 +49,12 @@ public class GAExpert extends AbstractExpert
 		code_length = (int) Math.pow(4d, history_depth);
 		premises_length = 2 * history_depth;
 
-		int full_length = code_length + premises_length;
+		full_length = code_length + premises_length;
 		if (code == null || code.length() != (full_length))
 		{
 			generateRandomStrategy();
-		} else
+		}
+		else
 		{
 			this.codebit = code;
 		}
@@ -133,13 +135,16 @@ public class GAExpert extends AbstractExpert
 		if (move[playerNo - 1] && move[playerNo % 2])
 		{
 			return R;
-		} else if (move[playerNo - 1] && !move[playerNo % 2])
+		}
+		else if (move[playerNo - 1] && !move[playerNo % 2])
 		{
 			return S;
-		} else if (!move[playerNo - 1] && move[playerNo % 2])
+		}
+		else if (!move[playerNo - 1] && move[playerNo % 2])
 		{
 			return T;
-		} else
+		}
+		else
 		{
 			return P;
 		}
@@ -156,7 +161,7 @@ public class GAExpert extends AbstractExpert
 		return seq;
 	}
 
-	private boolean lookupMove(int bit)
+	protected boolean lookupMove(int bit)
 	{
 		if (codebit.charAt(bit) == '0')
 			return false;
