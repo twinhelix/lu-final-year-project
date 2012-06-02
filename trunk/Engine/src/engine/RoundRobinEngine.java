@@ -16,7 +16,7 @@ import common.Settings;
 import environment.Game;
 import environment.ScoringSystem;
 
-public class RoundRobinEngine
+public class RoundRobinEngine implements IEngine
 {
 	protected static boolean PRINT_RESULTS = false;
 
@@ -30,6 +30,7 @@ public class RoundRobinEngine
 	protected TreeMap<String, Double> sorted_map;
 	protected DecimalFormat df;
 	protected int runs;
+	double benchmark;
 
 	public RoundRobinEngine(IExpert[] experts, int totalGames,
 			ScoringSystem scoringSystem)
@@ -45,11 +46,12 @@ public class RoundRobinEngine
 		this.scoringSystem = scoringSystem;
 		this.runs = runs;
 		totals = new Stack<Map<String, Double>>();
+		benchmark = Settings.getBenchMark(experts.length);
 		df = new DecimalFormat("#.####");
 		initialiseScores();
 	}
 
-	private void initialiseTally()
+	protected void initialiseTally()
 	{
 		Map<String, Double> total = new HashMap<String, Double>();
 		for (IExpert expert : experts)
@@ -113,9 +115,8 @@ public class RoundRobinEngine
 									+ result[1]));
 
 					if (PRINT_RESULTS)
-						printTable(e1.getName() + ": " + result[0], e2
-								.getName()
-								+ ": " + result[1], "", "");
+						printTable(e1.getName() + ": " + result[0],
+								e2.getName() + ": " + result[1], "", "");
 				}
 			}
 		}
@@ -123,7 +124,7 @@ public class RoundRobinEngine
 		calculateStats();
 	}
 
-	private void calculateAverageScores()
+	protected void calculateAverageScores()
 	{
 		for (Map<String, Double> roundScore : totals)
 		{
@@ -143,9 +144,8 @@ public class RoundRobinEngine
 	/***
 	 * Calculates variances and 99% CI
 	 */
-	private void calculateStats()
+	protected void calculateStats()
 	{
-		double benchmark = Settings.getBenchMark(averageScores.size());
 		for (Map<String, Double> roundScore : totals)
 		{
 
@@ -177,8 +177,6 @@ public class RoundRobinEngine
 
 	public double getScore(String key)
 	{
-		double benchmark = Settings.getBenchMark(averageScores.size());
-
 		return (averageScores.get(key).doubleValue()
 				/ ((experts.length + 1) * benchmark) * 100);
 	}
@@ -196,9 +194,6 @@ public class RoundRobinEngine
 
 	public double getAverageOpponentScore(String key)
 	{
-		double benchmark = ((experts.length + 1) * Settings
-				.getBenchMark(averageScores.size()));
-
 		double totalOpponentsScore = 0d;
 		for (String expertName : averageScores.keySet())
 		{
@@ -216,21 +211,22 @@ public class RoundRobinEngine
 		sorted_map = new TreeMap<String, Double>(new ValueComparator(
 				averageScores));
 		sorted_map.putAll(averageScores);
-		double benchmark = Settings.getBenchMark(sorted_map.size());
 
 		System.out.println("--- AVERAGE RESULTS OF " + runs + " runs ---");
 		int i = 0;
-		printTable("Expert", "Benchmark Score", "Variance", "99% CI");
+		printTable("Expert and Average Score", "Benchmark Score: out of "
+				+ benchmark, "Variance", "99% CI");
 		for (String key : sorted_map.keySet())
 		{
 			i++;
 			double[] ci = cis.get(key);
-			printTable((i + ". " + key + ": " + df.format(sorted_map.get(key)
-					.doubleValue())), (df.format(sorted_map.get(key)
-					.doubleValue()
-					/ ((experts.length + 1) * benchmark) * 100) + "%"), (df
-					.format(variances.get(key))), ("[" + df.format(ci[0])
-					+ ", " + df.format(ci[1]) + "]"));
+			printTable(
+					(i + ". " + key + ": " + df.format(sorted_map.get(key)
+							.doubleValue() / (experts.length + 1))),
+					(df.format(sorted_map.get(key).doubleValue()
+							/ ((experts.length + 1) * benchmark) * 100) + "%"),
+					(df.format(variances.get(key))), ("[" + df.format(ci[0])
+							+ ", " + df.format(ci[1]) + "]"));
 		}
 	}
 
@@ -251,9 +247,9 @@ public class RoundRobinEngine
 			String fourth)
 	{
 		System.out.print(first);
-		if (first.length() < 45)
+		if (first.length() < 48)
 		{
-			for (int i = first.length(); i < 45; i++)
+			for (int i = first.length(); i < 48; i++)
 				System.out.print(" ");
 		}
 		System.out.print(second);
@@ -264,9 +260,9 @@ public class RoundRobinEngine
 		}
 		System.out.print(third);
 
-		if (third.length() < 40)
+		if (third.length() < 30)
 		{
-			for (int i = third.length(); i < 40; i++)
+			for (int i = third.length(); i < 30; i++)
 				System.out.print(" ");
 		}
 		System.out.println(fourth);
@@ -288,10 +284,12 @@ public class RoundRobinEngine
 			if ((Double) base.get(a) < (Double) base.get(b))
 			{
 				return 1;
-			} else if ((Double) base.get(a) == (Double) base.get(b))
+			}
+			else if ((Double) base.get(a) == (Double) base.get(b))
 			{
 				return 0;
-			} else
+			}
+			else
 			{
 				return -1;
 			}
