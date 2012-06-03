@@ -30,7 +30,7 @@ public class RoundRobinEngine implements IEngine
 	protected TreeMap<String, Double> sorted_map;
 	protected DecimalFormat df;
 	protected int runs;
-	double benchmark;
+	protected double benchmark;
 
 	public RoundRobinEngine(IExpert[] experts, int totalGames,
 			ScoringSystem scoringSystem)
@@ -203,7 +203,7 @@ public class RoundRobinEngine implements IEngine
 		totalOpponentsScore -= averageScores.get(key).doubleValue();
 		double averageOpponentsScore = totalOpponentsScore
 				/ (experts.length - 1);
-		return (averageOpponentsScore / benchmark * 100);
+		return (averageOpponentsScore / ((experts.length + 1) * benchmark) * 100);
 	}
 
 	public void showTally()
