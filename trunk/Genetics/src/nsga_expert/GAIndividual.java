@@ -12,7 +12,7 @@ public class GAIndividual extends Individual
 	private int CODEBIT_LENGTH;
 	private GAExpert expert;
 	private double[] fitnessValues;
-	private boolean useSingleCrossover = false;
+	private boolean useSingleCrossover = true;
 
 	public GAIndividual(NSGA2 nsga2, int playerNo)
 	{

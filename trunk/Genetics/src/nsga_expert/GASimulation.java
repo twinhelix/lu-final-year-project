@@ -14,7 +14,7 @@ import de.uka.aifb.com.jnsga2.NSGA2Configuration;
 
 public class GASimulation
 {
-	private static final int HISTORY_DEPTH = 5;
+	private static final int HISTORY_DEPTH = 3;
 
 	private FitnessFunction[] fitnessFunctions;
 	private NSGA2Configuration nsgaConfig;

@@ -26,11 +26,13 @@ public class GAExpertEventListner implements NSGA2Listener
 	 * @param nsga2event
 	 *            NSGA-II event
 	 */
-
+	
+	// number of solutions to show
+	private static final int solutionNumber = 1;
 	@Override
 	public void performNSGA2Event(NSGA2Event nsga2event)
 	{
-		if (nsga2event.getNumberGeneration() % 100 == 0)
+		if (nsga2event.getNumberGeneration() % 2 == 0)
 		{
 
 			System.out.println();
@@ -108,7 +110,7 @@ public class GAExpertEventListner implements NSGA2Listener
 				"Number of offered solutions: " + bestAssignments.size());
 		ReadWriteTextFile.setContents(WRITEFILE, "");
 
-		for (int i = 0; i < array.length; i++)
+		for (int i = 0; i < array.length && i < solutionNumber; i++)
 		{
 
 			System.out.println("GA Fitness: " + (-array[i].getFitnessValue(0)));
