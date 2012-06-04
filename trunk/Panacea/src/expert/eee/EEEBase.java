@@ -135,6 +135,7 @@ public abstract class EEEBase extends AbstractExpert
 			IExpert e = dict.getExpert(strategies[i]);
 			if (e == null)
 			{
+				System.err.println("Expert not found, adding Tit-for-Tat");
 				e = new TitForTatExpert(playerNo);
 			}
 			experts[i] = e;
@@ -168,8 +169,7 @@ public abstract class EEEBase extends AbstractExpert
 			findExploreAgent();
 			return explore(history);
 
-		}
-		else
+		} else
 		{
 			// first always update previous round scores
 			updateScores(history);
@@ -206,20 +206,17 @@ public abstract class EEEBase extends AbstractExpert
 					// phase first
 					findExploreAgent();
 					return explore(history);
-				}
-				else
+				} else
 				{
 					phase = Phase.EXPLOIT;
 					return exploit(history);
 				}
 				// Update last phase
 
-			}
-			else if (phase == Phase.EXPLORE)
+			} else if (phase == Phase.EXPLORE)
 			{
 				return explore(history);
-			}
-			else if (phase == Phase.EXPLOIT)
+			} else if (phase == Phase.EXPLOIT)
 			{
 				return exploit(history);
 			}
@@ -285,8 +282,7 @@ public abstract class EEEBase extends AbstractExpert
 			if (advisors[i].aveReward == bestScore)
 			{
 				indices.add(i);
-			}
-			else if (advisors[i].aveReward > bestScore)
+			} else if (advisors[i].aveReward > bestScore)
 			{
 				bestScore = advisors[i].aveReward;
 				indices.clear();
