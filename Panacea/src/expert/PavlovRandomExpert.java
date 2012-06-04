@@ -21,6 +21,12 @@ public class PavlovRandomExpert extends PavlovExpert
 	}
 
 	@Override
+	public String getName()
+	{
+		return super.getName() + " Random";
+	}
+
+	@Override
 	public boolean move(GameHistory history)
 	{
 		boolean move = super.move(history);
