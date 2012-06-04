@@ -12,6 +12,7 @@ import expert.AlternateDDCExpert;
 import expert.AlternateExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
+import expert.GAExpert;
 import expert.GradualExpert;
 import expert.HardMajorityExpert;
 import expert.PavlovExpert;
@@ -39,33 +40,29 @@ public class EEEEngine
 	public static void main(String[] args)
 	{
 
-		String[] strats1 = { new SoftMajorityExpert(0).getName(),
-				new TitForTwoTatExpert(0).getName(),
-				new CooperateExpert(0).getName(), new PavlovExpert(0).getName() };
+		String[] strats = { "Tit-for-2-Tat Expert", "True Peace Maker Expert",
+				"Soft Majority Expert", "Pavlov Expert" };
 
-		String[] strats = { new TitForTatExpert(0).getName(),
+		String[] strats1 = { new TitForTatExpert(0).getName(),
 				new TitForTwoTatExpert(0).getName(),
 				new SoftMajorityExpert(0).getName() };
 
-		IExpert[] experts = { 
-			
-				new EEEDecProb(0, strats), new EEEFixedProb(0, strats, 0.3),
-				new TitForTatExpert(0),
-				new RandomExpert(0), new DefectExpert(0), new PavlovExpert(0),
+		IExpert[] experts = {
+
+		new EEEDecProb(0, strats), new EEEFixedProb(0, strats, 0.2),
+				new TitForTatExpert(0), new RandomExpert(0),
+				new DefectExpert(0), new PavlovExpert(0),
 				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
 				new ProbableExpert(0), new CooperateExpert(0),
-				new TitForTwoTatExpert(0),
-				new SuspiciousTitForTatExpert(0),
-				new SoftMajorityExpert(0),
-				new HardMajorityExpert(0),
-				new AlternateCCDExpert(0),
-				new HardTitforTatExpert(0),
-				// OTHERS
-				new NaivePeaceMakerExpert(0, 0.2),
-				new NaiveProberExpert(0, 0.2),
-				new TruePeaceMakerExpert(0, 0.2), new AdaptiveExpert(0),
-				new AlternateDDCExpert(0), new AlternateExpert(0),
-				new GradualExpert(0), new PavlovRandomExpert(0, 0.02)
+				new TitForTwoTatExpert(0), new SuspiciousTitForTatExpert(0),
+				new SoftMajorityExpert(0), new HardMajorityExpert(0),
+				new AlternateCCDExpert(0), new HardTitforTatExpert(0),
+		// OTHERS
+//		 new NaivePeaceMakerExpert(0, 0.2),
+//		 new NaiveProberExpert(0, 0.2),
+//		 new TruePeaceMakerExpert(0, 0.2), new AdaptiveExpert(0),
+//		 new AlternateDDCExpert(0), new AlternateExpert(0),
+//		 new GradualExpert(0), new PavlovRandomExpert(0, 0.02)
 		// --- END ---
 		};
 
