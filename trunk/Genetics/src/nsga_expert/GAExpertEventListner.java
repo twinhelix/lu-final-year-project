@@ -28,11 +28,11 @@ public class GAExpertEventListner implements NSGA2Listener
 	 */
 	
 	// number of solutions to show
-	private static final int solutionNumber = 1;
+	private static final int solutionNumber = 1000;
 	@Override
 	public void performNSGA2Event(NSGA2Event nsga2event)
 	{
-		if (nsga2event.getNumberGeneration() % 2 == 0)
+		if (nsga2event.getNumberGeneration() % 100 == 0)
 		{
 
 			System.out.println();

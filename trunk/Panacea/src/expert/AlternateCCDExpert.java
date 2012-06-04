@@ -25,7 +25,7 @@ public class AlternateCCDExpert extends AbstractExpert
 	@Override
 	public String getName()
 	{
-		return "Alternate DDC Expert";
+		return "Alternate CCD Expert";
 	}
 
 	@Override

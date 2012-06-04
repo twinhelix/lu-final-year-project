@@ -7,6 +7,7 @@ import engine.IEngine;
 import engine.ImperfectRoundRobinEngine;
 import engine.RoundRobinEngine;
 import expert.AlternateCCDExpert;
+import expert.AlternateDDCExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
 import expert.GAExpert;
@@ -35,7 +36,7 @@ public class EEEGAEngine
 
 		String[] strats1 = { new SoftMajorityExpert(0).getName(),
 				new TitForTwoTatExpert(0).getName(),
-				new PavlovExpert(0).getName(), new CooperateExpert(0).getName() };
+				new CooperateExpert(0).getName() };
 
 		String[] strats = { new TitForTatExpert(0).getName(),
 				new TitForTwoTatExpert(0).getName(),
@@ -43,9 +44,9 @@ public class EEEGAEngine
 
 		IExpert[] experts = {
 				new TitForTatExpert(0),
-				new EEEDecProb(0, strats),
-				new EEEGADecProb(0, strats),
-				new EEEFixedProb(0, strats, 0.3),
+				new EEEDecProb(0, strats1),
+				new EEEGADecProb(0, strats1),
+				new EEEFixedProb(0, strats1, 0.3),
 				new RandomExpert(0),
 				new DefectExpert(0),
 				new PavlovExpert(0),
@@ -68,12 +69,11 @@ public class EEEGAEngine
 		if (!IMPERFECT)
 		{
 			engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
-					SCORING_SYSTEM, 100);
-		}
-		else
+					SCORING_SYSTEM, 10000);
+		} else
 		{
 			engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
-					SCORING_SYSTEM, 100, 0.2);
+					SCORING_SYSTEM, 10000, 0.2);
 		}
 		engine.run();
 		System.out.println();

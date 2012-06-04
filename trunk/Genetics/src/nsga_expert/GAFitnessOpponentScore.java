@@ -6,6 +6,7 @@ import static nsga_expert.GASettings.RUNS_PER_EVALUATION;
 import agent.IExpert;
 import de.uka.aifb.com.jnsga2.FitnessFunction;
 import de.uka.aifb.com.jnsga2.Individual;
+import engine.IEngine;
 import engine.RoundRobinEngine;
 import expert.AlternateCCDExpert;
 import expert.CooperateExpert;
@@ -58,8 +59,14 @@ public class GAFitnessOpponentScore implements FitnessFunction
 		double totalScore = 0d;
 		for (int i = 0; i < RUNS_PER_EVALUATION; i++)
 		{
-			RoundRobinEngine engine = new RoundRobinEngine(experts,
-					NO_OF_ROUNDS, SCORING_SYSTEM);
+			IEngine engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
+					SCORING_SYSTEM);
+
+			/**** IMPERFECT ***/
+			// engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
+			// SCORING_SYSTEM, 1, 0.2);
+			/*******/
+
 			engine.run();
 			totalScore += engine.getAverageOpponentScore(expert.getName());
 
