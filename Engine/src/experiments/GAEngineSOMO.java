@@ -6,20 +6,13 @@ import agent.IExpert;
 import engine.IEngine;
 import engine.ImperfectRoundRobinEngine;
 import engine.RoundRobinEngine;
-import expert.AdaptiveExpert;
 import expert.AlternateCCDExpert;
-import expert.AlternateDDCExpert;
-import expert.AlternateExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
 import expert.GAExpert;
 import expert.GAExpertModified;
-import expert.GAExpertWatcher;
-import expert.GradualExpert;
-import expert.GrudgerExpert;
 import expert.HardMajorityExpert;
 import expert.PavlovExpert;
-import expert.PavlovRandomExpert;
 import expert.ProbableExpert;
 import expert.RandomExpert;
 import expert.SoftGrudgerExpert;
@@ -27,41 +20,65 @@ import expert.SoftMajorityExpert;
 import expert.eee.EEEDecProb;
 import expert.eee.EEEFixedProb;
 import expert.titfortat.HardTitforTatExpert;
-import expert.titfortat.NaivePeaceMakerExpert;
-import expert.titfortat.NaiveProberExpert;
 import expert.titfortat.RemorsefulProberExpert;
 import expert.titfortat.SuspiciousTitForTatExpert;
 import expert.titfortat.TitForTatExpert;
 import expert.titfortat.TitForTwoTatExpert;
-import expert.titfortat.TruePeaceMakerExpert;
 
-public class GA5Engine
+public class GAEngineSOMO
 {
 	private static boolean PLOT_GRAPHS = false;
 	private static boolean IMPERFECT = false;
 
 	public static void main(String[] args)
 	{
-		IEngine engine;
+		String[] strats = { new TitForTatExpert(0).getName(),
+				new TitForTwoTatExpert(0).getName(),
+				new SoftMajorityExpert(0).getName() };
+
 		GAExpert expert = new GAExpert(
 				0,
-				"10010101110110101000100001011010100101000100111000110010100110001111110100101010100101100110100011101001001000000111001100110110010100011101111011100101100100111110000011010111000100000101000111110011010111101111101111001100000101010010001110101110110000010011010111100011011111100100001101000101110101110110000011111010011001100110101111110011001000101001101001111111011010111001000000000010100010111111010000111100000000111101000000100010101110100100101010111101111111110101110110101001110011111111000010101101110010100001000100010100001101110101101110011000111111001101101111101111011000001100000000000100000001110001000100000010011010001100000101100100010011100110110010100000000011100110000101011110010100110101001100110011010011000000000010100000011101001000001110010010111000001110111001001111101010001000101010100101110100010111011110111111111110101001110101101111001101001110100011100100110100100001011110001010111101011000001101111110011110101111110000100010011110000001111011111111010011000101000100100000010011101111110100",
-				5);
-		String[] strats = { new GrudgerExpert(0).getName(),
-				new PavlovExpert(0).getName(), new CooperateExpert(0).getName() };
+				"1011011010001010011010000111001001101000100100110100001010000000111111",
+				3);
+		expert.setUniqueName(expert.getName() + " MO");
+
+		GAExpert expertSOMax = new GAExpert(
+				0,
+				"1101001100001100111110000110101000010001110001001111101011101000111111",
+				3);
+		expertSOMax.setUniqueName(expertSOMax.getName() + " SO Max");
+
+		GAExpert expertSOMin = new GAExpert(
+				0,
+				"0011010010010110101100100010000000001100110100011100000000010000110000",
+				3);
+		expertSOMin.setUniqueName(expertSOMin.getName() + " SO Min");
 
 		IExpert[] experts = { new TitForTatExpert(0),
 				new EEEDecProb(0, strats), new EEEFixedProb(0, strats, 0.3),
 				new RandomExpert(0), new DefectExpert(0), new PavlovExpert(0),
 				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
-				new ProbableExpert(0), new CooperateExpert(0),
-				new SoftMajorityExpert(0), new HardMajorityExpert(0),
-				new AlternateCCDExpert(0), new HardTitforTatExpert(0), expert };
+				new CooperateExpert(0), new TitForTwoTatExpert(0),
+				new SuspiciousTitForTatExpert(0), new SoftMajorityExpert(0),
+				new HardMajorityExpert(0), new AlternateCCDExpert(0),
+				new HardTitforTatExpert(0), new ProbableExpert(0),
+				// OTHERS
+				// new NaivePeaceMakerExpert(0, 0.2),
+				// new NaiveProberExpert(0, 0.2),
+				// new TruePeaceMakerExpert(0, 0.2),
+				// new AdaptiveExpert(0),
+				// new AlternateDDCExpert(0),
+				// new AlternateExpert(0),
+				// new GradualExpert(0),
+				// new PavlovRandomExpert(0, 0.02),
+				// --- END ---
+				expert, expertSOMax, expertSOMin };
 
+		IEngine engine;
 		if (!IMPERFECT)
 		{
 			engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
-					SCORING_SYSTEM, 1);
+					SCORING_SYSTEM, 10000);
 		} else
 		{
 			engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,

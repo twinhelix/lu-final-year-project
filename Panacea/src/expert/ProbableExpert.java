@@ -29,7 +29,7 @@ public class ProbableExpert extends AbstractExpert
 	@Override
 	public String getName()
 	{
-		return "Probabal Expert";
+		return "Probable Expert";
 	}
 
 	@Override
@@ -39,14 +39,12 @@ public class ProbableExpert extends AbstractExpert
 		if (moves == 0)
 		{
 			return true;
-		}
-		else if (moves < historyDepth)
+		} else if (moves < historyDepth)
 		{
 			int coops = getCooperates(history, moves);
 			double prob = ((double) coops) / moves;
 			return (Math.random() < prob);
-		}
-		else
+		} else
 		{
 			int coops = getCooperates(history, historyDepth);
 			double prob = ((double) coops) / historyDepth;
