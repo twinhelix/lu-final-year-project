@@ -115,8 +115,9 @@ public class RoundRobinEngine implements IEngine
 									+ result[1]));
 
 					if (PRINT_RESULTS)
-						printTable(e1.getName() + ": " + result[0],
-								e2.getName() + ": " + result[1], "", "");
+						printTable(e1.getName() + ": " + result[0], e2
+								.getName()
+								+ ": " + result[1], "", "");
 				}
 			}
 		}
@@ -214,19 +215,17 @@ public class RoundRobinEngine implements IEngine
 
 		System.out.println("--- AVERAGE RESULTS OF " + runs + " runs ---");
 		int i = 0;
-		printTable("Expert and Average Score", "Benchmark Score: out of "
-				+ benchmark, "Variance", "99% CI");
+		printTable("Expert and Average Score", "Benchmark Score", "Variance",
+				"99% CI");
 		for (String key : sorted_map.keySet())
 		{
 			i++;
 			double[] ci = cis.get(key);
-			printTable(
-					(i + ". " + key + ": " + df.format(sorted_map.get(key)
-							.doubleValue() / (experts.length + 1))),
-					(df.format(sorted_map.get(key).doubleValue()
-							/ ((experts.length + 1) * benchmark) * 100) + "%"),
-					(df.format(variances.get(key))), ("[" + df.format(ci[0])
-							+ ", " + df.format(ci[1]) + "]"));
+			printTable((i + ". " + key), (df.format(sorted_map.get(key)
+					.doubleValue()
+					/ ((experts.length + 1) * benchmark) * 100) + "%"), (df
+					.format(variances.get(key))), ("[" + df.format(ci[0])
+					+ ", " + df.format(ci[1]) + "]"));
 		}
 	}
 
@@ -247,22 +246,22 @@ public class RoundRobinEngine implements IEngine
 			String fourth)
 	{
 		System.out.print(first);
-		if (first.length() < 48)
+		if (first.length() < 35)
 		{
-			for (int i = first.length(); i < 48; i++)
+			for (int i = first.length(); i < 35; i++)
 				System.out.print(" ");
 		}
 		System.out.print(second);
-		if (second.length() < 40)
+		if (second.length() < 20)
 		{
-			for (int i = second.length(); i < 40; i++)
+			for (int i = second.length(); i < 20; i++)
 				System.out.print(" ");
 		}
 		System.out.print(third);
 
-		if (third.length() < 30)
+		if (third.length() < 20)
 		{
-			for (int i = third.length(); i < 30; i++)
+			for (int i = third.length(); i < 20; i++)
 				System.out.print(" ");
 		}
 		System.out.println(fourth);
@@ -284,12 +283,10 @@ public class RoundRobinEngine implements IEngine
 			if ((Double) base.get(a) < (Double) base.get(b))
 			{
 				return 1;
-			}
-			else if ((Double) base.get(a) == (Double) base.get(b))
+			} else if ((Double) base.get(a) == (Double) base.get(b))
 			{
 				return 0;
-			}
-			else
+			} else
 			{
 				return -1;
 			}
