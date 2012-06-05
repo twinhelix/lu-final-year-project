@@ -170,7 +170,7 @@ public class GAExpert extends AbstractExpert
 
 	@Override
 	public boolean move(GameHistory history)
-	{
+	{		
 		this.history = history;
 
 		if (history.getNumberOfMoves() >= history_depth)

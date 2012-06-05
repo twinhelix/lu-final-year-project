@@ -61,7 +61,7 @@ public class GA5Engine
 		if (!IMPERFECT)
 		{
 			engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
-					SCORING_SYSTEM, 1);
+					SCORING_SYSTEM, 100);
 		} else
 		{
 			engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
