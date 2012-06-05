@@ -7,16 +7,23 @@ import expert.titfortat.TitForTatExpert;
 
 public class EEEGADecProb extends EEEBase
 {
+	String name;
 
 	public EEEGADecProb(int playerNo, String[] strategies)
 	{
 		super(playerNo, strategies);
+		this.name = "EEE w/ GA - Dec Prob";
 	}
 
 	@Override
 	public String getName()
 	{
-		return "EEE w/ GA - Dec Prob";
+		return name;
+	}
+
+	public void setUniqueName(String name)
+	{
+		this.name = name;
 	}
 
 	@Override
@@ -24,7 +31,7 @@ public class EEEGADecProb extends EEEBase
 	{
 		ExpertsDictionary dict = new ExpertsDictionary(playerNo, 0.2);
 
-		advisors = new Advisor[strategies.length + 1];
+		advisors = new Advisor[strategies.length + 2];
 
 		for (int i = 0; i < strategies.length; i++)
 		{
@@ -35,13 +42,23 @@ public class EEEGADecProb extends EEEBase
 			}
 			advisors[i] = new Advisor(e);
 		}
-		GAExpert ga1 = new GAExpert(
+		// 1011011010001010011010000111001001101000100100110100001010000000111111
+		// - perfect
+		// 1010001101110000111111111110111010000010100010100011111010001000111111
+		// - imperfect
+		GAExpert ga_perfect = new GAExpert(
 				playerNo,
-				"1000010100000001011100000101101001000000000010110111101001001000111111",
+				"1011011010001010011010000111001001101000100100110100001010000000111111",
 				3);
-		ga1.setUniqueName(ga1.getName() + " a");
+		ga_perfect.setUniqueName(ga_perfect.getName() + " perfect");
+		advisors[strategies.length] = new Advisor(ga_perfect);
 
-		advisors[strategies.length] = new Advisor(ga1);
+		GAExpert ga_imperfect = new GAExpert(
+				playerNo,
+				"1010001101110000111111111110111010000010100010100011111010001000111111",
+				3);
+		ga_imperfect.setUniqueName(ga_imperfect.getName() + " perfect");
+		advisors[strategies.length + 1] = new Advisor(ga_imperfect);
 
 	}
 

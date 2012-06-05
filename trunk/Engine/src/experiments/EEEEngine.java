@@ -35,7 +35,7 @@ import expert.titfortat.TruePeaceMakerExpert;
 public class EEEEngine
 {
 	private static boolean PLOT_GRAPHS = false;
-	private static boolean IMPERFECT = true;
+	private static boolean IMPERFECT = false;
 
 	public static void main(String[] args)
 	{
@@ -43,13 +43,16 @@ public class EEEEngine
 		String[] strats = { "Tit-for-2-Tat Expert", "True Peace Maker Expert",
 				"Soft Majority Expert", "Pavlov Expert" };
 
+		String[] strats2 = { new SoftMajorityExpert(0).getName(),
+				new TitForTwoTatExpert(0).getName(),
+				new CooperateExpert(0).getName() };
 		String[] strats1 = { new TitForTatExpert(0).getName(),
 				new TitForTwoTatExpert(0).getName(),
 				new SoftMajorityExpert(0).getName() };
 
 		IExpert[] experts = {
 
-		new EEEDecProb(0, strats), new EEEFixedProb(0, strats, 0.2),
+		new EEEDecProb(0, strats2), new EEEFixedProb(0, strats2, 0.2),
 				new TitForTatExpert(0), new RandomExpert(0),
 				new DefectExpert(0), new PavlovExpert(0),
 				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
@@ -58,11 +61,11 @@ public class EEEEngine
 				new SoftMajorityExpert(0), new HardMajorityExpert(0),
 				new AlternateCCDExpert(0), new HardTitforTatExpert(0),
 		// OTHERS
-//		 new NaivePeaceMakerExpert(0, 0.2),
-//		 new NaiveProberExpert(0, 0.2),
-//		 new TruePeaceMakerExpert(0, 0.2), new AdaptiveExpert(0),
-//		 new AlternateDDCExpert(0), new AlternateExpert(0),
-//		 new GradualExpert(0), new PavlovRandomExpert(0, 0.02)
+		// new NaivePeaceMakerExpert(0, 0.2),
+		// new NaiveProberExpert(0, 0.2),
+		// new TruePeaceMakerExpert(0, 0.2), new AdaptiveExpert(0),
+		// new AlternateDDCExpert(0), new AlternateExpert(0),
+		// new GradualExpert(0), new PavlovRandomExpert(0, 0.02)
 		// --- END ---
 		};
 
@@ -71,7 +74,8 @@ public class EEEEngine
 		{
 			engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
 					SCORING_SYSTEM, 100);
-		} else
+		}
+		else
 		{
 			engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
 					SCORING_SYSTEM, 100, 0.2);

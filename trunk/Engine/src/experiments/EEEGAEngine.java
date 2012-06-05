@@ -29,7 +29,7 @@ import expert.titfortat.TitForTwoTatExpert;
 public class EEEGAEngine
 {
 	private static boolean PLOT_GRAPHS = false;
-	private static boolean IMPERFECT = true;
+	private static boolean IMPERFECT = false;
 
 	public static void main(String[] args)
 	{
@@ -37,10 +37,6 @@ public class EEEGAEngine
 		String[] strats1 = { new SoftMajorityExpert(0).getName(),
 				new TitForTwoTatExpert(0).getName(),
 				new CooperateExpert(0).getName() };
-
-		String[] strats = { new TitForTatExpert(0).getName(),
-				new TitForTwoTatExpert(0).getName(),
-				new SoftMajorityExpert(0).getName() };
 
 		IExpert[] experts = {
 				new TitForTatExpert(0),
@@ -69,11 +65,12 @@ public class EEEGAEngine
 		if (!IMPERFECT)
 		{
 			engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
-					SCORING_SYSTEM, 10000);
-		} else
+					SCORING_SYSTEM, 1000);
+		}
+		else
 		{
 			engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
-					SCORING_SYSTEM, 10000, 0.2);
+					SCORING_SYSTEM, 1000, 0.2);
 		}
 		engine.run();
 		System.out.println();

@@ -6,20 +6,25 @@ import agent.IExpert;
 import engine.IEngine;
 import engine.ImperfectRoundRobinEngine;
 import engine.RoundRobinEngine;
-import expert.AdaptiveExpert;
-import expert.AlternateDDCExpert;
-import expert.AlternateExpert;
+import expert.AlternateCCDExpert;
+import expert.CooperateExpert;
+import expert.DefectExpert;
 import expert.GAExpert;
 import expert.GAExpertModified;
 import expert.GAExpertWatcher;
-import expert.GradualExpert;
-import expert.PavlovRandomExpert;
+import expert.HardMajorityExpert;
+import expert.PavlovExpert;
+import expert.ProbableExpert;
+import expert.RandomExpert;
+import expert.SoftGrudgerExpert;
 import expert.SoftMajorityExpert;
-import expert.titfortat.NaivePeaceMakerExpert;
-import expert.titfortat.NaiveProberExpert;
+import expert.eee.EEEDecProb;
+import expert.eee.EEEFixedProb;
+import expert.titfortat.HardTitforTatExpert;
+import expert.titfortat.RemorsefulProberExpert;
+import expert.titfortat.SuspiciousTitForTatExpert;
 import expert.titfortat.TitForTatExpert;
 import expert.titfortat.TitForTwoTatExpert;
-import expert.titfortat.TruePeaceMakerExpert;
 
 public class GAEngine
 {
@@ -33,36 +38,36 @@ public class GAEngine
 				new SoftMajorityExpert(0).getName() };
 		GAExpertWatcher expert = new GAExpertWatcher(
 				0,
-				"1000010100000001011100000101101001000000000010110111101001001000111111",
+				"1010001101110000111111111110111010000010100010100011111010001000111111",
 				3);
-		expert.setUniqueName(expert.getName() + "a");
+		expert.setUniqueName(expert.getName() + " Imperfect");
 
 		IExpert[] experts = {
-//				new TitForTatExpert(0),
-//				new EEEDecProb(0, strats),
-//				new EEEFixedProb(0, strats, 0.3),
-//				new RandomExpert(0),
-//				new DefectExpert(0),
-//				new PavlovExpert(0),
-//				new RemorsefulProberExpert(0, 0.2),
-//				new SoftGrudgerExpert(0),
-//				new CooperateExpert(0),
-//				new TitForTwoTatExpert(0),
-//				new SuspiciousTitForTatExpert(0),
-//				new SoftMajorityExpert(0),
-//				new HardMajorityExpert(0),
-//				new AlternateCCDExpert(0),
-//				new HardTitforTatExpert(0),
-//				new ProbableExpert(0),
+				new TitForTatExpert(0),
+				new EEEDecProb(0, strats),
+				new EEEFixedProb(0, strats, 0.3),
+				new RandomExpert(0),
+				new DefectExpert(0),
+				new PavlovExpert(0),
+				new RemorsefulProberExpert(0, 0.2),
+				new SoftGrudgerExpert(0),
+				new CooperateExpert(0),
+				new TitForTwoTatExpert(0),
+				new SuspiciousTitForTatExpert(0),
+				new SoftMajorityExpert(0),
+				new HardMajorityExpert(0),
+				new AlternateCCDExpert(0),
+				new HardTitforTatExpert(0),
+				new ProbableExpert(0),
 				// OTHERS
-				 new NaivePeaceMakerExpert(0, 0.2),
-				 new NaiveProberExpert(0, 0.2),
-				 new TruePeaceMakerExpert(0, 0.2),
-				 new AdaptiveExpert(0),
-				 new AlternateDDCExpert(0),
-				 new AlternateExpert(0),
-				 new GradualExpert(0),
-				 new PavlovRandomExpert(0, 0.02),
+//				 new NaivePeaceMakerExpert(0, 0.2),
+//				 new NaiveProberExpert(0, 0.2),
+//				 new TruePeaceMakerExpert(0, 0.2),
+//				 new AdaptiveExpert(0),
+//				 new AlternateDDCExpert(0),
+//				 new AlternateExpert(0),
+//				 new GradualExpert(0),
+//				 new PavlovRandomExpert(0, 0.02),
 				// --- END ---
 				expert,
 				new GAExpert(
