@@ -3,6 +3,12 @@ package nsga_expert;
 import static common.Settings.NO_OF_ROUNDS;
 import static common.Settings.SCORING_SYSTEM;
 import static nsga_expert.GASettings.RUNS_PER_EVALUATION;
+import static nsga_expert.GASettings.WRITEFILE;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import utils.ReadWriteTextFile;
 import agent.IExpert;
 import de.uka.aifb.com.jnsga2.FitnessFunction;
 import de.uka.aifb.com.jnsga2.Individual;
@@ -66,13 +72,41 @@ public class GAFitnessOwnScore implements FitnessFunction
 			// engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
 			// SCORING_SYSTEM, 1, 0.2);
 			/*******/
-			
+
 			engine.run();
 			totalScore += engine.getScore(expert.getName());
 		}
 
 		double averageScore = totalScore / RUNS_PER_EVALUATION;
+		if (-averageScore > 97.5)
+		{
+			try
+			{
+				ReadWriteTextFile.setContents(WRITEFILE,
+						"***********************************************\n GA Fitness: "
+								+ (individual.getFitnessValue(0)));
+				ReadWriteTextFile.setContents(WRITEFILE,
+						"Average Opponents Fitness: "
+								+ individual.getFitnessValue(1));
+				ReadWriteTextFile.setContents(WRITEFILE, "Expert Codebit: "
+						+ individual.getExpert().getCodebit());
+				ReadWriteTextFile.setContents(WRITEFILE,
+						"***********************************************");
+			} catch (FileNotFoundException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IndexOutOfBoundsException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
+		}
 		return -averageScore;
 	}
 
