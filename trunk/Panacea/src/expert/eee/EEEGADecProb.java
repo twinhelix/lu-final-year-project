@@ -55,9 +55,9 @@ public class EEEGADecProb extends EEEBase
 
 		GAExpert ga_imperfect = new GAExpert(
 				playerNo,
-				"1010001101110000111111111110111010000010100010100011111010001000111111",
+				"1010000011110111110011111111111000100010100010100011111110001000111111",
 				3);
-		ga_imperfect.setUniqueName(ga_imperfect.getName() + " perfect");
+		ga_imperfect.setUniqueName(ga_imperfect.getName() + " imperfect");
 		advisors[strategies.length + 1] = new Advisor(ga_imperfect);
 
 	}
