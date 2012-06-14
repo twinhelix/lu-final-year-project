@@ -26,6 +26,11 @@ public class ImperfectRoundRobinEngine extends RoundRobinEngine implements
 	{
 		for (int run = 0; run < runs; run++)
 		{
+			if (run % 100 == 0)
+			{
+				System.out.println(run);
+			}
+			
 			initialiseTally();
 			for (int i = 0; i < experts.length; i++)
 			{
@@ -51,8 +56,7 @@ public class ImperfectRoundRobinEngine extends RoundRobinEngine implements
 					{
 						game = new ImperfectGame(e1, e2, totalGames,
 								scoringSystem);
-					}
-					else
+					} else
 					{
 						game = new ImperfectGame(e1, e2, totalGames,
 								scoringSystem, prob);
@@ -71,8 +75,9 @@ public class ImperfectRoundRobinEngine extends RoundRobinEngine implements
 									+ result[1]));
 
 					if (PRINT_RESULTS)
-						printTable(e1.getName() + ": " + result[0],
-								e2.getName() + ": " + result[1], "", "");
+						printTable(e1.getName() + ": " + result[0], e2
+								.getName()
+								+ ": " + result[1], "", "");
 				}
 			}
 		}

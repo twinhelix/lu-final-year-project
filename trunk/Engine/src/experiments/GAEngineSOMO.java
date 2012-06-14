@@ -78,7 +78,7 @@ public class GAEngineSOMO
 		if (!IMPERFECT)
 		{
 			engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
-					SCORING_SYSTEM, 10000);
+					SCORING_SYSTEM, 100000);
 		} else
 		{
 			engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,

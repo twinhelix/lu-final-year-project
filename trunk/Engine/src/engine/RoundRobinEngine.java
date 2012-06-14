@@ -80,7 +80,10 @@ public class RoundRobinEngine implements IEngine
 	public void run()
 	{
 		for (int run = 0; run < runs; run++)
-		{
+		{	
+			if (run %100 == 0){
+				System.out.println("run : " + run);
+			}
 			initialiseTally();
 			for (int i = 0; i < experts.length; i++)
 			{
