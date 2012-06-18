@@ -12,7 +12,6 @@ import expert.AlternateDDCExpert;
 import expert.AlternateExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
-import expert.GAExpert;
 import expert.GAExpertWatcher;
 import expert.GradualExpert;
 import expert.HardMajorityExpert;
@@ -37,75 +36,77 @@ public class GAEngine
 {
 	private static boolean PLOT_GRAPHS = false;
 	private static boolean IMPERFECT = false;
+	private static int setup = 1;
 
 	public static void main(String[] args)
 	{
-		String[] strats = { new TitForTatExpert(0).getName(),
-				new TitForTwoTatExpert(0).getName(),
-				new SoftMajorityExpert(0).getName() };
-		// 1010000011110111110011111111111000100010100010100011111110001000111111
+
+		String[] strats = { "Soft Majority Expert", "Tit-for-2-Tat Expert",
+				new TitForTatExpert(0).getName() };
+
 		GAExpertWatcher expert = new GAExpertWatcher(
 				0,
 				"1010000011110111110011111111111000100010100010100011111110001000111111",
 				3);
 		expert.setUniqueName(expert.getName() + " Imperfect");
 
-		IExpert[] experts = {
-				// new TitForTatExpert(0),
-				// new EEEDecProb(0, strats), new EEEFixedProb(0, strats, 0.3),
-				// new RandomExpert(0), new DefectExpert(0), new
-				// PavlovExpert(0),
-				// new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
-				// new CooperateExpert(0), new TitForTwoTatExpert(0),
-				// new SuspiciousTitForTatExpert(0), new SoftMajorityExpert(0),
-				// new HardMajorityExpert(0), new AlternateCCDExpert(0),
-				// new HardTitforTatExpert(0), new ProbableExpert(0),
-				// OTHERS
+		IExpert[] experts1 = { new EEEDecProb(0, strats),
+				new EEEFixedProb(0, strats, 0.3), new TitForTatExpert(0),
+				new RandomExpert(0), new DefectExpert(0), new PavlovExpert(0),
+				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
+				new ProbableExpert(0), new CooperateExpert(0),
+				new TitForTwoTatExpert(0), new SuspiciousTitForTatExpert(0),
+				new SoftMajorityExpert(0), new HardMajorityExpert(0),
+				new AlternateCCDExpert(0), new HardTitforTatExpert(0), expert };
+		// OTHER SETUP
+		IExpert[] experts2 = { new EEEDecProb(0, strats),
+				new EEEFixedProb(0, strats, 0.3),
 				new NaivePeaceMakerExpert(0, 0.2),
 				new NaiveProberExpert(0, 0.2),
 				new TruePeaceMakerExpert(0, 0.2), new AdaptiveExpert(0),
-				new AlternateDDCExpert(0),
-				new AlternateExpert(0),
-				new GradualExpert(0),
-				new PavlovRandomExpert(0, 0.02),
-				// --- END ---
-				// expert,
-				new GAExpert(
-						0,
-						"1011011010001010011010000111001001101000100100110100001010000000111111",
-						3),
-		// new GAExpertModified(
-		// 0,
-		// "10010000011010100101100000110000011010001001001000100010110110001101010101101111111111")
-		};
+				new AlternateDDCExpert(0), new AlternateExpert(0),
+				new GradualExpert(0), new PavlovRandomExpert(0, 0.02), expert };
+		IExpert[] experts;
+		if (setup == 1)
+		{
+			experts = experts1;
+		}
+		else if (setup == 2)
+		{
+			experts = experts2;
+		}
+		else
+		{
+			experts = experts1;
+		}
 
 		IEngine engine;
 		if (!IMPERFECT)
 		{
 			engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
 					SCORING_SYSTEM, 100000);
-		} else
+		}
+		else
 		{
 			engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
-					SCORING_SYSTEM, 100, 0.2);
+					SCORING_SYSTEM, 100000, 0.2);
 		}
 
 		engine.run();
 		System.out.println();
 		engine.showTally();
 		System.out.println();
+
 		int[] hist = expert.getBitFrequency();
-		int total = 0;
+
 		for (int i = 0; i < hist.length; i++)
 		{
-			total += hist[i];
 			System.out.print(hist[i] + " ");
 		}
-		// System.out.println(total);
+
 		if (PLOT_GRAPHS)
 		{
 			engine.plotResults();
-			engine.plotPerformance();
 		}
 	}
 }

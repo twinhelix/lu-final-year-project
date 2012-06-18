@@ -46,6 +46,7 @@ import expert.titfortat.TruePeaceMakerExpert;
 public class EEEPoolFinder
 {
 	private static final boolean PRINT_DETAILS = false;
+	private static final boolean creategraph = false;
 	private static final double prob = 0.2;
 	private static final String EEEdec = "EEE - Decreasing Prob";
 	private static final String EEEfix = "EEE - Fixed Prob";
@@ -79,8 +80,8 @@ public class EEEPoolFinder
 					System.out.println(s);
 
 				double[] result = run(s, ROUNDS);
-//				eeeDecResults.put(s.toString(), new Double(result[0]));
-//				eeeFixResults.put(s.toString(), new Double(result[1]));
+				// eeeDecResults.put(s.toString(), new Double(result[0]));
+				// eeeFixResults.put(s.toString(), new Double(result[1]));
 
 				// Write results to file
 
@@ -100,7 +101,11 @@ public class EEEPoolFinder
 				}
 			}
 		}
-		//createGraph();
+
+		if (creategraph)
+		{
+			createGraph();
+		}
 	}
 
 	public static Set<String> populateExperts()
