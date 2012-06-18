@@ -10,7 +10,6 @@ import expert.AlternateCCDExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
 import expert.GAExpert;
-import expert.GAExpertModified;
 import expert.HardMajorityExpert;
 import expert.PavlovExpert;
 import expert.ProbableExpert;
@@ -61,46 +60,29 @@ public class GAEngineSOMO
 				new CooperateExpert(0), new TitForTwoTatExpert(0),
 				new SuspiciousTitForTatExpert(0), new SoftMajorityExpert(0),
 				new HardMajorityExpert(0), new AlternateCCDExpert(0),
-				new HardTitforTatExpert(0), new ProbableExpert(0),
-				// OTHERS
-				// new NaivePeaceMakerExpert(0, 0.2),
-				// new NaiveProberExpert(0, 0.2),
-				// new TruePeaceMakerExpert(0, 0.2),
-				// new AdaptiveExpert(0),
-				// new AlternateDDCExpert(0),
-				// new AlternateExpert(0),
-				// new GradualExpert(0),
-				// new PavlovRandomExpert(0, 0.02),
-				// --- END ---
-				expert, expertSOMax, expertSOMin };
+				new HardTitforTatExpert(0), new ProbableExpert(0), expert,
+				expertSOMax, expertSOMin };
 
 		IEngine engine;
 		if (!IMPERFECT)
 		{
 			engine = new RoundRobinEngine(experts, NO_OF_ROUNDS,
 					SCORING_SYSTEM, 100000);
-		} else
+		}
+		else
 		{
 			engine = new ImperfectRoundRobinEngine(experts, NO_OF_ROUNDS,
-					SCORING_SYSTEM, 100, 0.2);
+					SCORING_SYSTEM, 100000, 0.2);
 		}
 
 		engine.run();
 		System.out.println();
 		engine.showTally();
 		System.out.println();
-		// int[] hist = expert.getBitFrequency();
-		// int total = 0;
-		// for (int i = 0; i < hist.length; i++)
-		// {
-		// total += hist[i];
-		// System.out.println(i + " - " + hist[i]);
-		// }
-		// System.out.println(total);
+
 		if (PLOT_GRAPHS)
 		{
 			engine.plotResults();
-			engine.plotPerformance();
 		}
 	}
 }

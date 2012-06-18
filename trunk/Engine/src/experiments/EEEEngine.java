@@ -12,9 +12,7 @@ import expert.AlternateDDCExpert;
 import expert.AlternateExpert;
 import expert.CooperateExpert;
 import expert.DefectExpert;
-import expert.GAExpert;
 import expert.GradualExpert;
-import expert.GrudgerExpert;
 import expert.HardMajorityExpert;
 import expert.PavlovExpert;
 import expert.PavlovRandomExpert;
@@ -37,42 +35,42 @@ public class EEEEngine
 {
 	private static boolean PLOT_GRAPHS = false;
 	private static boolean IMPERFECT = false;
+	private static int setup = 1;
 
 	public static void main(String[] args)
 	{
 
-		String[] strats = { "Tit-for-2-Tat Expert", "True Peace Maker Expert",
-				"Soft Majority Expert", "Pavlov Expert" };
-		
-		String[] stratsTest = {"Soft Majority Expert", "Tit-for-2-Tat Expert", new TitForTatExpert(0).getName()};
-		
+		String[] strats = { "Soft Majority Expert", "Tit-for-2-Tat Expert",
+				new TitForTatExpert(0).getName() };
 
-		String[] strats2 = { new SoftMajorityExpert(0).getName(),
-				new TitForTwoTatExpert(0).getName(),
-				new CooperateExpert(0).getName(), new SoftMajorityExpert(0).getName()};
-		String[] strats1 = { new TitForTatExpert(0).getName(),
-				new TitForTwoTatExpert(0).getName(),
-				new SoftMajorityExpert(0).getName() };
-
-		IExpert[] experts = {
-
-		new EEEDecProb(0, stratsTest), new EEEFixedProb(0, stratsTest, 0.2),
-				new TitForTatExpert(0), new RandomExpert(0),
-				new DefectExpert(0), new PavlovExpert(0),
+		IExpert[] experts1 = { new EEEDecProb(0, strats),
+				new EEEFixedProb(0, strats, 0.2), new TitForTatExpert(0),
+				new RandomExpert(0), new DefectExpert(0), new PavlovExpert(0),
 				new RemorsefulProberExpert(0, 0.2), new SoftGrudgerExpert(0),
 				new ProbableExpert(0), new CooperateExpert(0),
 				new TitForTwoTatExpert(0), new SuspiciousTitForTatExpert(0),
 				new SoftMajorityExpert(0), new HardMajorityExpert(0),
-				new AlternateCCDExpert(0), new HardTitforTatExpert(0),
-		// OTHERS
-//		 new NaivePeaceMakerExpert(0, 0.2),
-//		 new NaiveProberExpert(0, 0.2),
-//		 new TruePeaceMakerExpert(0, 0.2), new AdaptiveExpert(0),
-//		 new AlternateDDCExpert(0), new AlternateExpert(0),
-//		 new GradualExpert(0), new PavlovRandomExpert(0, 0.02)
-		// --- END ---
-
-		};
+				new AlternateCCDExpert(0), new HardTitforTatExpert(0) };
+		// OTHER SETUP
+		IExpert[] experts2 = { new EEEFixedProb(0, strats, 0.2),
+				new EEEDecProb(0, strats), new NaivePeaceMakerExpert(0, 0.2),
+				new NaiveProberExpert(0, 0.2),
+				new TruePeaceMakerExpert(0, 0.2), new AdaptiveExpert(0),
+				new AlternateDDCExpert(0), new AlternateExpert(0),
+				new GradualExpert(0), new PavlovRandomExpert(0, 0.02) };
+		IExpert[] experts;
+		if (setup == 1)
+		{
+			experts = experts1;
+		}
+		else if (setup == 2)
+		{
+			experts = experts2;
+		}
+		else
+		{
+			experts = experts1;
+		}
 
 		IEngine engine;
 		if (!IMPERFECT)
@@ -92,7 +90,7 @@ public class EEEEngine
 
 		if (PLOT_GRAPHS)
 		{
-			
+
 			engine.plotResults();
 			engine.plotPerformance();
 		}
