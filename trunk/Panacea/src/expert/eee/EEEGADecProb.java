@@ -31,7 +31,7 @@ public class EEEGADecProb extends EEEBase
 	{
 		ExpertsDictionary dict = new ExpertsDictionary(playerNo, 0.2);
 
-		advisors = new Advisor[strategies.length + 2];
+		advisors = new Advisor[strategies.length + 3];
 
 		for (int i = 0; i < strategies.length; i++)
 		{
@@ -42,10 +42,6 @@ public class EEEGADecProb extends EEEBase
 			}
 			advisors[i] = new Advisor(e);
 		}
-		// 1011011010001010011010000111001001101000100100110100001010000000111111
-		// - perfect
-		// 1010001101110000111111111110111010000010100010100011111010001000111111
-		// - imperfect
 		GAExpert ga_perfect = new GAExpert(
 				playerNo,
 				"1011011010001010011010000111001001101000100100110100001010000000111111",
@@ -59,6 +55,13 @@ public class EEEGADecProb extends EEEBase
 				3);
 		ga_imperfect.setUniqueName(ga_imperfect.getName() + " imperfect");
 		advisors[strategies.length + 1] = new Advisor(ga_imperfect);
+
+		GAExpert ga_other = new GAExpert(
+				playerNo,
+				"1011100001101100001111000110001011101010110110110010010011000000110011",
+				3);
+		ga_other.setUniqueName(ga_other.getName() + " other");
+		advisors[strategies.length + 2] = new Advisor(ga_other);
 
 	}
 
