@@ -168,9 +168,39 @@ public class GAExpert extends AbstractExpert
 		return true;
 	}
 
+	protected int getSelection()
+	{
+		Encoding[] hist = new Encoding[history_depth];
+		int counter = 0;
+		for (int i = code_length - 1; i >= code_length - premises_length; i = i - 2)
+		{
+			boolean[] move = new boolean[2];
+			if (codebit.charAt(i - 2) == '1')
+			{
+				move[0] = true;
+			}
+			else
+			{
+				move[0] = false;
+			}
+			if (codebit.charAt(i - 1) == '1')
+			{
+				move[1] = true;
+			}
+			else
+			{
+				move[0] = false;
+			}
+			hist[counter] = getEncoding(move);
+			counter++;
+
+		}
+		return encodeToInt(hist);
+	}
+
 	@Override
 	public boolean move(GameHistory history)
-	{		
+	{
 		this.history = history;
 
 		if (history.getNumberOfMoves() >= history_depth)
